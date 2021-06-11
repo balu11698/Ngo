@@ -9,18 +9,27 @@
   <form [formGroup]="feedbackForm" (ngSubmit)="submitFeedback()">
     <div>
       <mat-form-field class="formField" appearance="outline">
-        <mat-label>Name</mat-label>
+        <mat-label>Name*</mat-label>
         <input type="text" matInput formControlName="Name" placeholder="">
+        <mat-error *ngIf="feedbackForm.get('Name')?.errors?.required">
+          Name is <strong>required</strong>
+        </mat-error>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field class="formField" appearance="outline">
-        <mat-label>Email</mat-label>
+        <mat-label>Email*</mat-label>
         <input type="email" matInput formControlName="Email" placeholder="">
+        <mat-error *ngIf="((feedbackForm.get('Email')?.dirty || feedbackForm.get('Email')?.touched) && feedbackForm.get('Email')?.invalid) && !feedbackForm.get('Email')?.errors?.required">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="feedbackForm.get('Email')?.errors?.required">
+          Email is <strong>required</strong>
+        </mat-error>
       </mat-form-field>
     </div>
     <div>
-      Please rate
+      Please rate*
       <mat-radio-group formControlName="Rating" class="ratingWrapper">
         <mat-radio-button class="ratingRadio" type="radio" value=1>1 – Very Bad</mat-radio-button>
         <mat-radio-button class="ratingRadio" type="radio" value=2>2 – Poor</mat-radio-button>
@@ -31,10 +40,13 @@
     </div>
     <div>
       <mat-form-field class="formField" appearance="outline">
-        <mat-label>How could we improve?</mat-label>
+        <mat-label>How could we improve?*</mat-label>
         <textarea matInput formControlName="feedbackComment"></textarea>
+        <mat-error *ngIf="feedbackForm.get('feedbackComment')?.errors?.required">
+          Feedback is <strong>required</strong>
+        </mat-error>
       </mat-form-field>
     </div>
-    <button mat-raised-button color="primary">Submit</button>
+    <button mat-raised-button color="primary" [disabled] = "feedbackForm.invalid">Submit</button>
   </form>
 </div>

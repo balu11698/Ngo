@@ -36,7 +36,9 @@ export class PersonDetailsComponent implements OnInit {
         affectedDate:[''],
         affectedReason:[''],
         additionalDetail:[''],
-        submitterDetail:['']
+        submitterDetail:[''],
+        submitterName:[''],
+        submitterContact:['']
       }
     )
   }

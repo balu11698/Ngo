@@ -2,21 +2,21 @@
     <h1>COVID impacted person’s detail</h1>
     <form [formGroup]="personDetailsForm" (ngSubmit)="detailsSubmit()">
         <div class="formFiledWrapper">
-            <mat-form-field appearance="outline" class="formField">
+            <mat-form-field appearance="outline" class="formField-3">
                 <mat-label>First Name</mat-label>
                 <input type="text" matInput formControlName="firstname" placeholder="">
             </mat-form-field>
-            <mat-form-field appearance="outline" class="formField">
+            <mat-form-field appearance="outline" class="formField-3">
                 <mat-label>Middle Name</mat-label>
                 <input type="text" matInput formControlName="middlename" placeholder="">
             </mat-form-field>
-            <mat-form-field appearance="outline" class="formField">
+            <mat-form-field appearance="outline" class="formField-3">
                 <mat-label>last Name</mat-label>
                 <input type="text" matInput formControlName="lastname" placeholder="">
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="formField-2">
                 <mat-label>Gender</mat-label>
                 <mat-select formControlName="gender">
                     <mat-option value="Male">Male</mat-option>
@@ -24,13 +24,13 @@
                     <mat-option value="Others">Others</mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="formField-2">
                 <mat-label>Age</mat-label>
                 <input type="text" matInput formControlName="age" placeholder="">
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="formField-2">
                 <mat-label>ID Type</mat-label>
                 <mat-select formControlName="idType">
                     <mat-option value="PAN">PAN</mat-option>
@@ -43,110 +43,120 @@
                     <mat-option value="OTHER">OTHER</mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="formField-2">
                 <mat-label>ID Number</mat-label>
                 <input type="text" matInput formControlName="idNumber" placeholder="">
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="formField-2">
                 <mat-label>Occupation before covid/present</mat-label>
                 <mat-select formControlName="occupation">
-                    <mat-option value="School">School teacher/ Private tutor</mat-option>
-                    <mat-option value="AADHAR">IT professional</mat-option>
-                    <mat-option value="RATION CARD">Small business</mat-option>
-                    <mat-option value="DRIVING LICENSE">Pharma industry professional</mat-option>
-                    <mat-option value="BPL CARD">Private job</mat-option>
-                    <mat-option value="VOTER ID">Daily wager</mat-option>
-                    <mat-option value="PASSPORT">Working in small shops/industries</mat-option>
-                    <mat-option value="OTHER">Mechanic</mat-option>
-                    <mat-option value="OTHER">Plumber</mat-option>
-                    <mat-option value="OTHER">Electrician</mat-option>
-                    <mat-option value="OTHER">Building construction labour</mat-option>
-                    <mat-option value="OTHER">Painter</mat-option>
-                    <mat-option value="OTHER">Fruit/Vegetable/Grocery seller</mat-option>
-                    <mat-option value="OTHER">Student</mat-option>
-                    <mat-option value="OTHER">Other</mat-option>
+                    <mat-option value="School teacher/ Private tutor">School teacher/ Private tutor</mat-option>
+                    <mat-option value="IT professional">IT professional</mat-option>
+                    <mat-option value="Small business">Small business</mat-option>
+                    <mat-option value="Pharma industry professional">Pharma industry professional</mat-option>
+                    <mat-option value="Private job">Private job</mat-option>
+                    <mat-option value="Daily wager">Daily wager</mat-option>
+                    <mat-option value="Working in small shops/industries">Working in small shops/industries</mat-option>
+                    <mat-option value="Mechanic">Mechanic</mat-option>
+                    <mat-option value="Plumber">Plumber</mat-option>
+                    <mat-option value="Electrician">Electrician</mat-option>
+                    <mat-option value="Building construction labour">Building construction labour</mat-option>
+                    <mat-option value="Painter">Painter</mat-option>
+                    <mat-option value="Fruit/Vegetable/Grocery seller">Fruit/Vegetable/Grocery seller</mat-option>
+                    <mat-option value="Student">Student</mat-option>
+                    <mat-option value="Other">Other</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="formField-1">
                 <mat-label>Specific skill details</mat-label>
                 <textarea matInput formControlName="skills"></textarea>
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="formField-1">
                 <mat-label>Address</mat-label>
                 <input type="text" matInput formControlName="address" placeholder="">
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="formField-2">
                 <mat-label>City</mat-label>
                 <input type="text" matInput formControlName="city" placeholder="">
             </mat-form-field>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="formField-2">
                 <mat-label>District</mat-label>
                 <input type="text" matInput formControlName="district" placeholder="">
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="formField-2">
                 <mat-label>State</mat-label>
                 <input type="text" matInput formControlName="state" placeholder="">
             </mat-form-field>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="formField-2">
                 <mat-label>Pin Code</mat-label>
                 <input type="number" matInput formControlName="pincode" placeholder="">
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="formField-2">
                 <mat-label>Email</mat-label>
                 <input type="email" matInput formControlName="email" placeholder="">
             </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>District</mat-label>
+            <mat-form-field appearance="outline" class="formField-2">
+                <mat-label>Phone</mat-label>
                 <input type="number" matInput formControlName="phonenumber" placeholder="">
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="formField-1">
                 <mat-label>Associated NGO detail if any</mat-label>
                 <input type="text" matInput formControlName="associated_ngo" placeholder="">
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="formField-2">
                 <mat-label>Affected Since</mat-label>
                 <input matInput formControlName="affectedDate" [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="formField-2">
                 <mat-label>How have been affected?</mat-label>
-                <mat-select formControlName="affectedReason">
-                    <mat-option value="PAN">Financial problem</mat-option>
-                    <mat-option value="AADHAR">Medical issues</mat-option>
-                    <mat-option value="RATION CARD">Emotional trauma</mat-option>
-                    <mat-option value="DRIVING LICENSE">Lost parent(s)</mat-option>
-                    <mat-option value="BPL CARD">Lost other family member(s)</mat-option>
-                    <mat-option value="VOTER ID">Lost job</mat-option>
-                    <mat-option value="PASSPORT">Orphan</mat-option>
-                    <mat-option value="OTHER">OTHER</mat-option>
+                <mat-select formControlName="affectedReason" class="select">
+                    <mat-option value="Financial problem">Financial problem</mat-option>
+                    <mat-option value="Medical issues">Medical issues</mat-option>
+                    <mat-option value="Emotional trauma">Emotional trauma</mat-option>
+                    <mat-option value="Lost parent(s">Lost parent(s)</mat-option>
+                    <mat-option value="Lost other family member(s">Lost other family member(s)</mat-option>
+                    <mat-option value="Lost job">Lost job</mat-option>
+                    <mat-option value="Orphan">Orphan</mat-option>
+                    <mat-option value="Others">Others</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
-            <mat-form-field class="formField" appearance="outline">
+            <mat-form-field class="formField" appearance="outline" class="formField-1">
                 <mat-label>Additional Detail</mat-label>
                 <textarea matInput formControlName="additionalDetail"></textarea>
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
-            <mat-form-field class="formField" appearance="outline">
+            <mat-form-field class="formField" appearance="outline" class="formField-2">
+                <mat-label>Submitter Name</mat-label>
+                <input type="text" matInput formControlName="submitterName" placeholder="">
+            </mat-form-field>
+            <mat-form-field class="formField" appearance="outline" class="formField-2">
+                <mat-label>Submitter Contact</mat-label>
+                    <input type="text" matInput formControlName="submitterContact" placeholder="">
+            </mat-form-field>
+        </div>
+        <div class="formFiledWrapper">
+            <mat-form-field class="formField" appearance="outline" class="formField-1">
                 <mat-label>Submitter Detail (Please provide as much detail as you can. Name and Contact number is
                     mandatory)</mat-label>
                 <textarea matInput formControlName="submitterDetail"></textarea>

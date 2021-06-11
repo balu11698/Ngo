@@ -48,7 +48,7 @@ import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.componen
     MatNativeDateModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [NavComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

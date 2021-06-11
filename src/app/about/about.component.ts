@@ -12,10 +12,10 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
     this.feedbackForm=this.formBuilder.group(
       {
-        Name:[''],
-        Email:[''],
-        Rating:[''],
-        feedbackComment:['']
+        Name:['',[Validators.required]],
+        Email:['',[Validators.required,Validators.email]],
+        Rating:['',[Validators.required]],
+        feedbackComment:['',[Validators.required]]
       }
     )
   }

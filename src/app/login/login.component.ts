@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { NavComponent } from '../nav/nav.component';
 import { JwtService } from '../service/jwt.service';
 
 @Component({
@@ -10,6 +12,7 @@ import { JwtService } from '../service/jwt.service';
 })
 export class LoginComponent implements OnInit {
 
+  public subscription = new Subscription();
   public loginForm!: FormGroup
   errorMessage:string=""
 
@@ -27,7 +30,8 @@ export class LoginComponent implements OnInit {
    this.errorMessage=""
    this.auth.login(this.loginForm.value).subscribe((success)=>{
      //add the route to the admin dashboard component
-     console.log("hi")
+     this.auth.isloggedIn.next(true);
+     console.log(this.auth.loggedIn)
      this.router.navigate(['/admin-dashboard'])
 
    },(error)=>{
