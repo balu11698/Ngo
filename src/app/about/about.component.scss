@@ -1,0 +1,18 @@
+.container{
+    margin: 50px 20%;
+}
+.ratingWrapper{
+    display: flex;
+    flex-direction: column;
+    .ratingRadio{
+        margin: 5px;
+    }
+}
+.formField {
+    width: 100%;
+  }
+@media screen and (max-width: 960px) {
+    .container{
+        margin: 50px 50px;
+    }
+  }

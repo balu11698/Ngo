@@ -1,0 +1,22 @@
+<div>
+  <mat-toolbar color="primary" class="headerWrapper">
+    <div class="headerName">Covid Helping Hands</div>
+    <div fxShow="true" fxHide.lt-md="true" class="headerNavigate">
+      <a [routerLink]="['/Home']" mat-button>Home</a>
+      <a [routerLink]="['/About']" mat-button>About us</a>
+      <a [routerLink]="['/Form']" mat-button>COVID impacted person’s detail</a>
+      <a [routerLink]="['/Login']" mat-button>Administrator Login</a>
+    </div>
+    <div fxShow="true" fxHide.gt-sm="true">
+      <a  mat-button (click)="sidenav.toggle()">Show Side Menu</a>
+    </div>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav fxLayout="column">
+      <a [routerLink]="['/Home']" mat-button>Home</a>
+      <a [routerLink]="['/About']" mat-button>About us</a>
+      <a href="#" mat-button>COVID impacted person’s detail</a>
+      <a href="#" mat-button>Administrator Login</a>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</div>
