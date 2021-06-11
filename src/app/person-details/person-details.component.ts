@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
+import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-person-details',
@@ -10,7 +11,7 @@ export class PersonDetailsComponent implements OnInit {
 
   public personDetailsForm!:FormGroup
 
-  constructor(private formBuilder : FormBuilder) { }
+  constructor(private formBuilder : FormBuilder,private api:ApiService) { }
 
   ngOnInit(): void {
     this.personDetailsForm=this.formBuilder.group(
@@ -21,7 +22,7 @@ export class PersonDetailsComponent implements OnInit {
         gender:[''],
         age:[''],
         idType:[''],
-        idNumbee:[''],
+        idNumber:[''],
         occupation:[''],
         skills:[''],
         address:[''],
@@ -34,12 +35,20 @@ export class PersonDetailsComponent implements OnInit {
         associated_ngo:[''],
         affectedDate:[''],
         affectedReason:[''],
-        additionalDetai:[''],
+        additionalDetail:[''],
         submitterDetail:['']
       }
     )
   }
   detailsSubmit(){
     console.log(this.personDetailsForm.value)
+
+    this.api.createNewCase(this.personDetailsForm.value).subscribe((success)=>{
+      //add code to display success notification
+      console.log(success)
+    },(error)=>{
+      //add code to display error notification
+      console.log(error)
+    })
   }
 }

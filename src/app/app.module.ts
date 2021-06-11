@@ -19,6 +19,7 @@ import { AboutComponent } from './about/about.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     AboutComponent,
     PersonDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    AdminDashbordComponent
   ],
   imports: [
     BrowserModule,

@@ -1,23 +1,46 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {tap} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class JwtService {
   constructor(private http: HttpClient) { }
+ url = 'http://194.233.64.67:3000';
+//  url='http://localhost:3000';
+  loggedin:boolean=false
   login(data:any){
-    const url = 'http://194.233.64.67:3000';
-    return this.http.post<{access_token:string}>(url+'/signin',data).pipe(tap(res=>
+    
+    return this.http.post<{access_token:string}>(this.url+'/signin',data).pipe(tap(res=>
       {
         localStorage.setItem('access_token',res.access_token)
       }
       ))
   }
+  isTokenCorrect(){
+    const authToken=localStorage.getItem('access_token');
+  
+    const headers=new HttpHeaders({
+      'Authorization':'Bearer '+authToken
+    }) 
+    return this.http.get(this.url+'/tokenCheck',{headers:headers})
+  }
   logout(){
     localStorage.removeItem('access_token')
   }
+  // public  loggedIn():any{
+  //   this.isTokenCorrect().subscribe(data=>{
+  //     this.loggedin=true
+  //   },(error)=>{
+  //     this.loggedin=false
+  //   })
+  // }
+  // public getLoggedinValue(){
+  //   this.loggedIn()
+  //   return this.loggedin
+  // }
+
   public get loggedIn():boolean{
-    return localStorage.getItem('access_token')!==null;''
+    return localStorage.getItem('access_token') !== null;
   }
 }
