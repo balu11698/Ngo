@@ -1,0 +1,26 @@
+.container{
+    margin: 50px 20%;
+}
+.card{
+    margin-bottom: 10px;
+}
+.genderImage{
+    width: 100px;
+    height: 100px;
+}
+.detailsWrapper{
+    display: flex;
+    align-items: center;
+}
+.details {
+    margin-left: 15px;
+    flex-grow: 1;
+}
+.buttonsWrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.detailsLabel {
+    font-weight: 600;
+}

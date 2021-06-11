@@ -3,9 +3,10 @@
     <div class="headerName">Covid Helping Hands</div>
     <div fxShow="true" fxHide.lt-md="true" class="headerNavigate">
       <a [routerLink]="['/Home']" mat-button>Home</a>
-      <a [routerLink]="['/About']" mat-button>About us</a>
-      <a [routerLink]="['/Form']" mat-button>COVID impacted person’s detail</a>
-      <a [routerLink]="['/Login']" *ngIf="isLoggedIn==false" mat-button>Administrator Login</a>
+      <a [routerLink]="['/About']" *ngIf="!isLoggedIn" mat-button>About us</a>
+      <a [routerLink]="['/Form']" *ngIf="!isLoggedIn" mat-button>COVID impacted person’s detail</a>
+      <a [routerLink]="['/admin-dashboard']" *ngIf="isLoggedIn" mat-button>Admin Dashboard</a>
+      <a [routerLink]="['/Login']" *ngIf="!isLoggedIn" mat-button>Administrator Login</a>
       <a  *ngIf="isLoggedIn" (click)="logout()" mat-button>Logout</a>
     </div>
     <div fxShow="true" fxHide.gt-sm="true">

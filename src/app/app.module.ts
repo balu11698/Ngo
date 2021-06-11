@@ -18,6 +18,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AboutComponent } from './about/about.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
 import { LoginComponent } from './login/login.component';
+import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.component';
 
@@ -46,7 +47,8 @@ import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.componen
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [NavComponent],
   bootstrap: [AppComponent]

@@ -1,1 +1,48 @@
-<p>admin-dashbord works!</p>
+<div class="container">
+  <div *ngFor="let details of detail">
+    <mat-card class="card">
+      <div class="detailsWrapper">
+        <div class="image">
+          <img class="genderImage" [src]="details.gender==='Male' ? maleImage : femaleImage" />
+        </div>
+        <div class="details">
+          <div>
+            <span class="detailsLabel"> Name :</span> {{details.firstname}} {{details.middlename}} {{details.lastname}}
+            <span class="detailsLabel"> Phone Number : </span>{{details.phonenumber}}
+          </div>
+          <div>
+            <span class="detailsLabel"> Address : </span>{{details.address}}
+          </div>
+          <div>
+            <span class="detailsLabel"> City : </span>{{details.city}} <span class="detailsLabel"> District :
+            </span>{{details.district}}
+            <span class="detailsLabel"> State : </span>{{details.state}}<span class="detailsLabel"> Pincode :
+            </span>{{details.pincode}}
+          </div>
+          <div>
+            <span class="detailsLabel">{{details.idType}} : </span>{{details.idNumber}}
+            <span class="detailsLabel">Occupation : </span>{{details.occupation}}
+          </div>
+          <div>
+            <span class="detailsLabel">Affected Date: </span>{{getDate(details.affectedDate)}}
+            <span class="detailsLabel">Affected Reason: </span>{{details.affectedReason}}
+          </div>
+          <div>
+            <span class="detailsLabel">Submitter name: </span>{{details.submitterName}}
+            <span class="detailsLabel">Submitter contact: </span>{{details.submitterContact}}
+            <span class="detailsLabel">Submitter detail: </span>{{details.submitterDetail}}
+          </div>
+          <div>
+            <span class="detailsLabel">Resolved: </span>{{details.isSolved}}
+          </div>
+          <div class="buttonsWrapper">
+            <button mat-raised-button color="primary">Send SMS</button>
+            <button mat-raised-button color="primary">Send Email</button>
+            <button mat-raised-button color="primary" (click)="resolve(details)">Resolve</button>
+            <button mat-raised-button color="primary">Map</button>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

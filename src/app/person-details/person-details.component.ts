@@ -16,29 +16,29 @@ export class PersonDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.personDetailsForm=this.formBuilder.group(
       {
-        firstname:[''],
+        firstname:['',[Validators.required]],
         middlename:[''],
-        lastname:[''],
-        gender:[''],
-        age:[''],
-        idType:[''],
-        idNumber:[''],
+        lastname:['',[Validators.required]],
+        gender:['',[Validators.required]],
+        age:['',[Validators.required]],
+        idType:['',[Validators.required]],
+        idNumber:['',[Validators.required]],
         occupation:[''],
         skills:[''],
-        address:[''],
-        city:[''],
-        district:[''],
-        state:[''],
-        pincode:[''],
+        address:['',[Validators.required]],
+        city:['',[Validators.required]],
+        district:['',[Validators.required]],
+        state:['',[Validators.required]],
+        pincode:['',[Validators.required]],
         email:[''],
         phonenumber:[''],
         associated_ngo:[''],
         affectedDate:[''],
-        affectedReason:[''],
+        affectedReason:['',[Validators.required]],
         additionalDetail:[''],
-        submitterDetail:[''],
-        submitterName:[''],
-        submitterContact:['']
+        submitterDetail:['',[Validators.required]],
+        submitterName:['',[Validators.required]],
+        submitterContact:['',[Validators.required]]
       }
     )
   }

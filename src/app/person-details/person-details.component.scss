@@ -15,6 +15,12 @@
 .formField-1 {
     width: 100%;
 }
+
+@media screen and (max-width: 1200px) {
+    .formField-3,.formField-2{
+        width: 100%;
+    }
+  }
 // .select ::ng-deep .mat-select-panel{
 //     max-height: unset;
 // }
