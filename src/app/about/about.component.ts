@@ -16,9 +16,9 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
     this.feedbackForm = this.formBuilder.group(
       {
-        Name: ['', [Validators.required]],
-        Email: ['', [Validators.required, Validators.email]],
-        Rating: ['', [Validators.required]],
+        name: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        rating: ['', [Validators.required]],
         feedbackComment: ['', [Validators.required]]
       }
     )

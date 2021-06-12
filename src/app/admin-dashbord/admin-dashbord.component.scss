@@ -32,6 +32,12 @@
 .filter{
     width: 150px;
 }
+.spinner{
+    margin: 0 auto;
+}
+.formField{
+    width: 100%;
+}
 @media screen and (max-width: 800px) {
     .detailsWrapper{
         display: flex;

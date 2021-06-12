@@ -1,13 +1,13 @@
 <div class="container">
     <h1>COVID impacted person’s detail</h1>
-    <form [formGroup]="personDetailsForm" >
+    <form [formGroup]="personDetailsForm">
         <div class="formFiledWrapper">
             <mat-form-field appearance="outline" class="formField-3">
                 <mat-label>First Name*</mat-label>
                 <input type="text" matInput formControlName="firstname" placeholder="">
                 <mat-error *ngIf="personDetailsForm.get('firstname')?.errors?.required">
                     First name is <strong>required</strong>
-                  </mat-error>
+                </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline" class="formField-3">
                 <mat-label>Middle Name</mat-label>
@@ -18,7 +18,7 @@
                 <input type="text" matInput formControlName="lastname" placeholder="">
                 <mat-error *ngIf="personDetailsForm.get('lastname')?.errors?.required">
                     First name is <strong>required</strong>
-                  </mat-error>
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
@@ -31,14 +31,14 @@
                 </mat-select>
                 <mat-error *ngIf="personDetailsForm.get('gender')?.errors?.required">
                     Gender is <strong>required</strong>
-                  </mat-error>
+                </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline" class="formField-2">
                 <mat-label>Age*</mat-label>
                 <input type="text" matInput formControlName="age" placeholder="">
                 <mat-error *ngIf="personDetailsForm.get('age')?.errors?.required">
                     Age is <strong>required</strong>
-                  </mat-error>
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
@@ -56,14 +56,14 @@
                 </mat-select>
                 <mat-error *ngIf="personDetailsForm.get('idType')?.errors?.required">
                     Id type is <strong>required</strong>
-                  </mat-error>
+                </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline" class="formField-3">
                 <mat-label>ID Number*</mat-label>
                 <input type="text" matInput formControlName="idNumber" placeholder="">
                 <mat-error *ngIf="personDetailsForm.get('idNumber')?.errors?.required">
                     ID Number is <strong>required</strong>
-                  </mat-error>
+                </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline" class="formField-3">
                 <mat-label>Occupation before covid/present</mat-label>
@@ -87,7 +87,7 @@
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
-            
+
         </div>
         <div class="formFiledWrapper">
             <mat-form-field appearance="outline" class="formField-1">
@@ -101,39 +101,41 @@
                 <input type="text" matInput formControlName="address" placeholder="">
                 <mat-error *ngIf="personDetailsForm.get('firstname')?.errors?.required">
                     Address is <strong>required</strong>
-                  </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="formFiledWrapper">
-            <mat-form-field appearance="outline" class="formField-2">
-                <mat-label>City*</mat-label>
-                <input type="text" matInput formControlName="city" placeholder="">
-                <mat-error *ngIf="personDetailsForm.get('city')?.errors?.required">
-                    City is <strong>required</strong>
-                  </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="formField-2">
-                <mat-label>District*</mat-label>
-                <input type="text" matInput formControlName="district" placeholder="">
-                <mat-error *ngIf="personDetailsForm.get('district')?.errors?.required">
-                    District is <strong>required</strong>
-                  </mat-error>
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
             <mat-form-field appearance="outline" class="formField-2">
                 <mat-label>State*</mat-label>
-                <input type="text" matInput formControlName="state" placeholder="">
+                <mat-select formControlName="state" class="select">
+                    <mat-option *ngFor="let state of stateArray" value="{{state}}">{{state}}</mat-option>
+                </mat-select>
                 <mat-error *ngIf="personDetailsForm.get('state')?.errors?.required">
                     State is <strong>required</strong>
-                  </mat-error>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="formField-2">
+                <mat-label>City*</mat-label>
+                <input type="text" matInput formControlName="city" placeholder="">
+                <mat-error *ngIf="personDetailsForm.get('city')?.errors?.required">
+                    City is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="formFiledWrapper">
+            <mat-form-field appearance="outline" class="formField-2">
+                <mat-label>District*</mat-label>
+                <input type="text" matInput formControlName="district" placeholder="">
+                <mat-error *ngIf="personDetailsForm.get('district')?.errors?.required">
+                    District is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline" class="formField-2">
                 <mat-label>Pin Code*</mat-label>
                 <input type="text" matInput formControlName="pincode" placeholder="">
                 <mat-error *ngIf="personDetailsForm.get('pincode')?.errors?.required">
                     Pincode is <strong>required</strong>
-                  </mat-error>
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
@@ -173,7 +175,7 @@
                 </mat-select>
                 <mat-error *ngIf="personDetailsForm.get('affectedReason')?.errors?.required">
                     Affected Reason is <strong>required</strong>
-                  </mat-error>
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
@@ -188,14 +190,14 @@
                 <input type="text" matInput formControlName="submitterName" placeholder="">
                 <mat-error *ngIf="personDetailsForm.get('submitterName')?.errors?.required">
                     Submitter name is <strong>required</strong>
-                  </mat-error>
+                </mat-error>
             </mat-form-field>
             <mat-form-field class="formField" appearance="outline" class="formField-2">
                 <mat-label>Submitter Contact*</mat-label>
-                    <input type="text" matInput formControlName="submitterContact" placeholder="">
-                    <mat-error *ngIf="personDetailsForm.get('submitterContact')?.errors?.required">
-                        Submitter contact is <strong>required</strong>
-                      </mat-error>
+                <input type="text" matInput formControlName="submitterContact" placeholder="">
+                <mat-error *ngIf="personDetailsForm.get('submitterContact')?.errors?.required">
+                    Submitter contact is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
@@ -205,9 +207,10 @@
                 <textarea matInput formControlName="submitterDetail"></textarea>
                 <mat-error *ngIf="personDetailsForm.get('submitterDetail')?.errors?.required">
                     Submitter detail is <strong>required</strong>
-                  </mat-error>
+                </mat-error>
             </mat-form-field>
         </div>
-        <button mat-raised-button color="primary" [disabled]="personDetailsForm.invalid" (click)="detailsSubmit()">Submit</button>
+        <button mat-raised-button color="primary" [disabled]="personDetailsForm.invalid"
+            (click)="detailsSubmit()">Submit</button>
     </form>
 </div>

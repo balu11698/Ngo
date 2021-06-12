@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   public subscription = new Subscription();
   public loginForm!: FormGroup
   errorMessage:string=""
+  public hide=true;
 
   constructor(private formBuilder: FormBuilder,private auth:JwtService,private router:Router) { }
 

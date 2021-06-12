@@ -26,6 +26,7 @@ export class AdminDashbordComponent implements OnInit {
   public occupation!:string;
   public affectedReason!:string;
   public stateArray!:string[];
+  public isLoading:boolean=false;
   public occupationArray = ["School teacher/ Private tutor","IT professional","Small business","Pharma industry professional",
   "Private job","Daily wager","Working in small shops/industries","Mechanic","Plumber","Electrician",
   "Building construction labour","Painter","Fruit/Vegetable/Grocery seller","Student","Other"]
@@ -34,9 +35,11 @@ export class AdminDashbordComponent implements OnInit {
   constructor(private api: ApiService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.isLoading=true;
     this.api.getAllDetails().subscribe((data:any)=>{
       this.detail=data;
       this.stateArray = [...new Set(this.detail.map(item => item.state))];
+      this.isLoading=false;
       console.log((this.detail))
       console.log(this.stateArray);
     })
@@ -52,8 +55,7 @@ export class AdminDashbordComponent implements OnInit {
     })
     // console.log(filterArray)
     const dialogRef = this.dialog.open(AdminDashboardDialog, {
-      width: '250px',
-      data: {details:personDetailsFilter,action:this.action}
+      data: {details:personDetailsFilter[0],action:this.action}
     });
 
     dialogRef.afterClosed().subscribe(result => {

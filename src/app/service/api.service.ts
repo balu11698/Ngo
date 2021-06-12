@@ -31,4 +31,7 @@ export class ApiService {
     }) 
     return this.http.post(this.url+'deleteCase',data,{headers:headers})
   }
+  getStats(){
+    return this.http.get(this.url+'getStats')
+  }
 }

@@ -10,7 +10,7 @@
     <div>
       <mat-form-field class="formField" appearance="outline">
         <mat-label>Name*</mat-label>
-        <input type="text" matInput formControlName="Name" placeholder="">
+        <input type="text" matInput formControlName="name" placeholder="">
         <mat-error *ngIf="feedbackForm.get('Name')?.errors?.required">
           Name is <strong>required</strong>
         </mat-error>
@@ -19,7 +19,7 @@
     <div>
       <mat-form-field class="formField" appearance="outline">
         <mat-label>Email*</mat-label>
-        <input type="email" matInput formControlName="Email" placeholder="">
+        <input type="email" matInput formControlName="email" placeholder="">
         <mat-error *ngIf="((feedbackForm.get('Email')?.dirty || feedbackForm.get('Email')?.touched) && feedbackForm.get('Email')?.invalid) && !feedbackForm.get('Email')?.errors?.required">
           Please enter a valid email address
         </mat-error>
@@ -30,7 +30,7 @@
     </div>
     <div>
       Please rate*
-      <mat-radio-group formControlName="Rating" class="ratingWrapper">
+      <mat-radio-group formControlName="rating" class="ratingWrapper">
         <mat-radio-button class="ratingRadio" type="radio" value=1>1 – Very Bad</mat-radio-button>
         <mat-radio-button class="ratingRadio" type="radio" value=2>2 – Poor</mat-radio-button>
         <mat-radio-button class="ratingRadio" type="radio" value=3>3 – Average</mat-radio-button>

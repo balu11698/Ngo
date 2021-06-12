@@ -17,7 +17,12 @@
     left: 0;
     right: 0;
 }
-  
+ .active{
+   background-color: #ffce75;
+ } 
+ .headerNavigationButtons {
+  margin-right: 10px;
+}
 @media screen and (max-width: 800px) {
 mat-toolbar{
   height: unset;

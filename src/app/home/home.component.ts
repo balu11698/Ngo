@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  totalCases:number=0;
+  resolvedCases:number=0;
+  constructor(private api:ApiService) { }
 
   ngOnInit(): void {
+    this.api.getStats().subscribe((data:any)=>{
+      console.log(data);
+      for(let i in data){
+        this.totalCases+=(data[i]['incomingCases']);
+        this.resolvedCases+=(data[i]['resolvedCases']);
+      }
+    })
   }
 
 }
