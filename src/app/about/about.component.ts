@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormGroupDirective, NgForm } from '@angular/forms'
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-about',
@@ -11,7 +12,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 
 export class AboutComponent implements OnInit {
   feedbackForm !: FormGroup
-  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar) { }
+  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar,private api:ApiService) { }
 
   ngOnInit(): void {
     this.feedbackForm = this.formBuilder.group(
@@ -33,9 +34,14 @@ export class AboutComponent implements OnInit {
     });
   }
   async submitFeedback() {
-    this.snackBar.open('Successfully added', 'Close', { duration: 3000 });
-    console.log(this.feedbackForm.value);
-    this.feedbackForm.reset();
+    
+    this.api.submitFeedback(this.feedbackForm.value).subscribe((success)=>{
+      this.snackBar.open('Successfully added', 'Close', { duration: 3000 });
+      this.feedbackForm.reset();
+    },(error)=>{
+      this.snackBar.open('Error while submitting the feedback', 'Close', { duration: 3000 });
+      this.feedbackForm.reset();
+    })
     // await this.clearValidators(feedbackForm)
     // await this.setValidators()
     // this.feedbackForm.get('Name')?.markAsUntouched();

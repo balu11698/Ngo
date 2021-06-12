@@ -4,8 +4,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http'
   providedIn: 'root'
 })
 export class ApiService {
-   url='http://194.233.64.67:3000/'
-  // url='http://localhost:3000/';
+  //  url='http://194.233.64.67:3000/'
+  url='http://localhost:3000/';
   constructor(private http:HttpClient) { }
   createNewCase(data:any){
     return this.http.post(this.url+'createNewCase',data)
@@ -33,5 +33,15 @@ export class ApiService {
   }
   getStats(){
     return this.http.get(this.url+'getStats')
+  }
+  submitFeedback(data:any){
+  return this.http.post(this.url+'submitForm',data);
+  }
+  viewData(){
+    const authToken=localStorage.getItem('access_token');
+    const headers=new HttpHeaders({
+      'Authorization':'Bearer '+authToken
+    }) 
+    return this.http.get(this.url+'viewFeedbackForms',{headers:headers})
   }
 }
