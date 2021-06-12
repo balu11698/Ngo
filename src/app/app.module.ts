@@ -21,6 +21,15 @@ import { LoginComponent } from './login/login.component';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from "@angular/material/dialog";
+import {AdminDashboardDialog} from './admin-dashbord/admin-dashbord.component';
+import { OpenCaseFilterPipe } from './service/open-case-filter.pipe';
+import { GenderFilterPipe } from './service/gender-filter.pipe';
+import { StateFilterPipe } from './service/state-filter.pipe';
+import { OccupationFilterPipe } from './service/occupation-filter.pipe';
+import { AffectedReasonFilterPipe } from './service/affected-reason-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +39,13 @@ import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.componen
     AboutComponent,
     PersonDetailsComponent,
     LoginComponent,
-    AdminDashbordComponent
+    AdminDashbordComponent,
+    AdminDashboardDialog,
+    OpenCaseFilterPipe,
+    GenderFilterPipe,
+    StateFilterPipe,
+    OccupationFilterPipe,
+    AffectedReasonFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -49,6 +64,9 @@ import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.componen
     MatNativeDateModule,
     HttpClientModule,
     MatCardModule,
+    MatSnackBarModule,
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [NavComponent],
   bootstrap: [AppComponent]

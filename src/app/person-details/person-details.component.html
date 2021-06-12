@@ -1,6 +1,6 @@
 <div class="container">
     <h1>COVID impacted person’s detail</h1>
-    <form [formGroup]="personDetailsForm" (ngSubmit)="detailsSubmit()">
+    <form [formGroup]="personDetailsForm" >
         <div class="formFiledWrapper">
             <mat-form-field appearance="outline" class="formField-3">
                 <mat-label>First Name*</mat-label>
@@ -208,6 +208,6 @@
                   </mat-error>
             </mat-form-field>
         </div>
-        <button mat-raised-button color="primary" [disabled]="personDetailsForm.invalid">Submit</button>
+        <button mat-raised-button color="primary" [disabled]="personDetailsForm.invalid" (click)="detailsSubmit()">Submit</button>
     </form>
 </div>

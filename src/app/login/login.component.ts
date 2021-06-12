@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
    this.auth.login(this.loginForm.value).subscribe((success)=>{
      //add the route to the admin dashboard component
      this.auth.isloggedIn.next(true);
-     console.log(this.auth.loggedIn)
      this.router.navigate(['/admin-dashboard'])
 
    },(error)=>{

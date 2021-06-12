@@ -6,7 +6,7 @@
     creators. We are a group of like minded people have been trying to provide helping hands to those who are in
     need.
   </p>
-  <form [formGroup]="feedbackForm" (ngSubmit)="submitFeedback()">
+  <form [formGroup]="feedbackForm" >
     <div>
       <mat-form-field class="formField" appearance="outline">
         <mat-label>Name*</mat-label>
@@ -47,6 +47,6 @@
         </mat-error>
       </mat-form-field>
     </div>
-    <button mat-raised-button color="primary" [disabled] = "feedbackForm.invalid">Submit</button>
+    <button mat-raised-button color="primary" [disabled] = "feedbackForm.invalid" (click)="submitFeedback()">Submit</button>
   </form>
 </div>

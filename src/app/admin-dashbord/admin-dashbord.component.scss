@@ -24,3 +24,34 @@
 .detailsLabel {
     font-weight: 600;
 }
+.filterWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.filter{
+    width: 150px;
+}
+@media screen and (max-width: 800px) {
+    .detailsWrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: unset;
+    }
+    .container{
+        margin: 50px 5%;
+    }
+    .image{
+        display: flex;
+        justify-content: center;
+    }
+    .filterWrapper {
+        display: flex;
+        flex-wrap: unset;
+        overflow-x: auto;
+        justify-content: space-between;
+    }
+    .filter{
+        margin-right: 10px;
+    }
+  }

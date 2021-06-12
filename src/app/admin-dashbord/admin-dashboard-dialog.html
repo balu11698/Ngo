@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Please enter action taken for {{data.details.firstname}}</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label >Comments</mat-label>
+        <input matInput [(ngModel)]="data.action">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data.action" cdkFocusInitial>Solve</button>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+</div>

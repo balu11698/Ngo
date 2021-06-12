@@ -1,14 +1,25 @@
 .headerWrapper{
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 // mat-sidenav-container{
 //     position: sticky;
 // }
+
+.headerNavigate{
+  display: flex;
+  flex-wrap: wrap;
+}
 .example-container {
      position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-  }
+}
   
+@media screen and (max-width: 800px) {
+mat-toolbar{
+  height: unset;
+}
+}
