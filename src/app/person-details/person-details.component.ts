@@ -50,24 +50,23 @@ export class PersonDetailsComponent implements OnInit {
   }
  
   detailsSubmit(){
-    console.log(this.personDetailsForm.value)
+  
     this.api.createNewCase(this.personDetailsForm.value).subscribe((success:any)=>{
       this.snackBar.open(success.message,'Close',{duration: 3000});
-      // this.personDetailsForm.reset();
-      console.log(success);
-      setTimeout(function(){window.location.reload()},3000)
-      // this.personDetailsForm.markAsUntouched();
-      // this.personDetailsForm.markAsPristine();
-      // this.personDetailsForm.updateValueAndValidity();
-      // console.log(this.personDetailsForm.value,"after reset")
+     this.personDetailsForm.reset();
+     this.clearValidatorsForms(this.personDetailsForm)
+      
     },(error)=>{
       //add code to display error notification
-      console.log(error)
+     
       setTimeout(function(){window.location.reload()},3000)
       
     })
-    // this.personDetailsForm.reset();
-    // console.log(this.personDetailsForm.value,"after reset")
     
+  }
+  clearValidatorsForms(feedbackForm:FormGroup){
+    Object.keys(feedbackForm.controls).forEach((key: any) => {
+      feedbackForm.get(key)?.setErrors(null);
+    });
   }
 }

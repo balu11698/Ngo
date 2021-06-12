@@ -40,8 +40,7 @@ export class AdminDashbordComponent implements OnInit {
       this.detail=data;
       this.stateArray = [...new Set(this.detail.map(item => item.state))];
       this.isLoading=false;
-      console.log((this.detail))
-      console.log(this.stateArray);
+      
     })
   }
   getDate(date:any){
@@ -49,11 +48,11 @@ export class AdminDashbordComponent implements OnInit {
     return currentDate.getDate()+'-'+currentDate.getMonth()+'-'+currentDate.getFullYear();
   }
   resolve(details:any,id:string){
-    console.log(id)
+    
     let personDetailsFilter : any=this.detail.filter(obj=>{
       return obj.id==id
     })
-    // console.log(filterArray)
+  
     const dialogRef = this.dialog.open(AdminDashboardDialog, {
       data: {details:personDetailsFilter[0],action:this.action}
     });
@@ -63,7 +62,7 @@ export class AdminDashbordComponent implements OnInit {
       personDetailsFilter[0].isSolved="Yes";
       personDetailsFilter[0].action=result;
       this.api.updateCaseDetails(personDetailsFilter[0]).subscribe((success)=>{
-        console.log(success);
+       
       })
     }
     });

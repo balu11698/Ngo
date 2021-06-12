@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class OccupationFilterPipe implements PipeTransform {
 
   transform(items:any[],occupation:string) {
-    console.log(occupation)
+ 
     if(occupation==undefined || occupation=="All"){
       return items
     }

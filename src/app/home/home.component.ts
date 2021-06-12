@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.getStats().subscribe((data:any)=>{
-      console.log(data);
+     
       for(let i in data){
         this.totalCases+=(data[i]['incomingCases']);
         this.resolvedCases+=(data[i]['resolvedCases']);

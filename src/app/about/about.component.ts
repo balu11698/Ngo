@@ -28,7 +28,7 @@ export class AboutComponent implements OnInit {
     this.feedbackForm.get('Name')?.setValidators([Validators.required]);
     this.feedbackForm.updateValueAndValidity();
   }
-  async clearValidators(feedbackForm:FormGroup){
+   clearValidatorsForms(feedbackForm:FormGroup){
     Object.keys(feedbackForm.controls).forEach((key: any) => {
       feedbackForm.get(key)?.setErrors(null);
     });
@@ -37,10 +37,14 @@ export class AboutComponent implements OnInit {
     
     this.api.submitFeedback(this.feedbackForm.value).subscribe((success)=>{
       this.snackBar.open('Successfully added', 'Close', { duration: 3000 });
+     
       this.feedbackForm.reset();
+      this.clearValidatorsForms(this.feedbackForm)
+  
     },(error)=>{
       this.snackBar.open('Error while submitting the feedback', 'Close', { duration: 3000 });
-      this.feedbackForm.reset();
+      
+  
     })
     // await this.clearValidators(feedbackForm)
     // await this.setValidators()

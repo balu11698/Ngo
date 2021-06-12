@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class StateFilterPipe implements PipeTransform {
 
   transform(items: any[], state: string) {
-    console.log(state, "state");
+   
     if (state == undefined || state=="All") {
       return items
     }
