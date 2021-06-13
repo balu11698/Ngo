@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Send Email to {{data.details.firstname}}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="sendEmailForm">
+    <mat-form-field style="width: 100%;" appearance="outline">
+      <mat-label>To Address</mat-label>
+      <input matInput type="text" formControlName="email">
+      <mat-hint>Add multiple emails seperating with ";" (semicolon)</mat-hint>
+      <mat-error *ngIf="sendEmailForm.get('email')?.errors?.required">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field style="width: 100%;" appearance="outline">
+      <mat-label>Subject</mat-label>
+      <input matInput type="text" formControlName="subject">
+      <mat-error *ngIf="sendEmailForm.get('subject')?.errors?.required">
+        Subject is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field style="width: 100%;" appearance="outline">
+      <mat-label>Body</mat-label>
+      <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="10" cdkAutosizeMaxRows="10"
+        formControlName="text"></textarea>
+      <mat-error *ngIf="sendEmailForm.get('text')?.errors?.required">
+        Body is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" [mat-dialog-close]="sendEmailForm.value"
+    [disabled]="sendEmailForm.invalid">Send</button>
+  <button mat-raised-button color="accent" (click)="onNoClick()">Cancel</button>
+</div>

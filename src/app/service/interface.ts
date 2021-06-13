@@ -28,3 +28,7 @@ export interface personDetails {
     createdAt: string,
     resolvedAt: string
 }
+export interface totalData {
+    "totalCases":number,
+    "resolvedCases":number
+}

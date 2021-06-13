@@ -15,6 +15,9 @@ export class AboutComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar,private api:ApiService) { }
 
   ngOnInit(): void {
+    this.formInitialize();
+  }
+  formInitialize(){
     this.feedbackForm = this.formBuilder.group(
       {
         name: ['', [Validators.required]],
@@ -36,11 +39,10 @@ export class AboutComponent implements OnInit {
   async submitFeedback() {
     
     this.api.submitFeedback(this.feedbackForm.value).subscribe((success)=>{
-      this.snackBar.open('Successfully added', 'Close', { duration: 3000 });
+      this.snackBar.open('Successfully submitted the feedback', 'Close', { duration: 3000 });
      
       this.feedbackForm.reset();
       this.clearValidatorsForms(this.feedbackForm)
-  
     },(error)=>{
       this.snackBar.open('Error while submitting the feedback', 'Close', { duration: 3000 });
       

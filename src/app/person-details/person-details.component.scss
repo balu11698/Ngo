@@ -21,6 +21,11 @@
         width: 100%;
     }
   }
+  @media screen and (max-width: 960px) {
+    .container{
+        margin: 50px 50px;
+    }
+  }
 // .select ::ng-deep .mat-select-panel{
 //     max-height: unset;
 // }

@@ -20,17 +20,18 @@ import { PersonDetailsComponent } from './person-details/person-details.componen
 import { LoginComponent } from './login/login.component';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
-import { AdminDashbordComponent } from './admin-dashbord/admin-dashbord.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDialogModule} from "@angular/material/dialog";
-import {AdminDashboardDialog} from './admin-dashbord/admin-dashbord.component';
+import { AdminDashbordComponent, AdminDashboardDialog, AdminDashboardEmailDialog } from './admin-dashbord/admin-dashbord.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from "@angular/material/dialog";
+import {  } from './admin-dashbord/admin-dashbord.component';
 import { OpenCaseFilterPipe } from './service/open-case-filter.pipe';
 import { GenderFilterPipe } from './service/gender-filter.pipe';
 import { StateFilterPipe } from './service/state-filter.pipe';
 import { OccupationFilterPipe } from './service/occupation-filter.pipe';
 import { AffectedReasonFilterPipe } from './service/affected-reason-filter.pipe';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     LoginComponent,
     AdminDashbordComponent,
     AdminDashboardDialog,
+    AdminDashboardEmailDialog,
     OpenCaseFilterPipe,
     GenderFilterPipe,
     StateFilterPipe,
@@ -68,7 +70,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatSnackBarModule,
     MatIconModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgxChartsModule
   ],
   providers: [NavComponent],
   bootstrap: [AppComponent]

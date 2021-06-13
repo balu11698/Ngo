@@ -9,7 +9,7 @@ import { PersonDetailsComponent } from './person-details/person-details.componen
 
 const routes: Routes = [
   {
-    path:"Home",component:HomeComponent
+    path:"",component:HomeComponent
   },
   {
     path:"About",component:AboutComponent
