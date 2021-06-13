@@ -52,10 +52,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
     StateFilterPipe,
     OccupationFilterPipe,
     AffectedReasonFilterPipe,
-<<<<<<< HEAD
-=======
     MapComponent,
->>>>>>> Frontend_V2
     FeedbackComponent
   ],
   imports: [
