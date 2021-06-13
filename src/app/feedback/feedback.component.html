@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="cardWrapper">
+        <mat-card class="card" *ngFor="let feedback of feedbackData">
+            <div class="feedbackName">
+                {{feedback.name}}
+            </div>
+            <div>
+                <span class="feedbackFields">Email :</span> {{feedback.email}}
+            </div>
+            <div>
+                <span class="feedbackFields">Rating :</span> {{feedback.rating}} / 5
+            </div>
+            <div>
+                <span class="feedbackFields">Comment :</span> {{feedback.feedbackComment}}
+            </div>
+        </mat-card>
+    </div>
+</div>>
