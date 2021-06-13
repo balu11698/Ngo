@@ -1,0 +1,40 @@
+.container {
+  margin: 50px 10%;
+}
+.totalChart,
+.periodChart {
+  height: 350px;
+  width: 570px;
+}
+.barCharts {
+  display: flex;
+  justify-content: space-around;
+}
+.timePeriodRadio {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.totalChartHeader,
+.timeRadioWrapper {
+  margin-bottom: 15px;
+  display: flex;
+}
+@media screen and (max-width: 1000px) {
+  .container {
+    margin: 50px 5%;
+  }
+  .totalChart,
+  .periodChart {
+    width: unset;
+  }
+  .barCharts {
+    display: unset;
+  }
+}
+@media screen and (max-width: 450px) {
+  .timePeriodRadio {
+    justify-content: space-between;
+  }
+}

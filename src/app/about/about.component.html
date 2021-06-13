@@ -4,9 +4,7 @@
     We are here to serve the people who lost the job or have been impacted during COVID wave . This is an initiative
     to provide leads on jobs and help on different areas . Its free service . Nothing will be charged from website
     creators. We are a group of like minded people have been trying to provide helping hands to those who are in
-    need.
-
-    
+    need.   
   </p>
   <br><p>Please provide your feedback:</p>
   <form [formGroup]="feedbackForm" >
@@ -14,7 +12,7 @@
       <mat-form-field class="formField" appearance="outline">
         <mat-label>Name*</mat-label>
         <input type="text" matInput formControlName="name" placeholder="">
-        <mat-error *ngIf="feedbackForm.get('Name')?.errors?.required">
+        <mat-error *ngIf="feedbackForm.get('name')?.errors?.required">
           Name is <strong>required</strong>
         </mat-error>
       </mat-form-field>
@@ -23,10 +21,10 @@
       <mat-form-field class="formField" appearance="outline">
         <mat-label>Email*</mat-label>
         <input type="email" matInput formControlName="email" placeholder="">
-        <mat-error *ngIf="((feedbackForm.get('Email')?.dirty || feedbackForm.get('Email')?.touched) && feedbackForm.get('Email')?.invalid) && !feedbackForm.get('Email')?.errors?.required">
+        <mat-error *ngIf="((feedbackForm.get('email')?.dirty || feedbackForm.get('email')?.touched) && feedbackForm.get('email')?.invalid) && !feedbackForm.get('email')?.errors?.required">
           Please enter a valid email address
         </mat-error>
-        <mat-error *ngIf="feedbackForm.get('Email')?.errors?.required">
+        <mat-error *ngIf="feedbackForm.get('email')?.errors?.required">
           Email is <strong>required</strong>
         </mat-error>
       </mat-form-field>

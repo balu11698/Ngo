@@ -1,3 +1,33 @@
-<p>home works!</p>
-
-  
+<div class="container">
+    <div class="barCharts">
+        <div #totalChartRef class="totalChart">
+            <div class="totalChartHeader">Total Registered Cases</div>
+            <div *ngIf="!totalChartDataLoading">
+                <ngx-charts-bar-vertical [view]="[totalChartRef.offsetWidth, 300]" [scheme]="colorScheme"
+                    [results]="totalRegisteredData" [xAxisLabel]="''" [legendTitle]="''" [yAxisLabel]="'Cases'"
+                    [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
+                    [gradient]="true" [roundEdges]="false">
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+        <div #periodChartRef class="periodChart">
+            <div class="timeRadioWrapper">
+            <label id="example-radio-group-label">Select Time Period</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="timePeriodRadio"
+                [(ngModel)]="timePeriod">
+                <mat-radio-button class="example-radio-button" (change)="radioChange($event)"
+                    *ngFor="let timePeriod of timePeriodArray" [value]="timePeriod">
+                    {{timePeriod}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+            <div *ngIf="!periodChartDataLoading">
+                <ngx-charts-bar-vertical [view]="[periodChartRef.offsetWidth, 300]" [scheme]="colorScheme"
+                    [results]="timePeriodRegisteredData" [xAxisLabel]="''" [legendTitle]="''" [yAxisLabel]="'Cases'"
+                    [legend]="true" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
+                    [gradient]="true" [roundEdges]="false">
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+    </div>
+</div>

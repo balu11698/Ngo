@@ -34,3 +34,7 @@ export interface MapPoint {
     latitude: number;
     longitude: number;
   }
+export interface totalData {
+    "totalCases":number,
+    "resolvedCases":number
+}

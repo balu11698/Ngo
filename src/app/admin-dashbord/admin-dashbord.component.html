@@ -1,113 +1,118 @@
 <div class="container">
-  <div class="filterWrapper">
-    <mat-form-field appearance="outline" class="filter">
-      <mat-label>Gender</mat-label>
-      <mat-select [(ngModel)]="gender">
-        <mat-option value="All">All</mat-option>
-        <mat-option value="Male">Male</mat-option>
-        <mat-option value="Female">Female</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="filter">
-      <mat-label>Case</mat-label>
-      <mat-select [(ngModel)]="openCase">
-        <mat-option value="All">All</mat-option>
-        <mat-option value="Yes">Solved</mat-option>
-        <mat-option value="No">Not solved</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="filter">
-      <mat-label>State</mat-label>
-      <mat-select [(ngModel)]="state">
-        <mat-option value="All">All</mat-option>
-        <mat-option *ngFor="let state of stateArray" value="{{state}}">{{state}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="filter">
-      <mat-label>Occupation</mat-label>
-      <mat-select [(ngModel)]="occupation">
-        <mat-option value="All">All</mat-option>
-        <mat-option *ngFor="let occupation of occupationArray" value="{{occupation}}">{{occupation}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="filter">
-      <mat-label>Affected Reason</mat-label>
-      <mat-select [(ngModel)]="affectedReason">
-        <mat-option value="All">All</mat-option>
-        <mat-option *ngFor="let affectedReason of affectedReasonArray" value="{{affectedReason}}">{{affectedReason}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <mat-spinner class="spinner" *ngIf="isLoading"></mat-spinner>
-  <div
-    *ngIf="((detail|openCaseFilter:openCase|genderFilter:gender|stateFilter:state|occupationFilter:occupation|affectedReasonFilter:affectedReason)?.length==0) && !isLoading">
-    No Records</div>
-  <div
-    *ngFor="let details of detail|openCaseFilter:openCase|genderFilter:gender|stateFilter:state|occupationFilter:occupation|affectedReasonFilter:affectedReason">
-    <mat-card class="card">
-      <div class="detailsWrapper">
-        <div class="image">
-          <img class="genderImage" [src]="details.gender==='Male' ? maleImage : femaleImage" />
-        </div>
-        <div class="details">
-          <div>
-            <span class="detailsLabel"> Name :</span> {{details.firstname}} {{details.middlename}} {{details.lastname}}
+  <div class="dashboardWrapper">
+    <div class="filterWrapper">
+      <mat-form-field appearance="outline" class="filter">
+        <mat-label>Gender</mat-label>
+        <mat-select [(ngModel)]="gender">
+          <mat-option value="All">All</mat-option>
+          <mat-option value="Male">Male</mat-option>
+          <mat-option value="Female">Female</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="filter">
+        <mat-label>Case</mat-label>
+        <mat-select [(ngModel)]="openCase">
+          <mat-option value="All">All</mat-option>
+          <mat-option value="Yes">Solved</mat-option>
+          <mat-option value="No">Not solved</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="filter">
+        <mat-label>State</mat-label>
+        <mat-select [(ngModel)]="state">
+          <mat-option value="All">All</mat-option>
+          <mat-option *ngFor="let state of stateArray" value="{{state}}">{{state}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="filter">
+        <mat-label>Occupation</mat-label>
+        <mat-select [(ngModel)]="occupation">
+          <mat-option value="All">All</mat-option>
+          <mat-option *ngFor="let occupation of occupationArray" value="{{occupation}}">{{occupation}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="filter">
+        <mat-label>Affected Reason</mat-label>
+        <mat-select [(ngModel)]="affectedReason">
+          <mat-option value="All">All</mat-option>
+          <mat-option *ngFor="let affectedReason of affectedReasonArray" value="{{affectedReason}}">{{affectedReason}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="contentWrapper">
+      <mat-spinner class="spinner" *ngIf="isLoading"></mat-spinner>
+      <div
+        *ngIf="((detail|openCaseFilter:openCase|genderFilter:gender|stateFilter:state|occupationFilter:occupation|affectedReasonFilter:affectedReason)?.length==0) && !isLoading">
+        No Records</div>
+      <div
+        *ngFor="let details of detail|openCaseFilter:openCase|genderFilter:gender|stateFilter:state|occupationFilter:occupation|affectedReasonFilter:affectedReason">
+        <mat-card class="card">
+          <div class="detailsWrapper">
+            <div class="image">
+              <img class="genderImage" [src]="details.gender==='Male' ? maleImage : femaleImage" />
+            </div>
+            <div class="details">
+              <div>
+                <span class="detailsLabel"> Name :</span> {{details.firstname}} {{details.middlename}}
+                {{details.lastname}}
+              </div>
+              <div>
+                <span class="detailsLabel"> Phone Number : </span>{{details.phonenumber}}
+              </div>
+              <div>
+                <span class="detailsLabel"> Address : </span>{{details.address}}
+              </div>
+              <div>
+                <span class="detailsLabel"> City : </span>{{details.city}} <span class="detailsLabel"> District :
+                </span>{{details.district}}
+                <span class="detailsLabel"> State : </span>{{details.state}}<span class="detailsLabel"> Pincode :
+                </span>{{details.pincode}}
+              </div>
+              <div>
+                <span class="detailsLabel">{{details.idType}} : </span>{{details.idNumber}}
+              </div>
+              <div>
+                <span class="detailsLabel">Occupation : </span>{{details.occupation}}
+              </div>
+              <div>
+                <span *ngIf="details.affectedDate"><span class="detailsLabel">Affected Date:
+                  </span>{{getDate(details.affectedDate)}}</span>
+                <span class="detailsLabel">Affected Reason: </span>{{details.affectedReason}}
+              </div>
+              <div>
+                <span *ngIf="details.additionalDetail"><span class="detailsLabel">Additional detail:
+                  </span>{{details.additionalDetail}}</span>
+              </div>
+              <div>
+                <span class="detailsLabel">Submitter name: </span>{{details.submitterName}}
+                <span class="detailsLabel">Submitter contact: </span>{{details.submitterContact}}
+              </div>
+              <div>
+                <span class="detailsLabel">Submitter detail: </span>{{details.submitterDetail}}
+              </div>
+              <div>
+                <span class="detailsLabel">Resolved: </span>{{details.isSolved}}
+                <span *ngIf="details.action"><span class="detailsLabel">Action: </span>{{details.action}}</span>
+              </div>
+              <div class="buttonsWrapper">
+                <button mat-raised-button color="primary">
+                  <mat-icon> textsms</mat-icon>
+                </button>
+                <button mat-raised-button color="primary" (click)="sendEmail(details)">
+                  <mat-icon> email</mat-icon>
+                </button>
+                <button mat-raised-button color="primary" (click)="resolve(details)">
+                  <mat-icon>call_to_action</mat-icon>
+                </button>
+                <button mat-raised-button color="primary">
+                  <mat-icon (click)="getMap(details.city)">location_city</mat-icon>
+                </button>
+              </div>
+            </div>
           </div>
-          <div>
-            <span class="detailsLabel"> Phone Number : </span>{{details.phonenumber}}
-          </div>
-          <div>
-            <span class="detailsLabel"> Address : </span>{{details.address}}
-          </div>
-          <div>
-            <span class="detailsLabel"> City : </span>{{details.city}} <span class="detailsLabel"> District :
-            </span>{{details.district}}
-            <span class="detailsLabel"> State : </span>{{details.state}}<span class="detailsLabel"> Pincode :
-            </span>{{details.pincode}}
-          </div>
-          <div>
-            <span class="detailsLabel">{{details.idType}} : </span>{{details.idNumber}}
-          </div>
-          <div>
-            <span class="detailsLabel">Occupation : </span>{{details.occupation}}
-          </div>
-          <div>
-            <span *ngIf="details.affectedDate"><span class="detailsLabel">Affected Date:
-              </span>{{getDate(details.affectedDate)}}</span>
-            <span class="detailsLabel">Affected Reason: </span>{{details.affectedReason}}
-          </div>
-          <div>
-            <span *ngIf="details.additionalDetail"><span class="detailsLabel">Additional detail:
-              </span>{{details.additionalDetail}}</span>
-          </div>
-          <div>
-            <span class="detailsLabel">Submitter name: </span>{{details.submitterName}}
-            <span class="detailsLabel">Submitter contact: </span>{{details.submitterContact}}
-          </div>
-          <div>
-            <span class="detailsLabel">Submitter detail: </span>{{details.submitterDetail}}
-          </div>
-          <div>
-            <span class="detailsLabel">Resolved: </span>{{details.isSolved}}
-            <span *ngIf="details.action"><span class="detailsLabel">Action: </span>{{details.action}}</span>
-          </div>
-          <div class="buttonsWrapper">
-            <button mat-raised-button color="primary">
-              <mat-icon> textsms</mat-icon>
-            </button>
-            <button mat-raised-button color="primary">
-              <mat-icon> email</mat-icon>
-            </button>
-            <button mat-raised-button color="primary" (click)="resolve(details,details.id)">
-              <mat-icon>call_to_action</mat-icon>
-            </button>
-            <button mat-raised-button color="primary">
-              <mat-icon (click)="getMap(details.city)">location_city</mat-icon>
-            </button>
-          </div>
-        </div>
+        </mat-card>
       </div>
-    </mat-card>
+    </div>
   </div>
 </div>

@@ -11,6 +11,13 @@ export class ApiService {
   createNewCase(data:any){
     return this.http.post(this.url+'createNewCase',data)
   }
+  sendEmail(data:any){
+    const authToken=localStorage.getItem('access_token');
+    const headers=new HttpHeaders({
+      'Authorization':'Bearer '+authToken
+    })
+    return this.http.post(this.url+'sendEmail',data,{headers:headers})
+  }
   getAllDetails(){
     const authToken=localStorage.getItem('access_token');
     const headers=new HttpHeaders({

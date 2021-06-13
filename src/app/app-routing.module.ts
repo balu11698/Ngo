@@ -13,7 +13,7 @@ const routes: Routes = [
     path:"map",component:MapComponent
   },
   {
-    path:"Home",component:HomeComponent
+    path:"",component:HomeComponent
   },
   {
     path:"About",component:AboutComponent

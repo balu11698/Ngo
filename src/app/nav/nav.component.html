@@ -1,25 +1,43 @@
-<div>
+<div class="example-container">
   <mat-toolbar color="primary" class="headerWrapper">
     <div class="headerName">Covid Helping Hands</div>
-    <!-- <div fxShow="true" fxHide.lt-md="true" class="headerNavigate"> -->
-      <div  class="headerNavigate">
-      <a [routerLink]="['/Home']" routerLinkActive="active" class="headerNavigationButtons" mat-raised-button> Home</a>
-      <a [routerLink]="['/About']" routerLinkActive="active" class="headerNavigationButtons" *ngIf="!isLoggedIn" mat-raised-button>About us</a>
-      <a [routerLink]="['/Form']" routerLinkActive="active" *ngIf="!isLoggedIn" class="headerNavigationButtons" mat-raised-button>COVID impacted person’s detail</a>
-      <a [routerLink]="['/admin-dashboard']" routerLinkActive="active" *ngIf="isLoggedIn" class="headerNavigationButtons" mat-raised-button>Admin Dashboard</a>
-      <a [routerLink]="['/Login']" routerLinkActive="active" *ngIf="!isLoggedIn" class="headerNavigationButtons" mat-raised-button>Administrator Login</a>
-      <a  *ngIf="isLoggedIn" routerLinkActive="active" (click)="logout()" class="headerNavigationButtons" mat-raised-button>Logout</a>
+    <div fxShow="true" fxHide.lt-md="true" class="headerNavigate">
+      <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+        class="headerNavigationButtons" mat-raised-button> Home</a>
+      <a [routerLink]="['/About']" routerLinkActive="active" class="headerNavigationButtons" *ngIf="!isLoggedIn"
+        mat-raised-button>About us</a>
+      <a [routerLink]="['/Form']" routerLinkActive="active" *ngIf="!isLoggedIn" class="headerNavigationButtons"
+        mat-raised-button>COVID impacted person’s detail</a>
+      <a [routerLink]="['/admin-dashboard']" routerLinkActive="active" *ngIf="isLoggedIn"
+        class="headerNavigationButtons" mat-raised-button>Admin Dashboard</a>
+      <a [routerLink]="['/Login']" routerLinkActive="active" *ngIf="!isLoggedIn" class="headerNavigationButtons"
+        mat-raised-button>Administrator Login</a>
+      <a *ngIf="isLoggedIn" routerLinkActive="active" (click)="logout()" class="headerNavigationButtons"
+        mat-raised-button>Logout</a>
     </div>
-    <!-- <div fxShow="true" fxHide.gt-sm="true">
-      <a  mat-button (click)="sidenav.toggle()">Show Side Menu</a>
-    </div> -->
+    <div fxShow="true" fxHide.gt-sm="true">
+      <a mat-button (click)="sidenav.toggle()"><mat-icon >menu</mat-icon></a>
+    </div>
   </mat-toolbar>
-  <mat-sidenav-container>
-    <mat-sidenav #sidenav fxLayout="column">
-      <a [routerLink]="['/Home']" mat-button>Home</a>
-      <a [routerLink]="['/About']" mat-button>About us</a>
-      <a href="#" mat-button>COVID impacted person’s detail</a>
-      <a href="#"  mat-button>Administrator Login</a>
+  <mat-sidenav-container class="sideNavWrapper">
+    <mat-sidenav #sidenav fxLayout="column" class="sideNav">
+      <div class="sideNavLinks">
+      <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+        class="headerNavigationButtons" mat-button> Home</a>
+      <a [routerLink]="['/About']" routerLinkActive="active" class="headerNavigationButtons" *ngIf="!isLoggedIn"
+        mat-button>About us</a>
+      <a [routerLink]="['/Form']" routerLinkActive="active" *ngIf="!isLoggedIn" class="headerNavigationButtons"
+        mat-button>COVID impacted person’s detail</a>
+      <a [routerLink]="['/admin-dashboard']" routerLinkActive="active" *ngIf="isLoggedIn"
+        class="headerNavigationButtons" mat-button>Admin Dashboard</a>
+      <a [routerLink]="['/Login']" routerLinkActive="active" *ngIf="!isLoggedIn" class="headerNavigationButtons"
+        mat-button>Administrator Login</a>
+      <a *ngIf="isLoggedIn" routerLinkActive="active" (click)="logout()" class="headerNavigationButtons"
+        mat-button>Logout</a>
+      </div>
     </mat-sidenav>
+    <mat-sidenav-content class="sideNavContent">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

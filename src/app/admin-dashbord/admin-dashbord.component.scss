@@ -1,5 +1,18 @@
 .container{
-    margin: 50px 20%;
+    margin: 50px 10%;
+}
+.dashboardWrapper{
+    display: flex;
+    .filterWrapper{
+        display: flex;
+        flex-direction: column;
+        margin-right: 25px;
+    }
+    .contentWrapper{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
 }
 .card{
     margin-bottom: 10px;
@@ -24,22 +37,29 @@
 .detailsLabel {
     font-weight: 600;
 }
-.filterWrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.filter{
-    width: 150px;
-}
+
 .spinner{
     margin: 0 auto;
 }
 .formField{
     width: 100%;
 }
-@media screen and (max-width: 800px) {
-    .detailsWrapper{
+@media screen and (max-width: 1000px) {
+  .dashboardWrapper{
+    flex-direction: column;
+    .filterWrapper {
+      display: flex;
+      flex-wrap: unset;
+      overflow-x: auto;
+      flex-direction: unset;
+      justify-content: space-between;
+      margin-right: unset;
+      .filter{
+        width: 150px;
+    }
+  }
+  }  
+  .detailsWrapper{
         display: flex;
         flex-direction: column;
         align-items: unset;
@@ -51,12 +71,7 @@
         display: flex;
         justify-content: center;
     }
-    .filterWrapper {
-        display: flex;
-        flex-wrap: unset;
-        overflow-x: auto;
-        justify-content: space-between;
-    }
+    
     .filter{
         margin-right: 10px;
     }

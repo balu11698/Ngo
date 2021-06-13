@@ -25,6 +25,6 @@ export class NavComponent implements OnInit {
   logout(){
     this.jwt.logout();
     this.isLoggedIn=this.jwt.loggedIn
-    this.router.navigate(['/Home'])
+    this.router.navigate(['/'])
   }
 }
