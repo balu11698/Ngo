@@ -61,13 +61,21 @@ export class AdminDashbordComponent implements OnInit {
     return currentDate.getDate() + '-' + currentDate.getMonth() + '-' + currentDate.getFullYear();
   }
   getMap(location:any){
+    this.victimLocation=[];
+    this.locationTitles=[];
     this.api.getLatLong(location).subscribe(data=>{
      for ( var i in data){
        this.victimLocation.push([data[i]["lat"],data[i]["lon"]])
        this.locationTitles.push(data[i]["display_name"]);
      }
      this.shared.setVictimLocation(this.victimLocation,this.locationTitles)
-     this.router.navigate(['/map'])
+    //  this.router.navigate(['/map'])
+     const dialogRef = this.dialog.open(MapComponent, {
+      width:'200'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+
+    })
     })
   }
   
