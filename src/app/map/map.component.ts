@@ -40,7 +40,7 @@ export class MapComponent implements OnInit {
     });
     this.map = L.map('map', {
       center: this.centroid,
-      zoom: 12
+      zoom: 1
     });
 
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

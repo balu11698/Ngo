@@ -69,13 +69,12 @@ export class AdminDashbordComponent implements OnInit {
        this.locationTitles.push(data[i]["display_name"]);
      }
      this.shared.setVictimLocation(this.victimLocation,this.locationTitles)
-    //  this.router.navigate(['/map'])
-     const dialogRef = this.dialog.open(MapComponent, {
-      width:'200'
-    });
-    dialogRef.afterClosed().subscribe(result => {
+     this.router.navigate(['/map'])
+    //  const dialogRef = this.dialog.open(MapComponent, {
+    // });
+    // dialogRef.afterClosed().subscribe(result => {
 
-    })
+    // })
     })
   }
   
