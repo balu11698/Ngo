@@ -32,6 +32,7 @@ import { OccupationFilterPipe } from './service/occupation-filter.pipe';
 import { AffectedReasonFilterPipe } from './service/affected-reason-filter.pipe';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     GenderFilterPipe,
     StateFilterPipe,
     OccupationFilterPipe,
-    AffectedReasonFilterPipe
+    AffectedReasonFilterPipe,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,

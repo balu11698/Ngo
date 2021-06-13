@@ -75,8 +75,13 @@ export class AdminDashbordComponent implements OnInit {
       data: { details: personDetail }
     });
     dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined) {
       console.log(result)
-      this.snackBar.open("Email successfully sent", 'Close', { duration: 3000 });
+      this.api.sendEmail(result).subscribe((success:any)=>{
+        this.snackBar.open(success.message, 'Close', { duration: 3000 });
+      })
+    }
+      // this.snackBar.open("Email successfully sent", 'Close', { duration: 3000 });
     });
   }
 }
@@ -104,7 +109,7 @@ export class AdminDashboardEmailDialog {
     @Inject(MAT_DIALOG_DATA) public data: EmailDialogData,private formBuilder:FormBuilder) { }
     ngOnInit(): void {
       this.sendEmailForm=this.formBuilder.group({
-        email:['',[Validators.required]],
+        toAddress:['',[Validators.required]],
         subject:['',[Validators.required]],
         text:['',Validators.required]
       })

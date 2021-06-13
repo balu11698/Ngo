@@ -3,9 +3,9 @@
   <form [formGroup]="sendEmailForm">
     <mat-form-field style="width: 100%;" appearance="outline">
       <mat-label>To Address</mat-label>
-      <input matInput type="text" formControlName="email">
+      <input matInput type="text" formControlName="toAddress">
       <mat-hint>Add multiple emails seperating with ";" (semicolon)</mat-hint>
-      <mat-error *ngIf="sendEmailForm.get('email')?.errors?.required">
+      <mat-error *ngIf="sendEmailForm.get('toAddress')?.errors?.required">
         Email is <strong>required</strong>
       </mat-error>
     </mat-form-field>
