@@ -34,6 +34,7 @@ import { MapComponent } from './map/map.component';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -51,8 +52,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     StateFilterPipe,
     OccupationFilterPipe,
     AffectedReasonFilterPipe,
-    MapComponent
-    
+    MapComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
