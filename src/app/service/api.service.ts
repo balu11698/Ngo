@@ -4,9 +4,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http'
   providedIn: 'root'
 })
 export class ApiService {
-  //  url='http://194.233.64.67:3000/';
+   url='http://194.233.64.67:3000/';
    geocodingapi='https://nominatim.openstreetmap.org/search?format=json&q='
-  url='http://localhost:3000/';
+  // url='http://localhost:3000/';
   constructor(private http:HttpClient) { }
   createNewCase(data:any){
     return this.http.post(this.url+'createNewCase',data)
