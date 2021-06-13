@@ -2,6 +2,10 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { ApiService } from '../service/api.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { personDetails } from '../service/interface';
+import * as L from 'leaflet';
+import { Router } from '@angular/router';
+import { SharedService } from '../service/shared.service';
+import { MapComponent } from '../map/map.component';
 
 
 export interface DialogData {
@@ -15,7 +19,8 @@ export interface DialogData {
   styleUrls: ['./admin-dashbord.component.scss']
 })
 export class AdminDashbordComponent implements OnInit {
-
+  public victimLocation:L.LatLngExpression[]=[]
+  public locationTitles:string[]=[]
   public maleImage = './../assets/man.svg'
   public femaleImage = './../assets/female.svg'
   public detail: personDetails[]=[];
@@ -32,7 +37,7 @@ export class AdminDashbordComponent implements OnInit {
   "Building construction labour","Painter","Fruit/Vegetable/Grocery seller","Student","Other"]
   public affectedReasonArray = ["Financial problem","Medical issues","Emotional trauma","Lost parent(s)","Lost other family member(s)","Lost job","Orphan","Others"]
 
-  constructor(private api: ApiService,public dialog: MatDialog) { }
+  constructor(private api: ApiService,public dialog: MatDialog,private shared:SharedService,private router:Router) { }
 
   ngOnInit(): void {
     this.isLoading=true;
@@ -47,13 +52,24 @@ export class AdminDashbordComponent implements OnInit {
     let currentDate = new Date(date)
     return currentDate.getDate()+'-'+currentDate.getMonth()+'-'+currentDate.getFullYear();
   }
+  getMap(location:any){
+    this.api.getLatLong(location).subscribe(data=>{
+     for ( var i in data){
+       this.victimLocation.push([data[i]["lat"],data[i]["lon"]])
+       this.locationTitles.push(data[i]["display_name"]);
+     }
+     this.shared.setVictimLocation(this.victimLocation,this.locationTitles)
+     this.router.navigate(['/map'])
+    })
+  }
+  
   resolve(details:any,id:string){
     
     let personDetailsFilter : any=this.detail.filter(obj=>{
       return obj.id==id
     })
   
-    const dialogRef = this.dialog.open(AdminDashboardDialog, {
+    const dialogRef = this.dialog.open(MapComponent, {
       data: {details:personDetailsFilter[0],action:this.action}
     });
 

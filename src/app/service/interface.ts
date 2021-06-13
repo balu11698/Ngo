@@ -28,3 +28,9 @@ export interface personDetails {
     createdAt: string,
     resolvedAt: string
 }
+
+export interface MapPoint {
+    name: string;
+    latitude: number;
+    longitude: number;
+  }

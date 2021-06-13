@@ -56,10 +56,9 @@ export class PersonDetailsComponent implements OnInit {
      this.personDetailsForm.reset();
      this.clearValidatorsForms(this.personDetailsForm)
       
-    },(error)=>{
+    },(error:any)=>{
       //add code to display error notification
-     
-      setTimeout(function(){window.location.reload()},3000)
+      this.snackBar.open(error.message,'Close',{duration: 3000});
       
     })
     

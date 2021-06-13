@@ -31,6 +31,8 @@ import { StateFilterPipe } from './service/state-filter.pipe';
 import { OccupationFilterPipe } from './service/occupation-filter.pipe';
 import { AffectedReasonFilterPipe } from './service/affected-reason-filter.pipe';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MapComponent } from './map/map.component';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     GenderFilterPipe,
     StateFilterPipe,
     OccupationFilterPipe,
-    AffectedReasonFilterPipe
+    AffectedReasonFilterPipe,
+    MapComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -70,7 +74,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatDialogModule,
     MatProgressSpinnerModule
   ],
-  providers: [NavComponent],
+  providers: [NavComponent,MapComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

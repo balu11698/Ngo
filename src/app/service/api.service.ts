@@ -4,8 +4,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http'
   providedIn: 'root'
 })
 export class ApiService {
-   url='http://194.233.64.67:3000/'
-  // url='http://localhost:3000/';
+  //  url='http://194.233.64.67:3000/';
+   geocodingapi='https://nominatim.openstreetmap.org/search?format=json&q='
+  url='http://localhost:3000/';
   constructor(private http:HttpClient) { }
   createNewCase(data:any){
     return this.http.post(this.url+'createNewCase',data)
@@ -16,6 +17,10 @@ export class ApiService {
       'Authorization':'Bearer '+authToken
     })
     return this.http.get(this.url+'getAllDetails',{headers:headers})
+  }
+  getLatLong(location:any){
+    
+    return this.http.get<any[]>(this.geocodingapi+encodeURIComponent(location));
   }
   updateCaseDetails(data:any){
     const authToken=localStorage.getItem('access_token');
