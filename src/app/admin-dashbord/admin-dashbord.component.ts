@@ -61,15 +61,21 @@ export class AdminDashbordComponent implements OnInit {
     return currentDate.getDate() + '-' + currentDate.getMonth() + '-' + currentDate.getFullYear();
   }
   getMap(location:any){
-    this.victimLocation=[]
-    this.locationTitles=[]
+    this.victimLocation=[];
+    this.locationTitles=[];
     this.api.getLatLong(location).subscribe(data=>{
      for ( var i in data){
        this.victimLocation.push([data[i]["lat"],data[i]["lon"]])
        this.locationTitles.push(data[i]["display_name"]);
      }
      this.shared.setVictimLocation(this.victimLocation,this.locationTitles)
-     this.router.navigate(['/map'])
+    //  this.router.navigate(['/map'])
+     const dialogRef = this.dialog.open(MapComponent, {
+      width:'200'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+
+    })
     })
   }
   
@@ -94,8 +100,13 @@ export class AdminDashbordComponent implements OnInit {
       data: { details: personDetail }
     });
     dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined) {
       console.log(result)
-      this.snackBar.open("Email successfully sent", 'Close', { duration: 3000 });
+      this.api.sendEmail(result).subscribe((success:any)=>{
+        this.snackBar.open(success.message, 'Close', { duration: 3000 });
+      })
+    }
+      // this.snackBar.open("Email successfully sent", 'Close', { duration: 3000 });
     });
   }
 }
@@ -123,7 +134,7 @@ export class AdminDashboardEmailDialog {
     @Inject(MAT_DIALOG_DATA) public data: EmailDialogData,private formBuilder:FormBuilder) { }
     ngOnInit(): void {
       this.sendEmailForm=this.formBuilder.group({
-        email:['',[Validators.required]],
+        toAddress:['',[Validators.required]],
         subject:['',[Validators.required]],
         text:['',Validators.required]
       })
