@@ -29,7 +29,7 @@ export class PersonDetailsComponent implements OnInit {
         age:['',[Validators.required]],
         idType:['NA'],
         idNumber:['NA'],
-        occupation:[''],
+        occupation:['',Validators.required],
         skills:[''],
         address:['',[Validators.required]],
         city:['',[Validators.required]],
