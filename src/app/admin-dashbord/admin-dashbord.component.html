@@ -70,7 +70,7 @@
                 </span>{{details.pincode}}
               </div>
               <div>
-                <span class="detailsLabel">{{details.idType}} : </span>{{details.idNumber}}
+                <span *ngIf="details.idType!='NA'" class="detailsLabel">{{details.idType}} : {{details.idNumber}}</span>
               </div>
               <div>
                 <span class="detailsLabel">Occupation : </span>{{details.occupation}}

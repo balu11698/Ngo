@@ -22,7 +22,7 @@
             </mat-form-field>
         </div>
         <div class="formFiledWrapper">
-            <mat-form-field appearance="outline" class="formField-2">
+            <mat-form-field appearance="outline" class="formField-3">
                 <mat-label>Gender*</mat-label>
                 <mat-select formControlName="gender">
                     <mat-option value="Male">Male</mat-option>
@@ -33,36 +33,11 @@
                     Gender is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="formField-2">
+            <mat-form-field appearance="outline" class="formField-3">
                 <mat-label>Age*</mat-label>
                 <input type="text" matInput formControlName="age" placeholder="">
                 <mat-error *ngIf="personDetailsForm.get('age')?.errors?.required">
                     Age is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="formFiledWrapper">
-            <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>ID Type*</mat-label>
-                <mat-select formControlName="idType">
-                    <mat-option value="PAN">PAN</mat-option>
-                    <mat-option value="AADHAR">AADHAR</mat-option>
-                    <mat-option value="RATION CARD">RATION CARD</mat-option>
-                    <mat-option value="DRIVING LICENSE">DRIVING LICENSE</mat-option>
-                    <mat-option value="BPL CARD">BPL CARD</mat-option>
-                    <mat-option value="VOTER ID">VOTER ID</mat-option>
-                    <mat-option value="PASSPORT">PASSPORT</mat-option>
-                    <mat-option value="OTHER">OTHER</mat-option>
-                </mat-select>
-                <mat-error *ngIf="personDetailsForm.get('idType')?.errors?.required">
-                    Id type is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>ID Number*</mat-label>
-                <input type="text" matInput formControlName="idNumber" placeholder="">
-                <mat-error *ngIf="personDetailsForm.get('idNumber')?.errors?.required">
-                    ID Number is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline" class="formField-3">
@@ -86,6 +61,32 @@
                 </mat-select>
             </mat-form-field>
         </div>
+        <!-- <div class="formFiledWrapper"> -->
+            <!-- <mat-form-field appearance="outline" class="formField-3">
+                <mat-label>ID Type*</mat-label>
+                <mat-select formControlName="idType">
+                    <mat-option value="PAN">PAN</mat-option>
+                    <mat-option value="AADHAR">AADHAR</mat-option>
+                    <mat-option value="RATION CARD">RATION CARD</mat-option>
+                    <mat-option value="DRIVING LICENSE">DRIVING LICENSE</mat-option>
+                    <mat-option value="BPL CARD">BPL CARD</mat-option>
+                    <mat-option value="VOTER ID">VOTER ID</mat-option>
+                    <mat-option value="PASSPORT">PASSPORT</mat-option>
+                    <mat-option value="OTHER">OTHER</mat-option>
+                </mat-select>
+                <mat-error *ngIf="personDetailsForm.get('idType')?.errors?.required">
+                    Id type is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="formField-3">
+                <mat-label>ID Number*</mat-label>
+                <input type="text" matInput formControlName="idNumber" placeholder="">
+                <mat-error *ngIf="personDetailsForm.get('idNumber')?.errors?.required">
+                    ID Number is <strong>required</strong>
+                </mat-error>
+            </mat-form-field> -->
+            
+        <!-- </div> -->
         <div class="formFiledWrapper">
 
         </div>
