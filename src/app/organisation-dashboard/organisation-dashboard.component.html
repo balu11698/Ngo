@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="submitJob">
+        <button type="submit" mat-raised-button color="primary"  (click)="submitJob()">Submit
+            job</button>
+    </div>
+    <mat-card class="card" *ngFor="let organisationJob of organisationJobs">
+        <div class="details">
+            <div>
+                <span class="fieldName">Job name: </span> {{organisationJob.jobName}}
+            </div>
+            <div>
+                <span class="fieldName">Job location: </span> {{organisationJob.jobLocation}}
+            </div>
+
+
+            <div>
+                <span class="fieldName">Job type: </span> {{organisationJob.jobType}}
+            </div>
+            <div>
+                <span class="fieldName">Working type: </span> {{organisationJob.workingType}}
+            </div>
+
+            <div>
+                <span class="fieldName">Other details: </span> <span>{{organisationJob.otherDetails}}</span>
+            </div>
+        </div>
+        <div class="buttonsWrapper">
+            <button type="button" mat-raised-button color="primary" class="viewApplicants"
+                (click)="viewApplicants(organisationJob.jobId)">View
+                Applicants</button><br>
+            <button type="button" mat-raised-button color="primary"
+                (click)="deleteJob(organisationJob.jobId)">Delete</button><br>
+        </div>
+    </mat-card>
+</div>

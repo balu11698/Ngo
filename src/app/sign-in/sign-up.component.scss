@@ -1,0 +1,18 @@
+.loginFormWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .header{
+        text-align: center;
+    }
+    .formField {
+        width: 100%;
+    }
+    .password{
+        margin-bottom: 10px;
+    }
+    .buttonsWrapper {
+        display: flex;
+        justify-content: space-around;
+    }
+}

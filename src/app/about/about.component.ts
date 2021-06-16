@@ -12,12 +12,12 @@ import { ApiService } from '../service/api.service';
 
 export class AboutComponent implements OnInit {
   feedbackForm !: FormGroup
-  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar,private api:ApiService) { }
-
+  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar, private api: ApiService) { }
+  @ViewChild('form') feedBackFormDirective: any;
   ngOnInit(): void {
     this.formInitialize();
   }
-  formInitialize(){
+  formInitialize() {
     this.feedbackForm = this.formBuilder.group(
       {
         name: ['', [Validators.required]],
@@ -27,32 +27,14 @@ export class AboutComponent implements OnInit {
       }
     )
   }
-  async setValidators(){
-    this.feedbackForm.get('Name')?.setValidators([Validators.required]);
-    this.feedbackForm.updateValueAndValidity();
-  }
-   clearValidatorsForms(feedbackForm:FormGroup){
-    Object.keys(feedbackForm.controls).forEach((key: any) => {
-      feedbackForm.get(key)?.setErrors(null);
-    });
-  }
   async submitFeedback() {
     console.log(this.feedbackForm.value)
-    this.api.submitFeedback(this.feedbackForm.value).subscribe((success)=>{
+    this.api.submitFeedback(this.feedbackForm.value).subscribe((success) => {
       this.snackBar.open('Successfully submitted the feedback', 'Close', { duration: 3000 });
-     
-      this.feedbackForm.reset();
-      this.clearValidatorsForms(this.feedbackForm)
-    },(error)=>{
+      this.feedBackFormDirective.resetForm();
+    }, (error) => {
       this.snackBar.open('Error while submitting the feedback', 'Close', { duration: 3000 });
-      
-  
     })
-    // await this.clearValidators(feedbackForm)
-    // await this.setValidators()
-    // this.feedbackForm.get('Name')?.markAsUntouched();
-    // this.feedbackForm.get('Email')?.markAsUntouched();
-    // this.feedbackForm.updateValueAndValidity();
   }
 
 }

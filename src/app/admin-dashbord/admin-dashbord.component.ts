@@ -6,7 +6,8 @@ import * as L from 'leaflet';
 import { Router } from '@angular/router';
 import { SharedService } from '../service/shared.service';
 import { MapComponent } from '../map/map.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TooltipPosition } from '@angular/material/tooltip';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
@@ -15,10 +16,10 @@ export interface DialogData {
   action: string
 }
 export interface EmailDialogData {
-  details:any,
+  details: any,
   email: any,
-  subject:any,
-  text:any
+  subject: any,
+  text: any
 }
 
 @Component({
@@ -27,8 +28,8 @@ export interface EmailDialogData {
   styleUrls: ['./admin-dashbord.component.scss']
 })
 export class AdminDashbordComponent implements OnInit {
-  public victimLocation:L.LatLngExpression[]=[]
-  public locationTitles:string[]=[]
+  public victimLocation: L.LatLngExpression[] = []
+  public locationTitles: string[] = []
   public maleImage = './../assets/man.svg'
   public femaleImage = './../assets/female.svg'
   public detail: personDetails[] = [];
@@ -44,8 +45,10 @@ export class AdminDashbordComponent implements OnInit {
     "Private job", "Daily wager", "Working in small shops/industries", "Mechanic", "Plumber", "Electrician",
     "Building construction labour", "Painter", "Fruit/Vegetable/Grocery seller", "Student", "Other"]
   public affectedReasonArray = ["Financial problem", "Medical issues", "Emotional trauma", "Lost parent(s)", "Lost other family member(s)", "Lost job", "Orphan", "Others"]
+  positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+  position = new FormControl(this.positionOptions[1]);
 
-  constructor(private api: ApiService,public dialog: MatDialog,private snackBar:MatSnackBar,private shared:SharedService,private router:Router) { }
+  constructor(private api: ApiService, public dialog: MatDialog, private snackBar: MatSnackBar, private shared: SharedService, private router: Router) { }
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -60,25 +63,25 @@ export class AdminDashbordComponent implements OnInit {
     let currentDate = new Date(date)
     return currentDate.getDate() + '-' + currentDate.getMonth() + '-' + currentDate.getFullYear();
   }
-  getMap(location:any){
-    this.victimLocation=[];
-    this.locationTitles=[];
-    this.api.getLatLong(location).subscribe(data=>{
-     for ( var i in data){
-       this.victimLocation.push([data[i]["lat"],data[i]["lon"]])
-       this.locationTitles.push(data[i]["display_name"]);
-     }
-     this.shared.setVictimLocation(this.victimLocation,this.locationTitles)
-     this.router.navigate(['/map'])
-    //  const dialogRef = this.dialog.open(MapComponent, {
-    // });
-    // dialogRef.afterClosed().subscribe(result => {
+  getMap(location: any) {
+    this.victimLocation = [];
+    this.locationTitles = [];
+    this.api.getLatLong(location).subscribe(data => {
+      for (var i in data) {
+        this.victimLocation.push([data[i]["lat"], data[i]["lon"]])
+        this.locationTitles.push(data[i]["display_name"]);
+      }
+      this.shared.setVictimLocation(this.victimLocation, this.locationTitles)
+      this.router.navigate(['/map'])
+      //  const dialogRef = this.dialog.open(MapComponent, {
+      // });
+      // dialogRef.afterClosed().subscribe(result => {
 
-    // })
+      // })
     })
   }
-  
-  
+
+
   resolve(personDetail: any) {
     const dialogRef = this.dialog.open(AdminDashboardDialog, {
       data: { details: personDetail, action: this.action }
@@ -88,7 +91,7 @@ export class AdminDashbordComponent implements OnInit {
         console.log(result);
         personDetail.isSolved = 'Yes';
         personDetail.action = result;
-        this.api.updateCaseDetails(personDetail).subscribe((success:any) => {
+        this.api.updateCaseDetails(personDetail).subscribe((success: any) => {
           this.snackBar.open(success.message, 'Close', { duration: 3000 });
         })
       }
@@ -100,11 +103,11 @@ export class AdminDashbordComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined) {
-      console.log(result)
-      this.api.sendEmail(result).subscribe((success:any)=>{
-        this.snackBar.open(success.message, 'Close', { duration: 3000 });
-      })
-    }
+        console.log(result)
+        this.api.sendEmail(result).subscribe((success: any) => {
+          this.snackBar.open(success.message, 'Close', { duration: 3000 });
+        })
+      }
       // this.snackBar.open("Email successfully sent", 'Close', { duration: 3000 });
     });
   }
@@ -127,18 +130,18 @@ export class AdminDashboardDialog {
   templateUrl: 'admin-dashboard-email-dialog.html',
 })
 export class AdminDashboardEmailDialog {
-  sendEmailForm!:FormGroup
+  sendEmailForm!: FormGroup
   constructor(
     public dialogRef: MatDialogRef<AdminDashboardEmailDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: EmailDialogData,private formBuilder:FormBuilder) { }
-    ngOnInit(): void {
-      this.sendEmailForm=this.formBuilder.group({
-        toAddress:['',[Validators.required]],
-        subject:['',[Validators.required]],
-        text:['',Validators.required]
-      })
-    }
-    onNoClick(): void {
+    @Inject(MAT_DIALOG_DATA) public data: EmailDialogData, private formBuilder: FormBuilder) { }
+  ngOnInit(): void {
+    this.sendEmailForm = this.formBuilder.group({
+      toAddress: ['', [Validators.required]],
+      subject: ['', [Validators.required]],
+      text: ['', Validators.required]
+    })
+  }
+  onNoClick(): void {
     this.dialogRef.close();
   }
 }

@@ -3,7 +3,7 @@
         <div class="Header">
             <h1>Administrator Login</h1>
         </div>
-        <form [formGroup]="loginForm" >
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="loginForm">
                 <div>
                     <mat-form-field class="formField" appearance="outline">
@@ -20,7 +20,7 @@
                           </button>
                     </mat-form-field>
                 </div>
-                <button mat-raised-button color="primary" (click)="login()">Login</button><br>
+                <button type="submit" mat-raised-button color="primary" >Login</button><br>
                 <span style="color: red;">{{errorMessage}}</span>
             </div>
         </form>

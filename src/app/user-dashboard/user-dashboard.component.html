@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="filtersWrapper">
+    <mat-form-field appearance="outline" class="filter">
+        <mat-label>Job location</mat-label>
+        <mat-select [(ngModel)]="jobLocation">
+            <mat-option value="All">All</mat-option>
+            <mat-option *ngFor="let location of jobLocationArray" value={{location}}>{{location}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="filter">
+        <mat-label>Working type</mat-label>
+        <mat-select [(ngModel)]="workingType">
+            <mat-option value="All">All</mat-option>
+            <mat-option *ngFor="let working of workingTypeArray" value={{working}}>{{working}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="filter">
+        <mat-label>Job type</mat-label>
+        <mat-select [(ngModel)]="jobType">
+            <mat-option value="All">All</mat-option>
+            <mat-option *ngFor="let job of jobTypeArray" value={{job}}>{{job}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+    <mat-card class="card" *ngFor="let job of allJobs|jobLocationFilter:jobLocation|workingTypeFilter:workingType|jobTypeFilter:jobType">
+        <div class="details">
+            <div>
+                <span class="fieldName">Job name: </span> {{job.jobName}}
+            </div>
+            <div>
+                <span class="fieldName">Job description: </span> {{job.jobDescription}}
+            </div>
+            <div>
+                <span class="fieldName">Job location: </span> {{job.jobLocation}}
+            </div>
+            <div>
+                <span class="fieldName">Job type: </span> {{job.jobType}}
+            </div>
+            <div>
+                <span class="fieldName">Working type on: </span> {{job.workingType}}
+            </div>
+            <div>
+                <span class="fieldName">Created at: </span> <span>{{job.createdAt}}</span>
+            </div>
+            <div>
+                <span class="fieldName">Other details: </span> <span>{{job.otherDetails}}</span>
+            </div>
+        </div>
+        <div class="buttonsWrapper">
+            <button type="button" class="acceptButton" mat-raised-button color="primary"
+                (click)="applyJob(job.jobId)">Apply</button>
+        </div>
+    </mat-card>
+</div>

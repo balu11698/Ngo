@@ -11,3 +11,8 @@
 .formField{
     width: 100%;
 }
+@media screen and (max-width : 600px) {
+    .container{
+        margin: 50px 10%;
+    }
+}

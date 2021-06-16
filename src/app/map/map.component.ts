@@ -67,6 +67,7 @@ export class MapComponent implements OnInit {
   ngOnInit(): void {
     this.victimLocation = this.shared.getVictimLocation()
     this.locationTitles = this.shared.getLocationTitles()
+    console.log(this.victimLocation)
     this.getPosition().then(pos => {
       this.centroid = [pos.lat, pos.lng]
       this.initMap();

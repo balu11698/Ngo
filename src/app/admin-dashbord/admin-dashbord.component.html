@@ -96,16 +96,19 @@
                 <span *ngIf="details.action"><span class="detailsLabel">Action: </span>{{details.action}}</span>
               </div>
               <div class="buttonsWrapper">
-                <button mat-raised-button color="primary">
-                  <mat-icon> textsms</mat-icon>
+                <button mat-raised-button color="primary" matTooltip="Send SMS" [matTooltipPosition]="position.value">
+                  <mat-icon>textsms</mat-icon>
                 </button>
-                <button mat-raised-button color="primary" (click)="sendEmail(details)">
-                  <mat-icon> email</mat-icon>
+                <button mat-raised-button color="primary" matTooltip="Send Email" [matTooltipPosition]="position.value"
+                  (click)="sendEmail(details)">
+                  <mat-icon>email</mat-icon>
                 </button>
-                <button mat-raised-button color="primary" (click)="resolve(details)">
+                <button mat-raised-button color="primary" matTooltip="Resolve" [matTooltipPosition]="position.value"
+                  (click)="resolve(details)">
                   <mat-icon>call_to_action</mat-icon>
                 </button>
-                <button mat-raised-button color="primary" (click)="getMap(details.city)">
+                <button mat-raised-button color="primary" matTooltip="Location" [matTooltipPosition]="position.value"
+                  (click)="getMap(details.city)">
                   <mat-icon>location_city</mat-icon>
                 </button>
               </div>

@@ -12,7 +12,6 @@ import { JwtService } from '../service/jwt.service';
 })
 export class LoginComponent implements OnInit {
 
-  public subscription = new Subscription();
   public loginForm!: FormGroup
   errorMessage:string=""
   public hide=true;
@@ -22,8 +21,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
       {
-        email:[''],
-        password:['']
+        email:['',[Validators.required]],
+        password:['',[Validators.required]]
       }
     )
   }
@@ -31,7 +30,7 @@ export class LoginComponent implements OnInit {
    this.errorMessage=""
    this.auth.login(this.loginForm.value).subscribe((success)=>{
      //add the route to the admin dashboard component
-     this.auth.isloggedIn.next(true);
+     this.auth.isloggedIn.next("Admin");
      this.router.navigate(['/admin-dashboard'])
 
    },(error)=>{

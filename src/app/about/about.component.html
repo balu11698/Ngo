@@ -7,7 +7,7 @@
     need.   
   </p>
   <br><p>Please provide your feedback:</p>
-  <form [formGroup]="feedbackForm" >
+  <form #form="ngForm" [formGroup]="feedbackForm" (ngSubmit)="submitFeedback()">
     <div>
       <mat-form-field class="formField" appearance="outline">
         <mat-label>Name*</mat-label>
@@ -15,6 +15,9 @@
         <mat-error *ngIf="feedbackForm.get('name')?.errors?.required">
           Name is <strong>required</strong>
         </mat-error>
+        <!-- <div  *ngIf="((feedbackForm.get('name')?.dirty || feedbackForm.get('name')?.touched) && feedbackForm.get('name')?.invalid) ">
+          Name is <strong>required</strong>
+        </div> -->
       </mat-form-field>
     </div>
     <div>
@@ -27,6 +30,9 @@
         <mat-error *ngIf="feedbackForm.get('email')?.errors?.required">
           Email is <strong>required</strong>
         </mat-error>
+        <!-- <div  *ngIf="((feedbackForm.get('email')?.dirty || feedbackForm.get('email')?.touched) && feedbackForm.get('email')?.invalid) && !feedbackForm.get('email')?.errors?.required">
+          Name is <strong>required</strong>
+        </div> -->
       </mat-form-field>
     </div>
     <div>
@@ -35,7 +41,7 @@
         <mat-radio-button class="ratingRadio" type="radio" value=1>1 – Very Bad</mat-radio-button>
         <mat-radio-button class="ratingRadio" type="radio" value=2>2 – Poor</mat-radio-button>
         <mat-radio-button class="ratingRadio" type="radio" value=3>3 – Average</mat-radio-button>
-        <mat-radio-button class="ratingRadio" type="radio" value=4 f>4 – Good</mat-radio-button>
+        <mat-radio-button class="ratingRadio" type="radio" value=4>4 – Good</mat-radio-button>
         <mat-radio-button class="ratingRadio" type="radio" value=5>5 – Excellent</mat-radio-button>
       </mat-radio-group>
     </div>
@@ -46,8 +52,11 @@
         <mat-error *ngIf="feedbackForm.get('feedbackComment')?.errors?.required">
           Feedback is <strong>required</strong>
         </mat-error>
+        <!-- <div  *ngIf="((feedbackForm.get('feedbackComment')?.dirty || feedbackForm.get('feedbackComment')?.touched) && feedbackForm.get('feedbackComment')?.invalid) && !feedbackForm.get('feedbackComment')?.errors?.required">
+          Name is <strong>required</strong>
+        </div> -->
       </mat-form-field>
     </div>
-    <button mat-raised-button color="primary" [disabled] = "feedbackForm.invalid" (click)="submitFeedback()">Submit</button>
+    <button mat-raised-button color="primary" [disabled] = "feedbackForm.invalid" >Submit</button>
   </form>
 </div>

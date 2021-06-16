@@ -24,17 +24,26 @@ import { AdminDashbordComponent, AdminDashboardDialog, AdminDashboardEmailDialog
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from "@angular/material/dialog";
-import {  } from './admin-dashbord/admin-dashbord.component';
 import { OpenCaseFilterPipe } from './service/open-case-filter.pipe';
 import { GenderFilterPipe } from './service/gender-filter.pipe';
 import { StateFilterPipe } from './service/state-filter.pipe';
 import { OccupationFilterPipe } from './service/occupation-filter.pipe';
 import { AffectedReasonFilterPipe } from './service/affected-reason-filter.pipe';
 import { MapComponent } from './map/map.component';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { SignInComponent, SignUpDialog } from './sign-in/sign-in.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { ApplicationStatusComponent } from './application-status/application-status.component';
+import { OrganisationDashboardComponent, OrganisationDashboardSubmitJobDialog } from './organisation-dashboard/organisation-dashboard.component';
+import { ViewApplicantsComponent } from './view-applicants/view-applicants.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { JobLocationFilterPipe } from './service/job-location-filter.pipe';
+import { WorkingTypeFilterPipe } from './service/working-type-filter.pipe';
+import { JobTypeFilterPipe } from './service/job-type-filter.pipe';
+// import { Signer } from 'crypto';
 
 @NgModule({
   declarations: [
@@ -53,7 +62,17 @@ import { FeedbackComponent } from './feedback/feedback.component';
     OccupationFilterPipe,
     AffectedReasonFilterPipe,
     MapComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    SignInComponent,
+    SignUpDialog,
+    UserDashboardComponent,
+    ApplicationStatusComponent,
+    OrganisationDashboardComponent,
+    OrganisationDashboardSubmitJobDialog,
+    ViewApplicantsComponent,
+    JobLocationFilterPipe,
+    WorkingTypeFilterPipe,
+    JobTypeFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -76,9 +95,11 @@ import { FeedbackComponent } from './feedback/feedback.component';
     MatIconModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    NgxChartsModule
+    NgxChartsModule,
+    MatTooltipModule,
+    MatSlideToggleModule
   ],
-  providers: [NavComponent,MapComponent],
+  providers: [NavComponent, MapComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
