@@ -32,7 +32,7 @@ export class ViewApplicantsComponent implements OnInit {
     this.api.viewApplicants(({'jobId':this.jobId}),organisationId).subscribe((data:any)=>{
       // this.api.viewApplicantsByJob=data;
       this.applicantsForJob=data
-      console.log(this.applicantsForJob)
+      // console.log(this.applicantsForJob)
     })
   }
   acceptApplicant(applicationId:any){
@@ -59,7 +59,7 @@ export class ViewApplicantsComponent implements OnInit {
     let organisationId = JSON.parse(atob((""+localStorage.getItem("access_token")).split(".")[1])).user.id
     this.api.updateApplication(body,organisationId).subscribe((success:any)=>{
       this.snackBar.open(success.message, 'Close', { duration: 3000 });
-      this.viewApplicants();
+      this.viewApplicants();  
     }),
     ((error:any)=>{
       this.snackBar.open(error.message, 'Close', { duration: 3000 });

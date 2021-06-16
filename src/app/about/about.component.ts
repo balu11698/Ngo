@@ -28,7 +28,6 @@ export class AboutComponent implements OnInit {
     )
   }
   async submitFeedback() {
-    console.log(this.feedbackForm.value)
     this.api.submitFeedback(this.feedbackForm.value).subscribe((success) => {
       this.snackBar.open('Successfully submitted the feedback', 'Close', { duration: 3000 });
       this.feedBackFormDirective.resetForm();

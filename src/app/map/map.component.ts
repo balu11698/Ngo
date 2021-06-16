@@ -49,7 +49,7 @@ export class MapComponent implements OnInit {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
     tiles.addTo(this.map);
-    console.log(this.victimLocation, "locaiotn")
+    // console.log(this.victimLocation, "locaiotn")
     for (let i in this.victimLocation) {
       const marker = L.marker(this.victimLocation[i], { title: this.locationTitles[i], icon: greenIcon })
       marker.addTo(this.map)
@@ -67,7 +67,6 @@ export class MapComponent implements OnInit {
   ngOnInit(): void {
     this.victimLocation = this.shared.getVictimLocation()
     this.locationTitles = this.shared.getLocationTitles()
-    console.log(this.victimLocation)
     this.getPosition().then(pos => {
       this.centroid = [pos.lat, pos.lng]
       this.initMap();

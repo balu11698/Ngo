@@ -47,7 +47,6 @@ export class OrganisationDashboardComponent implements OnInit {
       if (result != undefined) {
         let id = JSON.parse(atob(("" + localStorage.getItem("access_token")).split(".")[1])).user.id
         this.api.postJob(result, id).subscribe((success: any) => {
-          console.log(success, "success");
           this.viewJobs();
           this.snackBar.open(success.message, 'Close', { duration: 3000 });
         }),

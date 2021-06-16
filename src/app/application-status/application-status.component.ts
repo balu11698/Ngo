@@ -21,7 +21,6 @@ export class ApplicationStatusComponent implements OnInit {
     let userId = JSON.parse(atob((""+localStorage.getItem("access_token")).split(".")[1])).user.id
     this.api.viewUserJobs(userId).subscribe((data:any)=>{
       this.userJobs=data
-      console.log(this.userJobs)
     })
   }
   withdrawJob(applyId:any){

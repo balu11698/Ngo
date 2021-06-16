@@ -88,7 +88,6 @@ export class AdminDashbordComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined) {
-        console.log(result);
         personDetail.isSolved = 'Yes';
         personDetail.action = result;
         this.api.updateCaseDetails(personDetail).subscribe((success: any) => {
@@ -103,7 +102,6 @@ export class AdminDashbordComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined) {
-        console.log(result)
         this.api.sendEmail(result).subscribe((success: any) => {
           this.snackBar.open(success.message, 'Close', { duration: 3000 });
         })
