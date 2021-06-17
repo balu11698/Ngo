@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as L from 'leaflet';
 import { SharedService } from '../service/shared.service';
 
@@ -62,7 +63,7 @@ export class MapComponent implements OnInit {
 
   }
 
-  constructor(private shared: SharedService) { }
+  constructor(private shared: SharedService,private route:Router) { }
 
   ngOnInit(): void {
     this.victimLocation = this.shared.getVictimLocation()
@@ -73,9 +74,11 @@ export class MapComponent implements OnInit {
 
     })
 
-
   }
 
+  goBack(){
+    this.route.navigate(['/admin-dashboard'])
+  }
 
 
 

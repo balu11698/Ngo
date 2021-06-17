@@ -1,0 +1,20 @@
+.container{
+    margin: 50px 20%;
+    .card{
+        margin-bottom: 10px;
+        .fieldName{
+            font-weight: 500;
+        }
+        .downloadResume{
+            text-decoration: underline;
+            cursor: pointer;
+            color: blue;
+        }
+    }
+}
+
+@media screen and (max-width : 800px) {
+    .container{
+        margin: 50px 50px;
+    }
+}

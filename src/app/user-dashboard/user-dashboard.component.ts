@@ -34,9 +34,9 @@ export class UserDashboardComponent implements OnInit {
     let userId = JSON.parse(atob((""+localStorage.getItem("access_token")).split(".")[1])).user.id
     this.api.applyJob({'jobId':jobId},userId).subscribe((success:any)=>{
       this.snackBar.open(success.message, 'Close', { duration: 3000 });
-    }),
+    },
     ((error:any)=>{
-      this.snackBar.open(error.message, 'Close', { duration: 3000 });
-    })
+      this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
+    }))
   }
 }

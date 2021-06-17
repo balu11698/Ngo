@@ -43,6 +43,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { JobLocationFilterPipe } from './service/job-location-filter.pipe';
 import { WorkingTypeFilterPipe } from './service/working-type-filter.pipe';
 import { JobTypeFilterPipe } from './service/job-type-filter.pipe';
+import { MatDividerModule } from '@angular/material/divider';
+import { ProfileComponent } from './profile/profile.component';
+import { ViewUsersComponent } from './view-users/view-users.component';
+import { ViewAllUsersComponent } from './view-all-users/view-all-users.component';
+import { UserFilterPipe } from './service/user-filter.pipe';
 // import { Signer } from 'crypto';
 
 @NgModule({
@@ -72,7 +77,11 @@ import { JobTypeFilterPipe } from './service/job-type-filter.pipe';
     ViewApplicantsComponent,
     JobLocationFilterPipe,
     WorkingTypeFilterPipe,
-    JobTypeFilterPipe
+    JobTypeFilterPipe,
+    ProfileComponent,
+    ViewUsersComponent,
+    ViewAllUsersComponent,
+    UserFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -97,7 +106,8 @@ import { JobTypeFilterPipe } from './service/job-type-filter.pipe';
     MatProgressSpinnerModule,
     NgxChartsModule,
     MatTooltipModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDividerModule
   ],
   providers: [NavComponent, MapComponent],
   bootstrap: [AppComponent]

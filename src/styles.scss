@@ -6,3 +6,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 //     overflow: auto;
 //     // pointer-events: auto;  
 //   }
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: white;
+    border-radius: 5px;
+  }
+  mat-card.mat-card.mat-focus-indicator{
+      border-radius: 15px;
+  }

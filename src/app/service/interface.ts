@@ -47,4 +47,9 @@ export interface applicantDetails{
     email:string
     fullname:string
     phonenumber:string
+    resume:string
+    id:string
+}
+export interface totalRegisteredData{
+    count:string
 }

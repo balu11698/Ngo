@@ -131,7 +131,45 @@ export class ApiService {
     }) 
     return this.http.get(this.url+'viewFeedbackForms',{headers:headers})
   }
-
+  getProfile(){
+    const authToken=localStorage.getItem('access_token');
+    let userId = JSON.parse(atob((""+authToken).split(".")[1])).user.id
+    const headers=new HttpHeaders({
+      'Authorization':'Bearer '+authToken
+    }) 
+    return this.http.get(this.url+'getProfile/'+userId,{headers:headers})
+  }
+  getAllPersonalUsers(){
+    const authToken=localStorage.getItem('access_token');
+    let userId = JSON.parse(atob((""+authToken).split(".")[1])).user.id
+    const headers=new HttpHeaders({
+      'Authorization':'Bearer '+authToken
+    }) 
+    return this.http.get(this.url+'getAllPersonalUsers/'+userId,{headers:headers})
+  }
+  uploadFile(formData:any){
+    const authToken=localStorage.getItem('access_token');
+    let userId = JSON.parse(atob((""+authToken).split(".")[1])).user.id
+    const headers=new HttpHeaders({
+      'Authorization':'Bearer '+authToken
+    }) 
+    return this.http.post(this.url+'uploadFile/'+userId,formData,{headers:headers})
+  }
+  downloadResume(userId:any){
+    const authToken=localStorage.getItem('access_token');
+    const headers=new HttpHeaders({
+      'Authorization':'Bearer '+authToken,
+      'Accept' : 'application/pdf'
+    }) 
+    return this.http.get(this.url+'downloadResume/'+userId,{headers:headers,responseType: 'blob'})
+  }
+  getAllData(){
+    const authToken=localStorage.getItem('access_token');
+    const headers=new HttpHeaders({
+      'Authorization':'Bearer '+authToken
+    })
+    return this.http.get(this.url+'getAllData',{headers:headers})
+  }
   setdata(data:any){
     this.data = data
   }

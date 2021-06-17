@@ -37,7 +37,20 @@ export class ViewApplicantsComponent implements OnInit {
     let organisationId = JSON.parse(atob(("" + localStorage.getItem("access_token")).split(".")[1])).user.id
     this.api.viewApplicants(({ 'jobId': this.jobId }), organisationId).subscribe((data: any) => {
       this.applicantsForJob = data
+      console.log(this.applicantsForJob)
       this.loader=false;
+    })
+  }
+  downloadResume(id:any){
+    this.api.downloadResume(id).subscribe((data:any)=>{
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const fileURL = URL.createObjectURL(blob);
+      var a         = document.createElement('a');
+      a.href        = fileURL; 
+      a.target      = '_blank';
+      a.download    = 'resume.pdf';
+      document.body.appendChild(a);
+      a.click();
     })
   }
   acceptApplicant(applicationId: any) {

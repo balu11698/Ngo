@@ -9,7 +9,7 @@
   </ng-container>
   <ng-container *ngIf="appliedJobs?.length && isChecked">
     <ng-container *ngFor="let job of appliedJobs">
-      <mat-card class="card">
+      <mat-card class="card" [ngClass]="(job.applicationStatus=='Pending' ? 'pending' : (job.applicationStatus=='Rejected' ? 'rejected' : 'accepted'))">
         <div class="details">
           <div>
             <span class="fieldName">Job name: </span> {{job.jobName}}
@@ -49,7 +49,7 @@
   </ng-container>
   <ng-container *ngIf="withdrawnJobs?.length && !isChecked">
     <ng-container *ngFor="let job of withdrawnJobs">
-      <mat-card class="card">
+      <mat-card class="card withdrawn">
         <div class="details">
           <div>
             <span class="fieldName">Job name: </span> {{job.jobName}}

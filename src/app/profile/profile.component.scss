@@ -1,0 +1,22 @@
+.container {
+    margin: 50px 20%;
+    .field {
+        font-weight: 500;
+    }
+    .downloadWrapper {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        .downloadFile {
+            text-decoration: underline;
+            color: blue;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+    }
+}
+@media screen and (max-width: 800px) {
+    .container {
+        margin: 50px 50px;
+    }
+}

@@ -10,9 +10,12 @@ import { LoginComponent } from './login/login.component';
 import { MapComponent } from './map/map.component';
 import { OrganisationDashboardComponent } from './organisation-dashboard/organisation-dashboard.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
+import { ProfileComponent } from './profile/profile.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { ViewAllUsersComponent } from './view-all-users/view-all-users.component';
 import { ViewApplicantsComponent } from './view-applicants/view-applicants.component';
+import { ViewUsersComponent } from './view-users/view-users.component';
 
 const routes: Routes = [
   {
@@ -50,6 +53,15 @@ const routes: Routes = [
   },
   {
     path: "applicants", component: ViewApplicantsComponent
+  },
+  {
+    path: "profile", component: ProfileComponent
+  },
+  {
+    path: "allpersonalusers", component: ViewUsersComponent
+  },
+  {
+    path: "allusers", component: ViewAllUsersComponent
   }
 
 ];

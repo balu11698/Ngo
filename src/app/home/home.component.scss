@@ -48,6 +48,13 @@
 .usersData,
 .organisationData {
   display: flex;
+  // border: 1px solid;
+  // padding: 5px;
+  // border-radius: 10px;
+}
+.card{
+  margin-bottom: 10px;
+  width: 400px;
 }
 @media screen and (max-width: 1000px) {
   .container {
@@ -66,7 +73,11 @@
       margin-bottom: 25px;
     }
   }
+  .card{
+    width: unset;
+  }
 }
+
 @media screen and (max-width: 450px) {
   .timePeriodRadio {
     justify-content: space-between;

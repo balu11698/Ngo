@@ -23,6 +23,9 @@
                 <div>
                     <span class="fieldName">Application status: </span> <span>{{applicant.applicationStatus}}</span>
                 </div>
+                <div>
+                    <span class="fieldName">Resume: </span> <span class="downloadResume" (click)="downloadResume(applicant.id)">{{applicant?.resume}}</span>
+                </div>
             </div>
             <div class="buttonsWrapper">
                 <ng-container *ngIf="applicant.applicationStatus=='Pending'">

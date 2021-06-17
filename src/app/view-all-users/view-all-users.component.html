@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="filtersWrapper">
+        <mat-form-field appearance="outline" class="filter">
+            <mat-label>Type</mat-label>
+            <mat-select [(ngModel)]="userType">
+                <mat-option value="All">All</mat-option>
+                <mat-option value="Organisation">Organisation</mat-option>
+                <mat-option value="Personal">Personal</mat-option>
+                <mat-option value="jobDetails">Job Details</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <ng-container *ngIf="userType=='All' || userType == 'Personal' || userType=='' ">
+        <mat-card class="card" *ngFor="let personalUser of allPersonalUsers">
+            <div class="details">
+                <div>
+                    <span class="fieldName">Full name: </span> {{personalUser?.fullname}}
+                </div>
+                <div>
+                    <span class="fieldName">Email: </span> {{personalUser?.email}}
+                </div>
+                <div>
+                    <span class="fieldName">Phone number: </span> {{personalUser?.phonenumber}}
+                </div>
+                <div *ngIf="personalUser.resumeName">
+                    <span class="fieldName">Resume: </span> <span class="downloadResume"
+                        (click)="downloadResume(personalUser.id)">{{personalUser?.resumeName}}</span>
+                </div>
+            </div>
+        </mat-card>
+    </ng-container>
+    <ng-container *ngIf="userType=='All' || userType == 'Organisation' || userType==''">
+        <mat-card class="card" *ngFor="let organistaionUser of allOrganisationUsers">
+            <div class="details">
+                <div>
+                    <span class="fieldName">Full name: </span> {{organistaionUser.fullname}}
+                </div>
+                <div>
+                    <span class="fieldName">Email: </span> {{organistaionUser.email}}
+                </div>
+                <div>
+                    <span class="fieldName">Phone number: </span> {{organistaionUser.phonenumber}}
+                </div>
+            </div>
+        </mat-card>
+    </ng-container>
+    <ng-container *ngIf="userType=='All' || userType == 'jobDetails' || userType==''">
+    <h3>Job details</h3>
+    <mat-card *ngFor="let job of allJobs" class="card">
+        <div class="details">
+            <div>
+                <span class="fieldName">Job name: </span> {{job.jobName}}
+            </div>
+            <div>
+                <span class="fieldName">Job description: </span> {{job.jobDescription}}
+            </div>
+            <div>
+                <span class="fieldName">Job location: </span> {{job.jobLocation}}
+            </div>
+            <div>
+                <span class="fieldName">Job type: </span> {{job.jobType}}
+            </div>
+            <div>
+                <span class="fieldName">Working type: </span> {{job.workingType}}
+            </div>
+            <div>
+                <span class="fieldName">Created at: </span> {{job.createdAt}}
+            </div>
+            <div>
+                <span class="fieldName">Active: </span> {{job.active}}
+            </div>
+            <div>
+                <span class="fieldName">Other details: </span> {{job.otherDetails}}
+            </div>
+        </div>
+    </mat-card>
+</ng-container>
+</div>

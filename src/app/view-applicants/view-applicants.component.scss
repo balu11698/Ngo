@@ -6,6 +6,11 @@
         .details {
             width: 70%;
             margin-right: 10px;
+            .downloadResume{
+                text-decoration: underline;
+                cursor: pointer;
+                color: blue;
+            }
             .fieldName{
                 font-weight: 500;
             }

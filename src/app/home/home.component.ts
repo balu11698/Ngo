@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit {
   registrationStats(){
     this.api.getRegistrationStats().subscribe((data:any)=>{
       this.registeredData=data.count;
-      console.log(this.registeredData,"data")
     })
   }
   getStats(){

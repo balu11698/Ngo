@@ -3,12 +3,12 @@
     <div class="headerName">Covid Helping Hands</div>
     <div fxShow="true" fxHide.lt-md="true" class="headerNavigate">
       <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
-        class="headerNavigationButtons" mat-raised-button> Home</a>
+        class="headerNavigationButtons" *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" mat-raised-button>
+        Home</a>
       <a [routerLink]="['/about']" routerLinkActive="active" class="headerNavigationButtons"
         *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" mat-raised-button>About us</a>
-      <a [routerLink]="['/form']" routerLinkActive="active"
-        *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" class="headerNavigationButtons"
-        mat-raised-button>COVID impacted person’s detail</a>
+      <a [routerLink]="['/form']" routerLinkActive="active" *ngIf="!isLoggedIn[1] && !isLoggedIn[2]"
+        class="headerNavigationButtons" mat-raised-button>COVID impacted person’s detail</a>
       <a [routerLink]="['/admin-dashboard']" routerLinkActive="active" *ngIf="isLoggedIn[2]"
         class="headerNavigationButtons" mat-raised-button>Admin Dashboard</a>
       <a [routerLink]="['/organisationdashboard']" routerLinkActive="active" *ngIf="isLoggedIn[1]"
@@ -19,14 +19,18 @@
         class="headerNavigationButtons" mat-raised-button>Application Status</a>
       <a [routerLink]="['/feedback']" routerLinkActive="active" *ngIf="isLoggedIn[2]" class="headerNavigationButtons"
         mat-raised-button>Feedback</a>
-      <a [routerLink]="['/signIn']" routerLinkActive="active"
-        *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" class="headerNavigationButtons"
-        mat-raised-button>Sign In/ Sign Up</a>
-      <a [routerLink]="['/login']" routerLinkActive="active"
-        *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" class="headerNavigationButtons"
-        mat-raised-button>Administrator Login</a>
-      <a *ngIf="isLoggedIn[0] || isLoggedIn[1] || isLoggedIn[2]" routerLinkActive="active" (click)="logout()" class="headerNavigationButtons"
-        mat-raised-button>Logout</a>
+      <a [routerLink]="['/allpersonalusers']" routerLinkActive="active" *ngIf="isLoggedIn[1]"
+        class="headerNavigationButtons" mat-raised-button>View users</a>
+        <a [routerLink]="['/allusers']" routerLinkActive="active" *ngIf="isLoggedIn[2]"
+        class="headerNavigationButtons" mat-raised-button>View users</a>
+      <a [routerLink]="['/profile']" routerLinkActive="active" *ngIf="isLoggedIn[0] || isLoggedIn[1]"
+        class="headerNavigationButtons" mat-raised-button>Profile</a>
+      <a [routerLink]="['/signIn']" routerLinkActive="active" *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]"
+        class="headerNavigationButtons" mat-raised-button>Sign In/ Sign Up</a>
+      <a [routerLink]="['/login']" routerLinkActive="active" *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]"
+        class="headerNavigationButtons" mat-raised-button>Administrator Login</a>
+      <a *ngIf="isLoggedIn[0] || isLoggedIn[1] || isLoggedIn[2]" routerLinkActive="active" (click)="logout()"
+        class="headerNavigationButtons" mat-raised-button>Logout</a>
     </div>
     <div fxShow="true" fxHide.gt-sm="true">
       <a mat-button (click)="sidenav.toggle()">
@@ -41,28 +45,29 @@
           class="headerNavigationButtons" mat-button> Home</a>
         <a [routerLink]="['/about']" routerLinkActive="active" class="headerNavigationButtons"
           *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" mat-button>About us</a>
-        <a [routerLink]="['/form']" routerLinkActive="active"
-          *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" class="headerNavigationButtons"
-          mat-button>COVID impacted person’s detail</a>
+        <a [routerLink]="['/form']" routerLinkActive="active" *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]"
+          class="headerNavigationButtons" mat-button>COVID impacted person’s detail</a>
         <a [routerLink]="['/admin-dashboard']" routerLinkActive="active" *ngIf="isLoggedIn[2]"
           class="headerNavigationButtons" mat-button>Admin Dashboard</a>
         <a [routerLink]="['/organisationdashboard']" routerLinkActive="active" *ngIf="isLoggedIn[1]"
           class="headerNavigationButtons" mat-button>Organisation Dashboard</a>
-          <a [routerLink]="['/userdashboard']" routerLinkActive="active" *ngIf="isLoggedIn[0]"
+        <a [routerLink]="['/userdashboard']" routerLinkActive="active" *ngIf="isLoggedIn[0]"
           class="headerNavigationButtons" mat-button>View all jobs</a>
         <a [routerLink]="['/applicationstatus']" routerLinkActive="active" *ngIf="isLoggedIn[0]"
           class="headerNavigationButtons" mat-button>Application Status</a>
         <a [routerLink]="['/feedback']" routerLinkActive="active" *ngIf="isLoggedIn[2]" class="headerNavigationButtons"
           mat-button>Feedback</a>
+        <a [routerLink]="['/profile']" routerLinkActive="active" *ngIf="isLoggedIn[0] || isLoggedIn[1]"
+          class="headerNavigationButtons" mat-button>Profile</a>
         <a [routerLink]="['/signIn']" routerLinkActive="active"
-          *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" class="headerNavigationButtons"
-          mat-button>Sign In/ Sign Up</a>
+          *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" class="headerNavigationButtons" mat-button>Sign In/
+          Sign Up</a>
         <a [routerLink]="['/login']" routerLinkActive="active"
           *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" class="headerNavigationButtons"
           mat-button>Administrator Login</a>
-        <a *ngIf="isLoggedIn[0] || isLoggedIn[1] || isLoggedIn[2]" routerLinkActive="active" (click)="logout()" class="headerNavigationButtons"
-          mat-button>Logout</a>
-  
+        <a *ngIf="isLoggedIn[0] || isLoggedIn[1] || isLoggedIn[2]" routerLinkActive="active" (click)="logout()"
+          class="headerNavigationButtons" mat-button>Logout</a>
+
       </div>
     </mat-sidenav>
     <mat-sidenav-content class="sideNavContent">
