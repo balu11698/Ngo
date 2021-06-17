@@ -3,13 +3,14 @@
     .filtersWrapper {
         display: flex;
         justify-content: space-between;
+        overflow-x: auto;
     }
     .card {
         display: flex;
         margin-bottom: 10px;
         .details {
             width: 80%;
-            .fieldName{
+            .fieldName {
                 font-weight: 500;
             }
         }

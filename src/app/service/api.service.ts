@@ -115,6 +115,9 @@ export class ApiService {
     }) 
     return this.http.post(this.url+'deleteCase',data,{headers:headers})
   }
+  getRegistrationStats(){
+    return this.http.get(this.url+'getRegistrationStats')
+  }
   getStats(){
     return this.http.get(this.url+'getStats')
   }

@@ -12,7 +12,10 @@ import { ApiService } from '../service/api.service';
 })
 export class OrganisationDashboardComponent implements OnInit {
 
-  organisationJobs!: any
+  organisationJobs!: any;
+  activeJobs!: any;
+  inactiveJobs!: any;
+  isChecked = true
 
   constructor(public dialog: MatDialog, private snackBar: MatSnackBar, private api: ApiService, private route: Router) { }
 
@@ -24,7 +27,14 @@ export class OrganisationDashboardComponent implements OnInit {
     let id = JSON.parse(atob(("" + localStorage.getItem("access_token")).split(".")[1])).user.id
     this.api.viewJobs(id).subscribe((data: any) => {
       this.organisationJobs = data;
+      this.activeJobs = this.organisationJobs.filter((items: any) => {
+        return items.active == "Y";
+      })
+      this.inactiveJobs = this.organisationJobs.filter((items: any) => {
+        return items.active == "N";
+      })
     })
+
   }
   viewApplicants(jobId: any) {
     this.route.navigate(['applicants'], { queryParams: { jobId } })
@@ -50,9 +60,9 @@ export class OrganisationDashboardComponent implements OnInit {
           this.viewJobs();
           this.snackBar.open(success.message, 'Close', { duration: 3000 });
         }),
-        (error:any)=>{
-          this.snackBar.open(error.message, 'Close', { duration: 3000 });
-        }
+          (error: any) => {
+            this.snackBar.open(error.message, 'Close', { duration: 3000 });
+          }
         // this.snackBar.open(success.message, 'Close', { duration: 3000 });
       }
       // this.snackBar.open("Email successfully sent", 'Close', { duration: 3000 });

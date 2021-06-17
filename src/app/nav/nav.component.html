@@ -27,8 +27,6 @@
         mat-raised-button>Administrator Login</a>
       <a *ngIf="isLoggedIn[0] || isLoggedIn[1] || isLoggedIn[2]" routerLinkActive="active" (click)="logout()" class="headerNavigationButtons"
         mat-raised-button>Logout</a>
-      <!-- <a routerLinkActive="active" (click)="userLogout()" *ngIf="isPersonalUserLoggedIn || isOraganisationUserLoggedIn"
-        class="headerNavigationButtons" mat-raised-button>Logout</a> -->
     </div>
     <div fxShow="true" fxHide.gt-sm="true">
       <a mat-button (click)="sidenav.toggle()">
@@ -42,27 +40,27 @@
         <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
           class="headerNavigationButtons" mat-button> Home</a>
         <a [routerLink]="['/about']" routerLinkActive="active" class="headerNavigationButtons"
-          *ngIf="!isLoggedIn && !isPersonalUserLoggedIn && !isOraganisationUserLoggedIn" mat-button>About us</a>
+          *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" mat-button>About us</a>
         <a [routerLink]="['/form']" routerLinkActive="active"
-          *ngIf="!isLoggedIn && !isPersonalUserLoggedIn && !isOraganisationUserLoggedIn" class="headerNavigationButtons"
+          *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" class="headerNavigationButtons"
           mat-button>COVID impacted person’s detail</a>
-        <a [routerLink]="['/admin-dashboard']" routerLinkActive="active" *ngIf="isLoggedIn"
+        <a [routerLink]="['/admin-dashboard']" routerLinkActive="active" *ngIf="isLoggedIn[2]"
           class="headerNavigationButtons" mat-button>Admin Dashboard</a>
-        <a [routerLink]="['/userdashboard']" routerLinkActive="active" *ngIf="isPersonalUserLoggedIn"
-          class="headerNavigationButtons" mat-button>View all jobs</a>
-        <a [routerLink]="['/applicationstatus']" routerLinkActive="active" *ngIf="isPersonalUserLoggedIn"
-          class="headerNavigationButtons" mat-button>Application Status</a>
-        <a [routerLink]="['/oraganisationdashboard']" routerLinkActive="active" *ngIf="isOraganisationUserLoggedIn"
+        <a [routerLink]="['/organisationdashboard']" routerLinkActive="active" *ngIf="isLoggedIn[1]"
           class="headerNavigationButtons" mat-button>Organisation Dashboard</a>
-        <a [routerLink]="['/feedback']" routerLinkActive="active" *ngIf="isLoggedIn" class="headerNavigationButtons"
+          <a [routerLink]="['/userdashboard']" routerLinkActive="active" *ngIf="isLoggedIn[0]"
+          class="headerNavigationButtons" mat-button>View all jobs</a>
+        <a [routerLink]="['/applicationstatus']" routerLinkActive="active" *ngIf="isLoggedIn[0]"
+          class="headerNavigationButtons" mat-button>Application Status</a>
+        <a [routerLink]="['/feedback']" routerLinkActive="active" *ngIf="isLoggedIn[2]" class="headerNavigationButtons"
           mat-button>Feedback</a>
         <a [routerLink]="['/signIn']" routerLinkActive="active"
-          *ngIf="!isLoggedIn && !isPersonalUserLoggedIn && !isOraganisationUserLoggedIn" class="headerNavigationButtons"
+          *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" class="headerNavigationButtons"
           mat-button>Sign In/ Sign Up</a>
         <a [routerLink]="['/login']" routerLinkActive="active"
-          *ngIf="!isLoggedIn && !isPersonalUserLoggedIn && !isOraganisationUserLoggedIn" class="headerNavigationButtons"
+          *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" class="headerNavigationButtons"
           mat-button>Administrator Login</a>
-        <a *ngIf="isLoggedIn" routerLinkActive="active" (click)="logout()" class="headerNavigationButtons"
+        <a *ngIf="isLoggedIn[0] || isLoggedIn[1] || isLoggedIn[2]" routerLinkActive="active" (click)="logout()" class="headerNavigationButtons"
           mat-button>Logout</a>
   
       </div>

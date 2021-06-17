@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../service/api.service';
+import { applicantDetails } from '../service/interface';
 
 @Component({
   selector: 'app-view-applicants',
@@ -11,58 +12,65 @@ import { ApiService } from '../service/api.service';
 })
 export class ViewApplicantsComponent implements OnInit {
 
-  public applicantsForJob!: any
+  public applicantsForJob:applicantDetails[]=[]
   public subscription = new Subscription
-  public jobId!:any;
-  public checked =  './../assets/checked.png'
-  public unchecked =  './../assets/unchecked.png'
+  public jobId!: any;
+  public checked = './../assets/checked.png'
+  public unchecked = './../assets/unchecked.png'
+  public loader:boolean=false;
 
-  constructor(private api: ApiService, private router: Router,private activatedRoute:ActivatedRoute,private snackBar:MatSnackBar) {  }
+  constructor(private api: ApiService, private route: Router, private activatedRoute: ActivatedRoute, private snackBar: MatSnackBar) { }
 
-  ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((params) => {
-      this.jobId=params.jobId;
-    })
-    this.viewApplicants();
+  async ngOnInit(): Promise<void> {
+    this.loader=true
+    await this.jobIdParams();
+    await this.viewApplicants();
     // console.log(this.api.data)
     // this.subscription.add(this.api.apiDataListener.subscribe(res => {console.log(res)}))
   }
-  viewApplicants() {
-    let organisationId = JSON.parse(atob((""+localStorage.getItem("access_token")).split(".")[1])).user.id
-    this.api.viewApplicants(({'jobId':this.jobId}),organisationId).subscribe((data:any)=>{
-      // this.api.viewApplicantsByJob=data;
-      this.applicantsForJob=data
-      // console.log(this.applicantsForJob)
+  async jobIdParams() {
+    this.activatedRoute.queryParams.subscribe((params) => {
+      this.jobId = params.jobId;
     })
   }
-  acceptApplicant(applicationId:any){
+  async viewApplicants() {
+    let organisationId = JSON.parse(atob(("" + localStorage.getItem("access_token")).split(".")[1])).user.id
+    this.api.viewApplicants(({ 'jobId': this.jobId }), organisationId).subscribe((data: any) => {
+      this.applicantsForJob = data
+      this.loader=false;
+    })
+  }
+  acceptApplicant(applicationId: any) {
     let body = {
-      "applicationId":applicationId,
-      "status":"Accepted",
-      "note":"You are selected"
+      "applicationId": applicationId,
+      "status": "Accepted",
+      "note": "You are selected"
     }
-    let organisationId = JSON.parse(atob((""+localStorage.getItem("access_token")).split(".")[1])).user.id
-    this.api.updateApplication(body,organisationId).subscribe((success:any)=>{
+    let organisationId = JSON.parse(atob(("" + localStorage.getItem("access_token")).split(".")[1])).user.id
+    this.api.updateApplication(body, organisationId).subscribe((success: any) => {
       this.snackBar.open(success.message, 'Close', { duration: 3000 });
       this.viewApplicants();
     }),
-    ((error:any)=>{
-      this.snackBar.open(error.message, 'Close', { duration: 3000 });
-    })
+      ((error: any) => {
+        this.snackBar.open(error.message, 'Close', { duration: 3000 });
+      })
   }
-  rejectApplicant(applicationId:any){
+  rejectApplicant(applicationId: any) {
     let body = {
-      "applicationId":applicationId,
-      "status":"Rejected",
-      "note":"You are Rejected"
+      "applicationId": applicationId,
+      "status": "Rejected",
+      "note": "You are Rejected"
     }
-    let organisationId = JSON.parse(atob((""+localStorage.getItem("access_token")).split(".")[1])).user.id
-    this.api.updateApplication(body,organisationId).subscribe((success:any)=>{
+    let organisationId = JSON.parse(atob(("" + localStorage.getItem("access_token")).split(".")[1])).user.id
+    this.api.updateApplication(body, organisationId).subscribe((success: any) => {
       this.snackBar.open(success.message, 'Close', { duration: 3000 });
-      this.viewApplicants();  
+      this.viewApplicants();
     }),
-    ((error:any)=>{
-      this.snackBar.open(error.message, 'Close', { duration: 3000 });
-    })
+      ((error: any) => {
+        this.snackBar.open(error.message, 'Close', { duration: 3000 });
+      })
+  }
+  back() {
+    this.route.navigate(['/organisationdashboard'])
   }
 }

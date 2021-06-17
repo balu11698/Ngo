@@ -38,3 +38,13 @@ export interface totalData {
     "totalCases":number,
     "resolvedCases":number
 }
+
+export interface applicantDetails{
+    applicationId:string
+    applicationStatus:string
+    appliedOn:string
+    comments:string
+    email:string
+    fullname:string
+    phonenumber:string
+}

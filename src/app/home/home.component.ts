@@ -23,11 +23,22 @@ export class HomeComponent implements OnInit {
   colorScheme = {
     domain: ['#A10A28', '#5AA454', '#C7B42C', '#AAAAAA']
   };
+  registeredData!:string[]
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
     this.totalChartDataLoading = true;
     this.periodChartDataLoading = true;
+    this.getStats();
+    this.registrationStats();
+  }
+  registrationStats(){
+    this.api.getRegistrationStats().subscribe((data:any)=>{
+      this.registeredData=data.count;
+      console.log(this.registeredData,"data")
+    })
+  }
+  getStats(){
     this.api.getStats().subscribe((data: any) => {
       this.totalData = data;
       this.totalRegistered();

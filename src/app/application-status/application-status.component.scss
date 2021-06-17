@@ -1,7 +1,12 @@
 .container {
     margin: 50px 20%;
     .toggle{
-        text-align: right;
+        display: flex;
+        margin-bottom: 10px;
+        h3{
+            margin-bottom: unset;
+            margin-right: 10px;
+          }
     }
     .card {
         display: flex;

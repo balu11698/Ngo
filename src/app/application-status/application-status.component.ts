@@ -10,6 +10,8 @@ import { ApiService } from '../service/api.service';
 export class ApplicationStatusComponent implements OnInit {
 
   public userJobs!:any;
+  public appliedJobs!:any;
+  public withdrawnJobs!:any;
   public isChecked:boolean=true;
   constructor(private api:ApiService,private snackBar:MatSnackBar) { }
 
@@ -21,6 +23,14 @@ export class ApplicationStatusComponent implements OnInit {
     let userId = JSON.parse(atob((""+localStorage.getItem("access_token")).split(".")[1])).user.id
     this.api.viewUserJobs(userId).subscribe((data:any)=>{
       this.userJobs=data
+      console.log(this.userJobs)
+      this.appliedJobs=this.userJobs.filter((items:any)=>{
+        return items.withdraw=="N";
+      })
+      // console.log(this.appliedJobs)
+      this.withdrawnJobs=this.userJobs.filter((items:any)=>{
+        return items.withdraw=="Y";
+      })
     })
   }
   withdrawJob(applyId:any){

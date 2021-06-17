@@ -1,36 +1,70 @@
 .container {
   margin: 50px 10%;
+  // .homeWrapper{
+  //   display: flex;
+  //   // flex-direction: column;;
+  // }
 }
 .totalChart,
 .periodChart {
   height: 350px;
-  width: 570px;
+  width: 400px;
 }
 .barCharts {
+  // flex-wrap: wrap;
   display: flex;
-  justify-content: space-around;
+  // justify-content: space-around;
+  .chartCard.totalChart {
+    margin-right: 25px;
+    height: auto;
+  }
+
+  // flex-wrap: wrap;
+}
+.registeredData {
+  display: flex;
+  margin-bottom: 20px;
+  .usersData {
+    margin-right: 20px;
+  }
+  .userField,
+  .organisationField {
+    font-weight: 500;
+    margin-right: 10px;
+  }
 }
 .timePeriodRadio {
   display: flex;
   flex-grow: 1;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .totalChartHeader,
 .timeRadioWrapper {
-  margin-bottom: 15px;
+  height: 65px;
+  display: flex;
+  flex-direction: column;
+}
+.usersData,
+.organisationData {
   display: flex;
 }
 @media screen and (max-width: 1000px) {
   .container {
-    margin: 50px 5%;
+    margin: 50px 25px;
   }
   .totalChart,
   .periodChart {
     width: unset;
   }
+
   .barCharts {
-    display: unset;
+    display: block;
+    // flex-wrap: wrap;
+    .chartCard.totalChart {
+      margin-right: unset;
+      margin-bottom: 25px;
+    }
   }
 }
 @media screen and (max-width: 450px) {

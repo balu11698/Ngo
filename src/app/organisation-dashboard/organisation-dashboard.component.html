@@ -1,35 +1,77 @@
 <div class="container">
-    <div class="submitJob">
-        <button type="submit" mat-raised-button color="primary"  (click)="submitJob()">Submit
-            job</button>
+  <div class="submitJob">
+    <div class="toggle">
+      <h3 *ngIf="isChecked">Active jobs</h3>
+      <h3 *ngIf="!isChecked">Inactive jobs</h3>
+      <mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle>
     </div>
-    <mat-card class="card" *ngFor="let organisationJob of organisationJobs">
+    <button type="submit" mat-raised-button color="primary" (click)="submitJob()">Submit
+      job</button>
+  </div>
+  <ng-container *ngIf="!activeJobs?.length && isChecked">
+    No Records
+  </ng-container>
+  <ng-container *ngIf="activeJobs?.length && isChecked">
+    <ng-container>
+      <mat-card class="card" *ngFor="let activeJob of activeJobs">
         <div class="details">
-            <div>
-                <span class="fieldName">Job name: </span> {{organisationJob.jobName}}
-            </div>
-            <div>
-                <span class="fieldName">Job location: </span> {{organisationJob.jobLocation}}
-            </div>
-
-
-            <div>
-                <span class="fieldName">Job type: </span> {{organisationJob.jobType}}
-            </div>
-            <div>
-                <span class="fieldName">Working type: </span> {{organisationJob.workingType}}
-            </div>
-
-            <div>
-                <span class="fieldName">Other details: </span> <span>{{organisationJob.otherDetails}}</span>
-            </div>
+          <div>
+            <span class="fieldName">Job name: </span> {{activeJob.jobName}}
+          </div>
+          <div>
+            <span class="fieldName">Job location: </span> {{activeJob.jobLocation}}
+          </div>
+          <div>
+            <span class="fieldName">Job type: </span> {{activeJob.jobType}}
+          </div>
+          <div>
+            <span class="fieldName">Working type: </span> {{activeJob.workingType}}
+          </div>
+          <div>
+            <span class="fieldName">Other details: </span> <span>{{activeJob.otherDetails}}</span>
+          </div>
         </div>
         <div class="buttonsWrapper">
-            <button type="button" mat-raised-button color="primary" class="viewApplicants"
-                (click)="viewApplicants(organisationJob.jobId)">View
-                Applicants</button><br>
-            <button type="button" mat-raised-button color="primary"
-                (click)="deleteJob(organisationJob.jobId)">Delete</button><br>
+          <button type="button" mat-raised-button color="primary" class="viewApplicants"
+            (click)="viewApplicants(activeJob.jobId)">View
+            Applicants</button><br>
+          <button type="button" mat-raised-button color="primary"
+            (click)="deleteJob(activeJob.jobId)">Delete</button><br>
         </div>
-    </mat-card>
+      </mat-card>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="!inactiveJobs?.length && !isChecked">
+    No Records
+  </ng-container>
+  <ng-container *ngIf="inactiveJobs?.length && !isChecked">
+    <ng-container *ngFor="let inactiveJob of inactiveJobs">
+      <mat-card class="card">
+        <div class="details">
+          <div>
+            <span class="fieldName">Job name: </span> {{inactiveJob.jobName}}
+          </div>
+          <div>
+            <span class="fieldName">Job location: </span> {{inactiveJob.jobLocation}}
+          </div>
+          <div>
+            <span class="fieldName">Job type: </span> {{inactiveJob.jobType}}
+          </div>
+          <div>
+            <span class="fieldName">Working type: </span> {{inactiveJob.workingType}}
+          </div>
+          <div>
+            <span class="fieldName">Other details: </span> <span>{{inactiveJob.otherDetails}}</span>
+          </div>
+        </div>
+        <div class="buttonsWrapper">
+          <button type="button" mat-raised-button color="primary" class="viewApplicants"
+            (click)="viewApplicants(inactiveJob.jobId)">View
+            Applicants</button>
+          <!-- <button type="button" mat-raised-button color="primary"
+            (click)="deleteJob(organisationJob.jobId)">Delete</button><br> -->
+        </div>
+      </mat-card>
+    </ng-container>
+  </ng-container>
 </div>

@@ -13,9 +13,9 @@ import { JwtService } from '../service/jwt.service';
 })
 export class SignInComponent implements OnInit {
 
-  signInForm !: FormGroup
+  public signInForm !: FormGroup;
   public hide = true;
-
+  public errorMessage!:string;
   constructor(private formBuilder: FormBuilder, public dialog: MatDialog, private snackBar: MatSnackBar, private router: Router, private auth: JwtService,private api:ApiService) { }
 
   ngOnInit(): void {
@@ -27,11 +27,6 @@ export class SignInComponent implements OnInit {
     )
   }
   signIn() {
-    let user = "organisation"
-    // let user = "personal"
-    // this.auth.userLogin().subscribe((data:any)=>{
-    //   console.log(data,"logged")
-    // })
     this.auth.loginUser(this.signInForm.value).subscribe((success)=>{
       let accountType = JSON.parse(atob(success.access_token.split(".")[1])).user.accountType
       this.auth.isloggedIn.next(accountType);
@@ -40,10 +35,14 @@ export class SignInComponent implements OnInit {
       }
       else if(accountType == "Personal") 
       {
-        this.auth.isloggedIn.next(accountType);
+        // this.auth.isloggedIn.next(accountType);
         this.router.navigate(['/userdashboard'])
       }
-    })
+    },
+    ((error:any)=>{
+      this.errorMessage='Username or Password is incorrect';
+      console.log(error)
+    }))
     // this.auth.isUserloggedIn.next(user);
  
 
