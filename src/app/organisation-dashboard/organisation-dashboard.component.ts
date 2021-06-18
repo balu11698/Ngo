@@ -12,14 +12,16 @@ import { ApiService } from '../service/api.service';
 })
 export class OrganisationDashboardComponent implements OnInit {
 
-  organisationJobs!: any;
-  activeJobs!: any;
-  inactiveJobs!: any;
-  isChecked = true
+  public organisationJobs!: any;
+  public activeJobs!: any;
+  public inactiveJobs!: any;
+  public isChecked = true
+  public loader = false;
 
   constructor(public dialog: MatDialog, private snackBar: MatSnackBar, private api: ApiService, private route: Router) { }
 
   ngOnInit(): void {
+    this.loader=true;
     this.viewJobs();
   }
 
@@ -33,6 +35,7 @@ export class OrganisationDashboardComponent implements OnInit {
       this.inactiveJobs = this.organisationJobs.filter((items: any) => {
         return items.active == "N";
       })
+      this.loader=false;
     })
 
   }

@@ -4,84 +4,90 @@
     <h3 *ngIf="!isChecked" class="Header">Withdrawn jobs</h3>
     <mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle>
   </div>
-  <ng-container *ngIf="!appliedJobs?.length && isChecked">
-    No Records
+  <ng-container *ngIf="loader">
+    <mat-spinner></mat-spinner>
   </ng-container>
-  <ng-container *ngIf="appliedJobs?.length && isChecked">
-    <ng-container *ngFor="let job of appliedJobs">
-      <mat-card class="card" [ngClass]="(job.applicationStatus=='Pending' ? 'pending' : (job.applicationStatus=='Rejected' ? 'rejected' : 'accepted'))">
-        <div class="details">
-          <div>
-            <span class="fieldName">Job name: </span> {{job.jobName}}
-          </div>
-          <div>
-            <span class="fieldName">Job description: </span> {{job.jobDescription}}
-          </div>
-          <div>
-            <span class="fieldName">Job location: </span> {{job.jobLocation}}
-          </div>
-          <div>
-            <span class="fieldName">Job type: </span> {{job.jobType}}
-          </div>
-          <div>
-            <span class="fieldName">Working type: </span> {{job.workingType}}
-          </div>
-          <div>
-            <span class="fieldName">Other details: </span> <span>{{job.otherDetails}}</span>
-          </div>
-          <div>
-            <span class="fieldName">Applied on: </span> <span>{{job.appliedOn}}</span>
-          </div>
-          <div>
-            <span class="fieldName">Application status: </span>
-            <span>{{job.applicationStatus}}</span>
-          </div>
-        </div>
-        <div class="buttonsWrapper">
-          <button type="button" class="acceptButton" mat-raised-button color="primary"
-            (click)="withdrawJob(job.applyId)">Withdraw</button>
-        </div>
-      </mat-card>
+  <ng-container *ngIf="!loader">
+    <ng-container *ngIf="!appliedJobs?.length && isChecked">
+      No Records
     </ng-container>
-  </ng-container>
-  <ng-container *ngIf="!withdrawnJobs?.length && !isChecked">
-    No Records
-  </ng-container>
-  <ng-container *ngIf="withdrawnJobs?.length && !isChecked">
-    <ng-container *ngFor="let job of withdrawnJobs">
-      <mat-card class="card withdrawn">
-        <div class="details">
-          <div>
-            <span class="fieldName">Job name: </span> {{job.jobName}}
+    <ng-container *ngIf="appliedJobs?.length && isChecked">
+      <ng-container *ngFor="let job of appliedJobs">
+        <mat-card class="card"
+          [ngClass]="(job.applicationStatus=='Pending' ? 'pending' : (job.applicationStatus=='Rejected' ? 'rejected' : 'accepted'))">
+          <div class="details">
+            <div>
+              <span class="fieldName">Job name: </span> {{job.jobName}}
+            </div>
+            <div>
+              <span class="fieldName">Job description: </span> {{job.jobDescription}}
+            </div>
+            <div>
+              <span class="fieldName">Job location: </span> {{job.jobLocation}}
+            </div>
+            <div>
+              <span class="fieldName">Job type: </span> {{job.jobType}}
+            </div>
+            <div>
+              <span class="fieldName">Working type: </span> {{job.workingType}}
+            </div>
+            <div>
+              <span class="fieldName">Other details: </span> <span>{{job.otherDetails}}</span>
+            </div>
+            <div>
+              <span class="fieldName">Applied on: </span> <span>{{job.appliedOn}}</span>
+            </div>
+            <div>
+              <span class="fieldName">Application status: </span>
+              <span>{{job.applicationStatus}}</span>
+            </div>
           </div>
-          <div>
-            <span class="fieldName">Job description: </span> {{job.jobDescription}}
+          <div class="buttonsWrapper">
+            <button type="button" class="acceptButton" mat-raised-button color="primary"
+              (click)="withdrawJob(job.applyId)">Withdraw</button>
           </div>
-          <div>
-            <span class="fieldName">Job location: </span> {{job.jobLocation}}
+        </mat-card>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="!withdrawnJobs?.length && !isChecked">
+      No Records
+    </ng-container>
+    <ng-container *ngIf="withdrawnJobs?.length && !isChecked">
+      <ng-container *ngFor="let job of withdrawnJobs">
+        <mat-card class="card withdrawn">
+          <div class="details">
+            <div>
+              <span class="fieldName">Job name: </span> {{job.jobName}}
+            </div>
+            <div>
+              <span class="fieldName">Job description: </span> {{job.jobDescription}}
+            </div>
+            <div>
+              <span class="fieldName">Job location: </span> {{job.jobLocation}}
+            </div>
+            <div>
+              <span class="fieldName">Job type: </span> {{job.jobType}}
+            </div>
+            <div>
+              <span class="fieldName">Working type on: </span> {{job.workingType}}
+            </div>
+            <div>
+              <span class="fieldName">Other details: </span> <span>{{job.otherDetails}}</span>
+            </div>
+            <div>
+              <span class="fieldName">Applied on: </span> <span>{{job.appliedOn}}</span>
+            </div>
+            <div>
+              <span class="fieldName">Application status: </span>
+              <span>{{job.applicationStatus}}</span>
+            </div>
           </div>
-          <div>
-            <span class="fieldName">Job type: </span> {{job.jobType}}
-          </div>
-          <div>
-            <span class="fieldName">Working type on: </span> {{job.workingType}}
-          </div>
-          <div>
-            <span class="fieldName">Other details: </span> <span>{{job.otherDetails}}</span>
-          </div>
-          <div>
-            <span class="fieldName">Applied on: </span> <span>{{job.appliedOn}}</span>
-          </div>
-          <div>
-            <span class="fieldName">Application status: </span>
-            <span>{{job.applicationStatus}}</span>
-          </div>
-        </div>
-        <!-- <div class="buttonsWrapper">
+          <!-- <div class="buttonsWrapper">
                         <button type="button" class="acceptButton" mat-raised-button color="primary"
                             (click)="withdrawJob(job.jobId)">Apply</button>
                     </div> -->
-      </mat-card>
+        </mat-card>
+      </ng-container>
     </ng-container>
   </ng-container>
 </div>

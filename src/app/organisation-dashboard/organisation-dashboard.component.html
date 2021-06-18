@@ -8,70 +8,77 @@
     <button type="submit" mat-raised-button color="primary" (click)="submitJob()">Submit
       job</button>
   </div>
-  <ng-container *ngIf="!activeJobs?.length && isChecked">
-    No Records
-  </ng-container>
-  <ng-container *ngIf="activeJobs?.length && isChecked">
-    <ng-container>
-      <mat-card class="card" *ngFor="let activeJob of activeJobs">
-        <div class="details">
-          <div>
-            <span class="fieldName">Job name: </span> {{activeJob.jobName}}
-          </div>
-          <div>
-            <span class="fieldName">Job location: </span> {{activeJob.jobLocation}}
-          </div>
-          <div>
-            <span class="fieldName">Job type: </span> {{activeJob.jobType}}
-          </div>
-          <div>
-            <span class="fieldName">Working type: </span> {{activeJob.workingType}}
-          </div>
-          <div>
-            <span class="fieldName">Other details: </span> <span>{{activeJob.otherDetails}}</span>
-          </div>
-        </div>
-        <div class="buttonsWrapper">
-          <button type="button" mat-raised-button color="primary" class="viewApplicants"
-            (click)="viewApplicants(activeJob.jobId)">View
-            Applicants</button><br>
-          <button type="button" mat-raised-button color="primary"
-            (click)="deleteJob(activeJob.jobId)">Mark as Inactive</button><br>
-        </div>
-      </mat-card>
+  <div *ngIf="loader" class="maskingBackground">
+    <div class="centerLoader">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+  <ng-container *ngIf="!loader">
+    <ng-container *ngIf="!activeJobs?.length && isChecked">
+      No Records
     </ng-container>
-  </ng-container>
-  <ng-container *ngIf="!inactiveJobs?.length && !isChecked">
-    No Records
-  </ng-container>
-  <ng-container *ngIf="inactiveJobs?.length && !isChecked">
-    <ng-container *ngFor="let inactiveJob of inactiveJobs">
-      <mat-card class="card">
-        <div class="details">
-          <div>
-            <span class="fieldName">Job name: </span> {{inactiveJob.jobName}}
+    <ng-container *ngIf="activeJobs?.length && isChecked">
+      <ng-container>
+        <mat-card class="card" *ngFor="let activeJob of activeJobs">
+          <div class="details">
+            <div>
+              <span class="fieldName">Job name: </span> {{activeJob.jobName}}
+            </div>
+            <div>
+              <span class="fieldName">Job location: </span> {{activeJob.jobLocation}}
+            </div>
+            <div>
+              <span class="fieldName">Job type: </span> {{activeJob.jobType}}
+            </div>
+            <div>
+              <span class="fieldName">Working type: </span> {{activeJob.workingType}}
+            </div>
+            <div>
+              <span class="fieldName">Other details: </span> <span>{{activeJob.otherDetails}}</span>
+            </div>
           </div>
-          <div>
-            <span class="fieldName">Job location: </span> {{inactiveJob.jobLocation}}
+          <div class="buttonsWrapper">
+            <button type="button" mat-raised-button color="primary" class="viewApplicants"
+              (click)="viewApplicants(activeJob.jobId)">View
+              Applicants</button><br>
+            <button type="button" mat-raised-button color="primary" (click)="deleteJob(activeJob.jobId)">Mark as
+              Inactive</button><br>
           </div>
-          <div>
-            <span class="fieldName">Job type: </span> {{inactiveJob.jobType}}
+        </mat-card>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="!inactiveJobs?.length && !isChecked">
+      No Records
+    </ng-container>
+    <ng-container *ngIf="inactiveJobs?.length && !isChecked">
+      <ng-container *ngFor="let inactiveJob of inactiveJobs">
+        <mat-card class="card">
+          <div class="details">
+            <div>
+              <span class="fieldName">Job name: </span> {{inactiveJob.jobName}}
+            </div>
+            <div>
+              <span class="fieldName">Job location: </span> {{inactiveJob.jobLocation}}
+            </div>
+            <div>
+              <span class="fieldName">Job type: </span> {{inactiveJob.jobType}}
+            </div>
+            <div>
+              <span class="fieldName">Working type: </span> {{inactiveJob.workingType}}
+            </div>
+            <div>
+              <span class="fieldName">Other details: </span> <span>{{inactiveJob.otherDetails}}</span>
+            </div>
           </div>
-          <div>
-            <span class="fieldName">Working type: </span> {{inactiveJob.workingType}}
-          </div>
-          <div>
-            <span class="fieldName">Other details: </span> <span>{{inactiveJob.otherDetails}}</span>
-          </div>
-        </div>
-        <div class="buttonsWrapper">
-          <button type="button" mat-raised-button color="primary" class="viewApplicants"
-            (click)="viewApplicants(inactiveJob.jobId)">View
-            Applicants</button>
-          <!-- <button type="button" mat-raised-button color="primary"
+          <div class="buttonsWrapper">
+            <button type="button" mat-raised-button color="primary" class="viewApplicants"
+              (click)="viewApplicants(inactiveJob.jobId)">View
+              Applicants</button>
+            <!-- <button type="button" mat-raised-button color="primary"
             (click)="deleteJob(organisationJob.jobId)">Delete</button><br> -->
-        </div>
-      </mat-card>
+          </div>
+        </mat-card>
+      </ng-container>
     </ng-container>
   </ng-container>
 </div>

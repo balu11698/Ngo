@@ -1,12 +1,12 @@
 <h1 mat-dialog-title>Please enter action taken for {{data.details.firstname}}</h1>
 <div mat-dialog-content>
-    <mat-form-field style="width: 100%;" appearance="outline">
-        <mat-label>Comments</mat-label>
-        <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="10" cdkAutosizeMaxRows="10"
-            [(ngModel)]="data.action"></textarea>
-    </mat-form-field>
+  <mat-form-field style="width: 100%;" appearance="outline">
+    <mat-label>Comments</mat-label>
+    <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="10" cdkAutosizeMaxRows="10"
+      [(ngModel)]="data.action"></textarea>
+  </mat-form-field>
 </div>
 <div mat-dialog-actions>
-    <button mat-raised-button color="primary" [mat-dialog-close]="data.action" [disabled]="!data.action">Solve</button>
-    <button mat-raised-button color="accent" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data.action" [disabled]="!data.action">Solve</button>
+  <button mat-raised-button color="accent" (click)="onNoClick()">Cancel</button>
 </div>

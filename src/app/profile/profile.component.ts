@@ -11,20 +11,23 @@ import { ApiService } from '../service/api.service';
 })
 export class ProfileComponent implements OnInit {
 
-  fileUrl:any;
-  fileName='';
-  profileData:any;
-  isEdit=false;
-  phonenumber="";
+  public fileUrl:any;
+  public fileName='';
+  public profileData:any;
+  public isEdit=false;
+  public phonenumber="";
+  public loader = false;
   constructor(private api:ApiService,private sanitizer:DomSanitizer,private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
+    this.loader=true;
     this.getProfileDetails()
   }
   getProfileDetails(){
     this.api.getProfile().subscribe((data:any)=>{
       this.profileData=data;
       this.phonenumber=this.profileData.phonenumber
+      this.loader=false;
       // console.log(this.profileData)
     })
   }
@@ -40,6 +43,7 @@ export class ProfileComponent implements OnInit {
       const formData = new FormData();
       formData.append("resume", file);
       // console.log(formData.get('resume'),"form")
+      // console.log(formData,'data')
       this.api.uploadFile(formData).subscribe((success)=>{
         this.getProfileDetails()
       })

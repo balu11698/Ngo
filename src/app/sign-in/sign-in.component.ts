@@ -91,6 +91,7 @@ export class SignUpDialog {
       {
         fullname: ['', [Validators.required]],
         email: ['', [Validators.required,Validators.email]],
+        gender: ['', [Validators.required]],
         phonenumber: ['', [Validators.required]],
         accountType: ['', [Validators.required]],
         password: ['', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[\\S]{8,32}')]],

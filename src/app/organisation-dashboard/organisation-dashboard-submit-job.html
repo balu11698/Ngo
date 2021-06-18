@@ -1,78 +1,78 @@
 <div class="container">
-    <div class="submitJobFormWrapper">
-        <div class="header">
-            <h1>Submit a Job</h1>
-        </div>
-        <form [formGroup]="jobForm">
-            <div class="submitForm">
-                <div>
-                    <mat-form-field class="formField" appearance="outline">
-                        <mat-label>Job name*</mat-label>
-                        <input type="text" matInput formControlName="jobName" placeholder="">
-                        <mat-error *ngIf="jobForm.get('jobName')?.errors?.required">
-                            Job name is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field class="formField" appearance="outline">
-                        <mat-label>Job description*</mat-label>
-                        <input type="text" matInput formControlName="jobDescription" placeholder="">
-                        <mat-error *ngIf="jobForm.get('jobDescription')?.errors?.required">
-                            Job description is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field class="formField" appearance="outline">
-                        <mat-label>Job location*</mat-label>
-                        <input type="text" matInput formControlName="jobLocation" placeholder="">
-                        <mat-error *ngIf="jobForm.get('jobLocation')?.errors?.required">
-                            Job location is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field appearance="outline" class="formField">
-                        <mat-label>Job type</mat-label>
-                        <mat-select formControlName="jobType">
-                            <mat-option value="Permanent">Permanent</mat-option>
-                            <mat-option value="Temporary">Temporary</mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="jobForm.get('jobType')?.errors?.required">
-                            Job type is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field appearance="outline" class="formField">
-                        <mat-label>Working type</mat-label>
-                        <mat-select formControlName="workingType">
-                            <mat-option value="Hourly">Hourly</mat-option>
-                            <mat-option value="Weekly">Weekly</mat-option>
-                            <mat-option value="Monthly">Monthly</mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="jobForm.get('workingType')?.errors?.required">
-                            Working type is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field class="formField" appearance="outline">
-                        <mat-label>Other details*</mat-label>
-                        <input type="text" matInput formControlName="otherDetails" placeholder="">
-                        <mat-error *ngIf="jobForm.get('otherDetails')?.errors?.required">
-                            Other details is <strong>required</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="buttonsWrapper">
-                    <button type="submit" mat-raised-button color="primary" [mat-dialog-close]="jobForm.value"
-                        [disabled]="jobForm.invalid">Submit</button>
-                    <button type="button" mat-raised-button color="accent" (click)="onNoClick()">Close</button>
-                </div>
-                <!-- <span style="color: red;">{{errorMessage}}</span> -->
-            </div>
-        </form>
+  <div class="submitJobFormWrapper">
+    <div class="header">
+      <h1>Submit a Job</h1>
     </div>
+    <form [formGroup]="jobForm">
+      <div class="submitForm">
+        <div>
+          <mat-form-field class="formField" appearance="outline">
+            <mat-label>Job name*</mat-label>
+            <input type="text" matInput formControlName="jobName" placeholder="">
+            <mat-error *ngIf="jobForm.get('jobName')?.errors?.required">
+              Job name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="formField" appearance="outline">
+            <mat-label>Job description*</mat-label>
+            <input type="text" matInput formControlName="jobDescription" placeholder="">
+            <mat-error *ngIf="jobForm.get('jobDescription')?.errors?.required">
+              Job description is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="formField" appearance="outline">
+            <mat-label>Job location*</mat-label>
+            <input type="text" matInput formControlName="jobLocation" placeholder="">
+            <mat-error *ngIf="jobForm.get('jobLocation')?.errors?.required">
+              Job location is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline" class="formField">
+            <mat-label>Job type</mat-label>
+            <mat-select formControlName="jobType">
+              <mat-option value="Permanent">Permanent</mat-option>
+              <mat-option value="Temporary">Temporary</mat-option>
+            </mat-select>
+            <mat-error *ngIf="jobForm.get('jobType')?.errors?.required">
+              Job type is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline" class="formField">
+            <mat-label>Working type</mat-label>
+            <mat-select formControlName="workingType">
+              <mat-option value="Hourly">Hourly</mat-option>
+              <mat-option value="Weekly">Weekly</mat-option>
+              <mat-option value="Monthly">Monthly</mat-option>
+            </mat-select>
+            <mat-error *ngIf="jobForm.get('workingType')?.errors?.required">
+              Working type is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="formField" appearance="outline">
+            <mat-label>Other details*</mat-label>
+            <input type="text" matInput formControlName="otherDetails" placeholder="">
+            <mat-error *ngIf="jobForm.get('otherDetails')?.errors?.required">
+              Other details is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="buttonsWrapper">
+          <button type="submit" mat-raised-button color="primary" [mat-dialog-close]="jobForm.value"
+            [disabled]="jobForm.invalid">Submit</button>
+          <button type="button" mat-raised-button color="accent" (click)="onNoClick()">Close</button>
+        </div>
+        <!-- <span style="color: red;">{{errorMessage}}</span> -->
+      </div>
+    </form>
+  </div>
 </div>

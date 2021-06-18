@@ -1,49 +1,54 @@
 <div class="container">
-    <ng-container *ngIf="loader">
-        <!-- <mat-spinner></mat-spinner> -->
-    </ng-container>
+  <div *ngIf="loader" class="maskingBackground">
+    <div class="centerLoader">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+  <ng-container *ngIf="!loader">
     <ng-container *ngIf="!applicantsForJob?.length">
-        <h3>No Applicants</h3>
+      <h3>No Applicants</h3>
     </ng-container>
     <ng-container *ngIf="applicantsForJob?.length">
-        <mat-card class="card" *ngFor="let applicant of applicantsForJob">
-            <div class="details">
-                <div>
-                    <span class="fieldName">Full name: </span> {{applicant.fullname}}
-                </div>
-                <div>
-                    <span class="fieldName">Email: </span> {{applicant.email}}
-                </div>
-                <div>
-                    <span class="fieldName">Phone number: </span> {{applicant.phonenumber}}
-                </div>
-                <div>
-                    <span class="fieldName">Applied on: </span> {{applicant.appliedOn}}
-                </div>
-                <div>
-                    <span class="fieldName">Application status: </span> <span>{{applicant.applicationStatus}}</span>
-                </div>
-                <div>
-                    <span class="fieldName">Resume: </span> <span class="downloadResume" (click)="downloadResume(applicant.id)">{{applicant?.resume}}</span>
-                </div>
-            </div>
-            <div class="buttonsWrapper">
-                <ng-container *ngIf="applicant.applicationStatus=='Pending'">
-                    <button type="button" class="acceptButton" mat-raised-button color="primary"
-                        (click)="acceptApplicant(applicant.applicationId)">Accept</button>
-                    <button type="button" mat-raised-button color="primary"
-                        (click)="rejectApplicant(applicant.applicationId)">Reject</button>
-                </ng-container>
-                <ng-container *ngIf="applicant.applicationStatus=='Accepted'">
-                    <img [src]="checked" class="statusImage" />
-                </ng-container>
-                <ng-container *ngIf="applicant.applicationStatus=='Rejected'">
-                    <img [src]="unchecked" class="statusImage" />
-                </ng-container>
-            </div>
-        </mat-card>
+      <mat-card class="card" *ngFor="let applicant of applicantsForJob">
+        <div class="details">
+          <div>
+            <span class="fieldName">Full name: </span> {{applicant.fullname}}
+          </div>
+          <div>
+            <span class="fieldName">Email: </span> {{applicant.email}}
+          </div>
+          <div>
+            <span class="fieldName">Phone number: </span> {{applicant.phonenumber}}
+          </div>
+          <div>
+            <span class="fieldName">Applied on: </span> {{applicant.appliedOn}}
+          </div>
+          <div>
+            <span class="fieldName">Application status: </span> <span>{{applicant.applicationStatus}}</span>
+          </div>
+          <div>
+            <span class="fieldName">Resume: </span> <span class="downloadResume"
+              (click)="downloadResume(applicant.id)">{{applicant?.resume}}</span>
+          </div>
+        </div>
+        <div class="buttonsWrapper">
+          <ng-container *ngIf="applicant.applicationStatus=='Pending'">
+            <button type="button" class="acceptButton" mat-raised-button color="primary"
+              (click)="acceptApplicant(applicant.applicationId)">Accept</button>
+            <button type="button" mat-raised-button color="primary"
+              (click)="rejectApplicant(applicant.applicationId)">Reject</button>
+          </ng-container>
+          <ng-container *ngIf="applicant.applicationStatus=='Accepted'">
+            <img [src]="checked" class="statusImage" />
+          </ng-container>
+          <ng-container *ngIf="applicant.applicationStatus=='Rejected'">
+            <img [src]="unchecked" class="statusImage" />
+          </ng-container>
+        </div>
+      </mat-card>
     </ng-container>
-    <div class="backButton">
-        <button type="button" mat-raised-button color="primary" (click)="back()">Back</button>
-    </div>
+  </ng-container>
+  <div class="backButton">
+    <button type="button" mat-raised-button color="primary" (click)="back()">Back</button>
+  </div>
 </div>

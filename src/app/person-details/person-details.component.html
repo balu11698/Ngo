@@ -1,217 +1,199 @@
 <div class="container">
-    <h1>COVID impacted person’s detail</h1>
-    <form #form="ngForm" [formGroup]="personDetailsForm" (ngSubmit)="detailsSubmit()">
-        <div class="formFiledWrapper">
-            <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>First Name*</mat-label>
-                <input type="text" matInput formControlName="firstname" placeholder="">
-                <mat-error *ngIf="personDetailsForm.get('firstname')?.errors?.required">
-                    First name is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>Middle Name</mat-label>
-                <input type="text" matInput formControlName="middlename" placeholder="">
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>last Name*</mat-label>
-                <input type="text" matInput formControlName="lastname" placeholder="">
-                <mat-error *ngIf="personDetailsForm.get('lastname')?.errors?.required">
-                    First name is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="formFiledWrapper">
-            <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>Gender*</mat-label>
-                <mat-select formControlName="gender">
-                    <mat-option value="Male">Male</mat-option>
-                    <mat-option value="Female">Female</mat-option>
-                    <mat-option value="Others">Others</mat-option>
-                </mat-select>
-                <mat-error *ngIf="personDetailsForm.get('gender')?.errors?.required">
-                    Gender is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>Age*</mat-label>
-                <input type="text" matInput formControlName="age" placeholder="">
-                <mat-error *ngIf="personDetailsForm.get('age')?.errors?.required">
-                    Age is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>Occupation before covid/present *</mat-label>
-                <mat-select formControlName="occupation">
-                    <mat-option value="School teacher/ Private tutor">School teacher/ Private tutor</mat-option>
-                    <mat-option value="IT professional">IT professional</mat-option>
-                    <mat-option value="Small business">Small business</mat-option>
-                    <mat-option value="Pharma industry professional">Pharma industry professional</mat-option>
-                    <mat-option value="Private job">Private job</mat-option>
-                    <mat-option value="Daily wager">Daily wager</mat-option>
-                    <mat-option value="Working in small shops/industries">Working in small shops/industries</mat-option>
-                    <mat-option value="Mechanic">Mechanic</mat-option>
-                    <mat-option value="Plumber">Plumber</mat-option>
-                    <mat-option value="Electrician">Electrician</mat-option>
-                    <mat-option value="Building construction labour">Building construction labour</mat-option>
-                    <mat-option value="Painter">Painter</mat-option>
-                    <mat-option value="Fruit/Vegetable/Grocery seller">Fruit/Vegetable/Grocery seller</mat-option>
-                    <mat-option value="Student">Student</mat-option>
-                    <mat-option value="Other">Other</mat-option>
-                </mat-select>
-                <mat-error *ngIf="personDetailsForm.get('occupation')?.errors?.required">
-                    Occupation is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <!-- <div class="formFiledWrapper"> -->
-        <!-- <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>ID Type*</mat-label>
-                <mat-select formControlName="idType">
-                    <mat-option value="PAN">PAN</mat-option>
-                    <mat-option value="AADHAR">AADHAR</mat-option>
-                    <mat-option value="RATION CARD">RATION CARD</mat-option>
-                    <mat-option value="DRIVING LICENSE">DRIVING LICENSE</mat-option>
-                    <mat-option value="BPL CARD">BPL CARD</mat-option>
-                    <mat-option value="VOTER ID">VOTER ID</mat-option>
-                    <mat-option value="PASSPORT">PASSPORT</mat-option>
-                    <mat-option value="OTHER">OTHER</mat-option>
-                </mat-select>
-                <mat-error *ngIf="personDetailsForm.get('idType')?.errors?.required">
-                    Id type is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>ID Number*</mat-label>
-                <input type="text" matInput formControlName="idNumber" placeholder="">
-                <mat-error *ngIf="personDetailsForm.get('idNumber')?.errors?.required">
-                    ID Number is <strong>required</strong>
-                </mat-error>
-            </mat-form-field> -->
-
-        <!-- </div> -->
-        <div class="formFiledWrapper">
-
-        </div>
-        <div class="formFiledWrapper">
-            <mat-form-field appearance="outline" class="formField-1">
-                <mat-label>Specific skill details</mat-label>
-                <textarea matInput formControlName="skills"></textarea>
-            </mat-form-field>
-        </div>
-        <div class="formFiledWrapper">
-            <mat-form-field appearance="outline" class="formField-1">
-                <mat-label>Address*</mat-label>
-                <input type="text" matInput formControlName="address" placeholder="">
-                <mat-error *ngIf="personDetailsForm.get('firstname')?.errors?.required">
-                    Address is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="formFiledWrapper">
-            <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>State*</mat-label>
-                <mat-select formControlName="state" class="select">
-                    <mat-option *ngFor="let state of stateArray" value="{{state}}">{{state}}</mat-option>
-                </mat-select>
-                <mat-error *ngIf="personDetailsForm.get('state')?.errors?.required">
-                    State is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>City*</mat-label>
-                <input type="text" matInput formControlName="city" placeholder="">
-                <mat-error *ngIf="personDetailsForm.get('city')?.errors?.required">
-                    City is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>District*</mat-label>
-                <input type="text" matInput formControlName="district" placeholder="">
-                <mat-error *ngIf="personDetailsForm.get('district')?.errors?.required">
-                    District is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>   
-        <div class="formFiledWrapper">
-            <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>Pin Code*</mat-label>
-                <input type="text" matInput formControlName="pincode" placeholder="">
-                <mat-error *ngIf="personDetailsForm.get('pincode')?.errors?.required">
-                    Pincode is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>Email</mat-label>
-                <input type="email" matInput formControlName="email" placeholder="">
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="formField-3">
-                <mat-label>Phone</mat-label>
-                <input type="text" matInput formControlName="phonenumber" placeholder="">
-            </mat-form-field>
-        </div>
-        <div class="formFiledWrapper">
-            <mat-form-field appearance="outline" class="formField-1">
-                <mat-label>Associated NGO detail if any</mat-label>
-                <input type="text" matInput formControlName="associated_ngo" placeholder="">
-            </mat-form-field>
-        </div>
-        <div class="formFiledWrapper">
-            <mat-form-field appearance="outline" class="formField-2">
-                <mat-label>Affected Since</mat-label>
-                <input matInput formControlName="affectedDate" [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="formField-2">
-                <mat-label>How have been affected?*</mat-label>
-                <mat-select formControlName="affectedReason" class="select">
-                    <mat-option value="Financial problem">Financial problem</mat-option>
-                    <mat-option value="Medical issues">Medical issues</mat-option>
-                    <mat-option value="Emotional trauma">Emotional trauma</mat-option>
-                    <mat-option value="Lost parent(s)">Lost parent(s)</mat-option>
-                    <mat-option value="Lost other family member(s)">Lost other family member(s)</mat-option>
-                    <mat-option value="Lost job">Lost job</mat-option>
-                    <mat-option value="Orphan">Orphan</mat-option>
-                    <mat-option value="Others">Others</mat-option>
-                </mat-select>
-                <mat-error *ngIf="personDetailsForm.get('affectedReason')?.errors?.required">
-                    Affected Reason is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="formFiledWrapper">
-            <mat-form-field class="formField" appearance="outline" class="formField-1">
-                <mat-label>Additional Detail</mat-label>
-                <textarea matInput formControlName="additionalDetail"></textarea>
-            </mat-form-field>
-        </div>
-        <div class="formFiledWrapper">
-            <mat-form-field class="formField" appearance="outline" class="formField-2">
-                <mat-label>Submitter Name*</mat-label>
-                <input type="text" matInput formControlName="submitterName" placeholder="">
-                <mat-error *ngIf="personDetailsForm.get('submitterName')?.errors?.required">
-                    Submitter name is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="formField" appearance="outline" class="formField-2">
-                <mat-label>Submitter Contact*</mat-label>
-                <input type="text" matInput formControlName="submitterContact" placeholder="">
-                <mat-error *ngIf="personDetailsForm.get('submitterContact')?.errors?.required">
-                    Submitter contact is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="formFiledWrapper">
-            <mat-form-field class="formField" appearance="outline" class="formField-1">
-                <mat-label>Submitter Detail (Please provide as much detail as you can. Name and Contact number is
-                    mandatory)*</mat-label>
-                <textarea matInput formControlName="submitterDetail"></textarea>
-                <mat-error *ngIf="personDetailsForm.get('submitterDetail')?.errors?.required">
-                    Submitter detail is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <button mat-raised-button color="primary" [disabled]="personDetailsForm.invalid">Submit</button>
-    </form>
+  <h1>COVID impacted person’s detail</h1>
+  <form #form="ngForm" [formGroup]="personDetailsForm" (ngSubmit)="detailsSubmit()">
+    <div class="grid">
+      <div class="formFiledWrapper">
+        <mat-form-field appearance="outline" class="formField-3">
+          <mat-label>First Name*</mat-label>
+          <input type="text" matInput formControlName="firstname" placeholder="">
+          <mat-error *ngIf="personDetailsForm.get('firstname')?.errors?.required">
+            First name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formField-3">
+          <mat-label>Middle Name</mat-label>
+          <input type="text" matInput formControlName="middlename" placeholder="">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formField-3">
+          <mat-label>last Name*</mat-label>
+          <input type="text" matInput formControlName="lastname" placeholder="">
+          <mat-error *ngIf="personDetailsForm.get('lastname')?.errors?.required">
+            First name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="formFiledWrapper">
+        <mat-form-field appearance="outline" class="formField-3">
+          <mat-label>Gender*</mat-label>
+          <mat-select formControlName="gender">
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+            <mat-option value="Others">Others</mat-option>
+          </mat-select>
+          <mat-error *ngIf="personDetailsForm.get('gender')?.errors?.required">
+            Gender is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formField-3">
+          <mat-label>Age*</mat-label>
+          <input type="text" matInput formControlName="age" placeholder="">
+          <mat-error *ngIf="personDetailsForm.get('age')?.errors?.required">
+            Age is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formField-3">
+          <mat-label>Occupation before covid/present *</mat-label>
+          <mat-select formControlName="occupation">
+            <mat-option value="School teacher/ Private tutor">School teacher/ Private tutor</mat-option>
+            <mat-option value="IT professional">IT professional</mat-option>
+            <mat-option value="Small business">Small business</mat-option>
+            <mat-option value="Pharma industry professional">Pharma industry professional</mat-option>
+            <mat-option value="Private job">Private job</mat-option>
+            <mat-option value="Daily wager">Daily wager</mat-option>
+            <mat-option value="Working in small shops/industries">Working in small shops/industries</mat-option>
+            <mat-option value="Mechanic">Mechanic</mat-option>
+            <mat-option value="Plumber">Plumber</mat-option>
+            <mat-option value="Electrician">Electrician</mat-option>
+            <mat-option value="Building construction labour">Building construction labour</mat-option>
+            <mat-option value="Painter">Painter</mat-option>
+            <mat-option value="Fruit/Vegetable/Grocery seller">Fruit/Vegetable/Grocery seller</mat-option>
+            <mat-option value="Student">Student</mat-option>
+            <mat-option value="Other">Other</mat-option>
+          </mat-select>
+          <mat-error *ngIf="personDetailsForm.get('occupation')?.errors?.required">
+            Occupation is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="formFiledWrapper">
+      </div>
+      <div class="formFiledWrapper">
+        <mat-form-field appearance="outline" class="formField-1">
+          <mat-label>Specific skill details</mat-label>
+          <textarea matInput formControlName="skills"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="formFiledWrapper">
+        <mat-form-field appearance="outline" class="formField-1">
+          <mat-label>Address*</mat-label>
+          <input type="text" matInput formControlName="address" placeholder="">
+          <mat-error *ngIf="personDetailsForm.get('firstname')?.errors?.required">
+            Address is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="formFiledWrapper">
+        <mat-form-field appearance="outline" class="formField-3">
+          <mat-label>State*</mat-label>
+          <mat-select formControlName="state" class="select">
+            <mat-option *ngFor="let state of stateArray" value="{{state}}">{{state}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="personDetailsForm.get('state')?.errors?.required">
+            State is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formField-3">
+          <mat-label>City*</mat-label>
+          <input type="text" matInput formControlName="city" placeholder="">
+          <mat-error *ngIf="personDetailsForm.get('city')?.errors?.required">
+            City is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formField-3">
+          <mat-label>District*</mat-label>
+          <input type="text" matInput formControlName="district" placeholder="">
+          <mat-error *ngIf="personDetailsForm.get('district')?.errors?.required">
+            District is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="formFiledWrapper">
+        <mat-form-field appearance="outline" class="formField-3">
+          <mat-label>Pin Code*</mat-label>
+          <input type="text" matInput formControlName="pincode" placeholder="">
+          <mat-error *ngIf="personDetailsForm.get('pincode')?.errors?.required">
+            Pincode is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formField-3">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email" placeholder="">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formField-3">
+          <mat-label>Phone</mat-label>
+          <input type="text" matInput formControlName="phonenumber" placeholder="">
+        </mat-form-field>
+      </div>
+      <div class="formFiledWrapper">
+        <mat-form-field appearance="outline" class="formField-1">
+          <mat-label>Associated NGO detail if any</mat-label>
+          <input type="text" matInput formControlName="associated_ngo" placeholder="">
+        </mat-form-field>
+      </div>
+      <div class="formFiledWrapper">
+        <mat-form-field appearance="outline" class="formField-2">
+          <mat-label>Affected Since</mat-label>
+          <input matInput formControlName="affectedDate" [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formField-2">
+          <mat-label>How have been affected?*</mat-label>
+          <mat-select formControlName="affectedReason" class="select">
+            <mat-option value="Financial problem">Financial problem</mat-option>
+            <mat-option value="Medical issues">Medical issues</mat-option>
+            <mat-option value="Emotional trauma">Emotional trauma</mat-option>
+            <mat-option value="Lost parent(s)">Lost parent(s)</mat-option>
+            <mat-option value="Lost other family member(s)">Lost other family member(s)</mat-option>
+            <mat-option value="Lost job">Lost job</mat-option>
+            <mat-option value="Orphan">Orphan</mat-option>
+            <mat-option value="Others">Others</mat-option>
+          </mat-select>
+          <mat-error *ngIf="personDetailsForm.get('affectedReason')?.errors?.required">
+            Affected Reason is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="formFiledWrapper">
+        <mat-form-field class="formField" appearance="outline" class="formField-1">
+          <mat-label>Additional Detail</mat-label>
+          <textarea matInput formControlName="additionalDetail"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="formFiledWrapper">
+        <mat-form-field class="formField" appearance="outline" class="formField-2">
+          <mat-label>Submitter Name*</mat-label>
+          <input type="text" matInput formControlName="submitterName" placeholder="">
+          <mat-error *ngIf="personDetailsForm.get('submitterName')?.errors?.required">
+            Submitter name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="formField" appearance="outline" class="formField-2">
+          <mat-label>Submitter Contact*</mat-label>
+          <input type="text" matInput formControlName="submitterContact" placeholder="">
+          <mat-error *ngIf="personDetailsForm.get('submitterContact')?.errors?.required">
+            Submitter contact is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="formFiledWrapper">
+        <mat-form-field class="formField" appearance="outline" class="formField-1">
+          <mat-label>Submitter Detail (Please provide as much detail as you can. Name and Contact number is
+            mandatory)*</mat-label>
+          <textarea matInput formControlName="submitterDetail"></textarea>
+          <mat-error *ngIf="personDetailsForm.get('submitterDetail')?.errors?.required">
+            Submitter detail is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="buttonsWrapper">
+        <button mat-raised-button color="primary" type="button" (click)="openFile()">
+          <mat-icon> attachment<input type="file" name="resume" class="uploadFile" style="display:none"
+              (change)="handle($event)">
+          </mat-icon>
+        </button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="personDetailsForm.invalid">Submit</button>
+      </div>
+    </div>
+  </form>
 </div>

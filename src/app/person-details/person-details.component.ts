@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ApiService } from '../service/api.service';
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from '@angular/router';
@@ -18,6 +18,8 @@ export class PersonDetailsComponent implements OnInit {
     "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Pondicherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttaranchal", "Uttar Pradesh", "West Bengal"];
 
   constructor(private formBuilder: FormBuilder, private api: ApiService, private snackBar: MatSnackBar, private router: Router) { }
+
+  fileName:any
 
   @ViewChild('form') personDetailsFormDirective: any;
 
@@ -46,7 +48,8 @@ export class PersonDetailsComponent implements OnInit {
         additionalDetail: [''],
         submitterDetail: ['', [Validators.required]],
         submitterName: ['', [Validators.required]],
-        submitterContact: ['', [Validators.required]]
+        submitterContact: ['', [Validators.required]],
+        resume: this.formBuilder.array([])
       }
     )
   }
@@ -62,4 +65,40 @@ export class PersonDetailsComponent implements OnInit {
     })
 
   }
+  openFile(){
+    let uploadFile: HTMLElement = document.getElementsByClassName('uploadFile')[0] as HTMLElement;
+    uploadFile.click()
+   }
+   get tagsArr() {
+    return this.personDetailsForm.get('resume') as FormArray;
+  }
+   handle(e:any){
+     const file : File = e.target.files[0]
+    //  console.log(file)
+  
+    // console.log(this.personDetailsForm.value)
+     if(file){
+       this.fileName = file.name;
+      
+      //  const control = <FormArray>this.personDetailsForm.controls['resume'];
+      //  control.push(this.personDetailsForm.control(this.personDetailsForm.get('stepTextArea').value))
+      // control.push(this.fileName)
+       
+       // console.log(this.fileName)
+       const formData = new FormData();
+       formData.append("resume", file);
+       this.tagsArr.push(
+        this.formBuilder.group({
+          resume: formData
+          // other props
+        })
+      )
+      console.log(this.personDetailsForm.value,'data');
+       
+      //  console.log(formData.get('resume'),"form")
+      //  this.personDetailsForm.p
+      //  this.api.uploadFile(formData).subscribe((success)=>{
+      //  })
+     }
+   }
 }

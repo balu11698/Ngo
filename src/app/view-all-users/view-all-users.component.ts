@@ -12,10 +12,12 @@ export class ViewAllUsersComponent implements OnInit {
   public allJobs:any;
   public allPersonalUsers:any;
   public allOrganisationUsers: any;
-  public userType = "";
+  public userType = "Personal";
+  public loader = false;
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
+    this.loader=true;
     this.getAllUsers()
   }
   getAllUsers() {
@@ -28,6 +30,7 @@ export class ViewAllUsersComponent implements OnInit {
       this.allOrganisationUsers = this.allUsers.filter((items:any)=>{
         return items.accountType=="Organisation"
       })
+      this.loader=false;
       // console.log(this.allOrganisationUsers)
     })
   }

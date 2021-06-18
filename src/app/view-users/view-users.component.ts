@@ -9,14 +9,17 @@ import { ApiService } from '../service/api.service';
 export class ViewUsersComponent implements OnInit {
 
   public allPersonalUsers!: any;
+  public loader = false;
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
+    this.loader=true;
     this.getAllPersonalUsers()
   }
   getAllPersonalUsers() {
-    this.api.getAllPersonalUsers().subscribe((success: any) => {
-      this.allPersonalUsers = success;
+    this.api.getAllPersonalUsers().subscribe((data: any) => {
+      this.allPersonalUsers = data;
+      this.loader=false;
       // console.log(this.allPersonalUsers)
     })
   }

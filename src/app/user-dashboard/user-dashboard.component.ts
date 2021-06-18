@@ -9,16 +9,18 @@ import { ApiService } from '../service/api.service';
 })
 export class UserDashboardComponent implements OnInit {
 
-  allJobs!:any
+  public allJobs!:any
   public jobLocationArray!:any;
   public jobLocation!:string;
   public workingTypeArray!:any;
   public workingType!:string;
   public jobTypeArray!:any;
   public jobType!:string;
+  public loader = false;
   constructor(private api:ApiService,private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
+    this.loader=true;
     this.getAllJobs()
   }
   getAllJobs(){
@@ -27,6 +29,7 @@ export class UserDashboardComponent implements OnInit {
       this.jobLocationArray = [...new Set(this.allJobs.map((item:any) => item.jobLocation))];
       this.workingTypeArray = [...new Set(this.allJobs.map((item:any) => item.workingType))];
       this.jobTypeArray = [...new Set(this.allJobs.map((item:any) => item.jobType))];
+      this.loader=false
       // console.log(this.allJobs)
     })
   }

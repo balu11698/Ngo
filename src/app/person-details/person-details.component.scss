@@ -15,6 +15,10 @@
 .formField-1 {
     width: 100%;
 }
+.buttonsWrapper {
+    display: flex;
+    justify-content: space-around;
+}
 
 @media screen and (max-width: 1200px) {
     .formField-3,.formField-2{
@@ -23,6 +27,6 @@
   }
   @media screen and (max-width: 960px) {
     .container{
-        margin: 50px 50px;
+        margin: 25px 25px;
     }
   }

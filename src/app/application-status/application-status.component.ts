@@ -13,9 +13,11 @@ export class ApplicationStatusComponent implements OnInit {
   public appliedJobs!: any;
   public withdrawnJobs!: any;
   public isChecked: boolean = true;
+  public loader = false;
   constructor(private api: ApiService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.loader=true;
     this.viewUserJobs();
   }
 
@@ -31,6 +33,7 @@ export class ApplicationStatusComponent implements OnInit {
       this.withdrawnJobs = this.userJobs.filter((items: any) => {
         return items.withdraw == "Y";
       })
+      this.loader=false;
     })
   }
   withdrawJob(applyId: any) {

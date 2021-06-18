@@ -1,19 +1,26 @@
 <div class="container">
+  <div *ngIf="loader" class="maskingBackground">
+    <div class="centerLoader">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+  <ng-container *ngIf="!loader">
     <mat-card class="card" *ngFor="let personalUser of allPersonalUsers">
-        <div class="details">
-            <div>
-                <span class="fieldName">Full name: </span> {{personalUser.fullname}}
-            </div>
-            <div>
-                <span class="fieldName">Email: </span> {{personalUser.email}}
-            </div>
-            <div>
-                <span class="fieldName">Phone number: </span> {{personalUser.phonenumber}}
-            </div>
-            <div>
-                <span class="fieldName">Resume: </span> <span class="downloadResume"
-                    (click)="downloadResume(personalUser.id)">{{personalUser?.resumeName}}</span>
-            </div>
+      <div class="details">
+        <div>
+          <span class="fieldName">Full name: </span> {{personalUser.fullname}}
         </div>
+        <div>
+          <span class="fieldName">Email: </span> {{personalUser.email}}
+        </div>
+        <div>
+          <span class="fieldName">Phone number: </span> {{personalUser.phonenumber}}
+        </div>
+        <div>
+          <span class="fieldName">Resume: </span> <span class="downloadResume"
+            (click)="downloadResume(personalUser.id)">{{personalUser?.resumeName}}</span>
+        </div>
+      </div>
     </mat-card>
+  </ng-container>
 </div>
