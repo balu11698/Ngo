@@ -1,26 +1,36 @@
 <div class="container">
-    <div>
-        <mat-card class="card">
-            <div>
-                <span class="field">Full name: </span>{{profileData?.fullname}}
+    <mat-card class="card">
+        <div class="profileDetailsWrapper">
+            <div class="profileDetails">
+                <div>
+                    <span class="field">Full name: </span>{{profileData?.fullname}}
+                </div>
+                <div>
+                    <span class="field">Email: </span>{{profileData?.email}}
+                </div>
+                <div *ngIf="!isEdit">
+                    <span class="field">Phonenumber: </span>{{profileData?.phonenumber}}
+                </div>
+                <div *ngIf="isEdit">
+                    <span class="field">Phonenumber: </span><input matInput type="text" [(ngModel)]='phonenumber' />
+                </div>
+                <div class="downloadWrapper" *ngIf="profileData?.accountType=='Personal'"><span class="field">Upload
+                        resume: </span>
+                    <div class="downloadFile" (click)="download()"> {{profileData?.resume}}</div>
+                    <button mat-raised-button color="primary" (click)="openFile()">
+                        <mat-icon> attachment<input type="file" name="resume" class="uploadFile" style="display:none"
+                                (change)="handle($event)">
+                        </mat-icon>
+                    </button>
+                </div>
             </div>
-            <div>
-                <span class="field">Email: </span>{{profileData?.email}}
+            <div *ngIf="!isEdit" class="buttonsWrapper">
+                <button mat-raised-button color="primary" (click)="edit()">Edit</button>
             </div>
-            <div>
-                <span class="field">Phonenumber: </span>{{profileData?.phonenumber}}
+            <div *ngIf="isEdit" class="buttonsWrapper">
+                <button mat-raised-button color="primary" class="updateButton" (click)="update()">Update</button>
+                <button mat-raised-button color="primary" (click)="cancel()">Cancel</button>
             </div>
-            <div class="downloadWrapper" *ngIf="profileData?.accountType=='Personal'"><span class="field">Upload resume: </span>
-                <div class="downloadFile" (click)="download()"> {{profileData?.resume}}</div>
-                <button mat-raised-button color="primary" (click)="openFile()">
-                    <mat-icon> attachment<input type="file" name="resume" class="uploadFile" style="display:none"
-                            (change)="handle($event)">
-                    </mat-icon>
-                </button>    
-            </div>
-        </mat-card>
-        <div>
-
         </div>
-    </div>
+    </mat-card>
 </div>

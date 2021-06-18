@@ -17,7 +17,7 @@ export class ViewUsersComponent implements OnInit {
   getAllPersonalUsers() {
     this.api.getAllPersonalUsers().subscribe((success: any) => {
       this.allPersonalUsers = success;
-      console.log(this.allPersonalUsers)
+      // console.log(this.allPersonalUsers)
     })
   }
   downloadResume(id: any) {

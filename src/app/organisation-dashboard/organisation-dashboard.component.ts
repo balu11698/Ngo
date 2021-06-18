@@ -44,7 +44,11 @@ export class OrganisationDashboardComponent implements OnInit {
     this.api.deleteJob(({ 'jobId': jobId }), organisationId).subscribe((success: any) => {
       this.viewJobs();
       this.snackBar.open(success.message, 'Close', { duration: 3000 });
+    },
+    ((error:any)=>{
+      this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
     })
+    )
   }
   submitJob() {
     const dialogRef = this.dialog.open(OrganisationDashboardSubmitJobDialog, {
@@ -59,10 +63,11 @@ export class OrganisationDashboardComponent implements OnInit {
         this.api.postJob(result, id).subscribe((success: any) => {
           this.viewJobs();
           this.snackBar.open(success.message, 'Close', { duration: 3000 });
-        }),
-          (error: any) => {
-            this.snackBar.open(error.message, 'Close', { duration: 3000 });
-          }
+        },
+        ((error:any)=>{
+          this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
+        })
+        )
         // this.snackBar.open(success.message, 'Close', { duration: 3000 });
       }
       // this.snackBar.open("Email successfully sent", 'Close', { duration: 3000 });

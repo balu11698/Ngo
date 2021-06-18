@@ -58,7 +58,7 @@ export class PersonDetailsComponent implements OnInit {
       this.personDetailsFormDirective.resetForm();
     }, (error: any) => {
       //add code to display error notification
-      this.snackBar.open(error.message, 'Close', { duration: 3000 });
+      this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
     })
 
   }

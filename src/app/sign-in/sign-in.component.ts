@@ -41,7 +41,7 @@ export class SignInComponent implements OnInit {
     },
     ((error:any)=>{
       this.errorMessage='Username or Password is incorrect';
-      console.log(error)
+      // console.log(error)
     }))
     // this.auth.isUserloggedIn.next(user);
  
@@ -59,10 +59,11 @@ export class SignInComponent implements OnInit {
         delete result.confirmPassword
         this.api.regiseterUser(result).subscribe((success:any)=>{
           this.snackBar.open(success.message, 'Close', { duration: 3000 });
-        }),
-        (error:any)=>{
-          this.snackBar.open(error.message, 'Close', { duration: 3000 });
-        }
+        },
+        ((error:any)=>{
+          this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
+        })
+        )
         // this.snackBar.open(success.message, 'Close', { duration: 3000 });
       }
       // this.snackBar.open("Email successfully sent", 'Close', { duration: 3000 });

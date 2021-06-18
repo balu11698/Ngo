@@ -92,7 +92,11 @@ export class AdminDashbordComponent implements OnInit {
         personDetail.action = result;
         this.api.updateCaseDetails(personDetail).subscribe((success: any) => {
           this.snackBar.open(success.message, 'Close', { duration: 3000 });
+        },
+        ((error:any)=>{
+          this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
         })
+        )
       }
     });
   }
@@ -104,7 +108,11 @@ export class AdminDashbordComponent implements OnInit {
       if (result != undefined) {
         this.api.sendEmail(result).subscribe((success: any) => {
           this.snackBar.open(success.message, 'Close', { duration: 3000 });
+        },
+        ((error:any)=>{
+          this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
         })
+        )
       }
       // this.snackBar.open("Email successfully sent", 'Close', { duration: 3000 });
     });

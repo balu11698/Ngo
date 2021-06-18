@@ -12,17 +12,17 @@ import { applicantDetails } from '../service/interface';
 })
 export class ViewApplicantsComponent implements OnInit {
 
-  public applicantsForJob:applicantDetails[]=[]
+  public applicantsForJob: applicantDetails[] = []
   public subscription = new Subscription
   public jobId!: any;
   public checked = './../assets/checked.png'
   public unchecked = './../assets/unchecked.png'
-  public loader:boolean=false;
+  public loader: boolean = false;
 
   constructor(private api: ApiService, private route: Router, private activatedRoute: ActivatedRoute, private snackBar: MatSnackBar) { }
 
   async ngOnInit(): Promise<void> {
-    this.loader=true
+    this.loader = true
     await this.jobIdParams();
     await this.viewApplicants();
     // console.log(this.api.data)
@@ -37,18 +37,18 @@ export class ViewApplicantsComponent implements OnInit {
     let organisationId = JSON.parse(atob(("" + localStorage.getItem("access_token")).split(".")[1])).user.id
     this.api.viewApplicants(({ 'jobId': this.jobId }), organisationId).subscribe((data: any) => {
       this.applicantsForJob = data
-      console.log(this.applicantsForJob)
-      this.loader=false;
+      // console.log(this.applicantsForJob)
+      this.loader = false;
     })
   }
-  downloadResume(id:any){
-    this.api.downloadResume(id).subscribe((data:any)=>{
+  downloadResume(id: any) {
+    this.api.downloadResume(id).subscribe((data: any) => {
       const blob = new Blob([data], { type: 'application/pdf' });
       const fileURL = URL.createObjectURL(blob);
-      var a         = document.createElement('a');
-      a.href        = fileURL; 
-      a.target      = '_blank';
-      a.download    = 'resume.pdf';
+      var a = document.createElement('a');
+      a.href = fileURL;
+      a.target = '_blank';
+      a.download = 'resume.pdf';
       document.body.appendChild(a);
       a.click();
     })
@@ -63,10 +63,11 @@ export class ViewApplicantsComponent implements OnInit {
     this.api.updateApplication(body, organisationId).subscribe((success: any) => {
       this.snackBar.open(success.message, 'Close', { duration: 3000 });
       this.viewApplicants();
-    }),
+    },
       ((error: any) => {
-        this.snackBar.open(error.message, 'Close', { duration: 3000 });
+        this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
       })
+    )
   }
   rejectApplicant(applicationId: any) {
     let body = {
@@ -78,10 +79,11 @@ export class ViewApplicantsComponent implements OnInit {
     this.api.updateApplication(body, organisationId).subscribe((success: any) => {
       this.snackBar.open(success.message, 'Close', { duration: 3000 });
       this.viewApplicants();
-    }),
+    },
       ((error: any) => {
-        this.snackBar.open(error.message, 'Close', { duration: 3000 });
+        this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
       })
+    )
   }
   back() {
     this.route.navigate(['/organisationdashboard'])

@@ -1,5 +1,11 @@
 .container {
     margin: 50px 20%;
+    .profileDetailsWrapper {
+        display: flex;
+        .profileDetails{
+            width: 70%;
+        }
+    }
     .field {
         font-weight: 500;
     }
@@ -15,8 +21,18 @@
         }
     }
 }
+.buttonsWrapper{
+    margin-top: 10px;
+    .updateButton{
+        margin-right: 10px;
+    }
+}
 @media screen and (max-width: 800px) {
     .container {
         margin: 50px 50px;
+        .profileDetailsWrapper{
+            flex-direction: column;
+        }
     }
+
 }

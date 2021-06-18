@@ -6,19 +6,27 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  //  url='http://194.233.64.67:3000/';
+   url='http://194.233.64.67:3000/';
   public apiData = new Subject;
   public apiDataListener = this.apiData.asObservable();
   public data!:any;
   viewApplicantsByJob:any;
   geocodingapi='https://nominatim.openstreetmap.org/search?format=json&q='
-  url='http://localhost:3000/';
+  // url='http://localhost:3000/';
   constructor(private http:HttpClient) { }
   createNewCase(data:any){
     return this.http.post(this.url+'createNewCase',data);
   }
   regiseterUser(data : any){
     return this.http.post(this.url+'register',data);
+  }
+  updateDetails(phonenumber:any){
+    const authToken=localStorage.getItem('access_token');
+    let userId = JSON.parse(atob((""+authToken).split(".")[1])).user.id
+    const headers=new HttpHeaders({
+      'Authorization':'Bearer '+authToken
+    }) 
+    return this.http.post(this.url+'updateDetails/'+userId,{'phonenumber':phonenumber},{headers:headers})
   }
   postJob(data:any,id:any){
     const authToken=localStorage.getItem('access_token');

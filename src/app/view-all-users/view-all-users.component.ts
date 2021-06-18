@@ -28,7 +28,7 @@ export class ViewAllUsersComponent implements OnInit {
       this.allOrganisationUsers = this.allUsers.filter((items:any)=>{
         return items.accountType=="Organisation"
       })
-      console.log(this.allOrganisationUsers)
+      // console.log(this.allOrganisationUsers)
     })
   }
   downloadResume(id: any) {

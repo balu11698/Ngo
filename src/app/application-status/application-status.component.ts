@@ -9,38 +9,39 @@ import { ApiService } from '../service/api.service';
 })
 export class ApplicationStatusComponent implements OnInit {
 
-  public userJobs!:any;
-  public appliedJobs!:any;
-  public withdrawnJobs!:any;
-  public isChecked:boolean=true;
-  constructor(private api:ApiService,private snackBar:MatSnackBar) { }
+  public userJobs!: any;
+  public appliedJobs!: any;
+  public withdrawnJobs!: any;
+  public isChecked: boolean = true;
+  constructor(private api: ApiService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.viewUserJobs();
   }
 
-  viewUserJobs(){
-    let userId = JSON.parse(atob((""+localStorage.getItem("access_token")).split(".")[1])).user.id
-    this.api.viewUserJobs(userId).subscribe((data:any)=>{
-      this.userJobs=data
-      console.log(this.userJobs)
-      this.appliedJobs=this.userJobs.filter((items:any)=>{
-        return items.withdraw=="N";
+  viewUserJobs() {
+    let userId = JSON.parse(atob(("" + localStorage.getItem("access_token")).split(".")[1])).user.id
+    this.api.viewUserJobs(userId).subscribe((data: any) => {
+      this.userJobs = data
+      // console.log(this.userJobs)
+      this.appliedJobs = this.userJobs.filter((items: any) => {
+        return items.withdraw == "N";
       })
       // console.log(this.appliedJobs)
-      this.withdrawnJobs=this.userJobs.filter((items:any)=>{
-        return items.withdraw=="Y";
+      this.withdrawnJobs = this.userJobs.filter((items: any) => {
+        return items.withdraw == "Y";
       })
     })
   }
-  withdrawJob(applyId:any){
-    let userId = JSON.parse(atob((""+localStorage.getItem("access_token")).split(".")[1])).user.id
-    this.api.withdrawJob({'applyId':applyId},userId).subscribe((success:any)=>{
+  withdrawJob(applyId: any) {
+    let userId = JSON.parse(atob(("" + localStorage.getItem("access_token")).split(".")[1])).user.id
+    this.api.withdrawJob({ 'applyId': applyId }, userId).subscribe((success: any) => {
       this.snackBar.open(success.message, 'Close', { duration: 3000 });
       this.viewUserJobs();
-    }),
-    (error:any)=>{
-      this.snackBar.open(error.message, 'Close', { duration: 3000 });
-    }
+    },
+      ((error: any) => {
+        this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
+      })
+    )
   }
 }

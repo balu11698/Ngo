@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { colorSets } from '@swimlane/ngx-charts';
 import { ApiService } from '../service/api.service';
@@ -13,7 +14,9 @@ export class ProfileComponent implements OnInit {
   fileUrl:any;
   fileName='';
   profileData:any;
-  constructor(private api:ApiService,private sanitizer:DomSanitizer) { }
+  isEdit=false;
+  phonenumber="";
+  constructor(private api:ApiService,private sanitizer:DomSanitizer,private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
     this.getProfileDetails()
@@ -21,7 +24,8 @@ export class ProfileComponent implements OnInit {
   getProfileDetails(){
     this.api.getProfile().subscribe((data:any)=>{
       this.profileData=data;
-      console.log(this.profileData)
+      this.phonenumber=this.profileData.phonenumber
+      // console.log(this.profileData)
     })
   }
   openFile(){
@@ -32,7 +36,7 @@ export class ProfileComponent implements OnInit {
     const file : File = e.target.files[0]
     if(file){
       this.fileName = file.name;
-      console.log(this.fileName)
+      // console.log(this.fileName)
       const formData = new FormData();
       formData.append("resume", file);
       // console.log(formData.get('resume'),"form")
@@ -54,9 +58,25 @@ export class ProfileComponent implements OnInit {
       a.click();
       // console.log(data)
     })
-    
 
-    
+    }
+    edit(){
+      this.isEdit=true
+  }
+  update(){
+    this.isEdit=false
+    this.api.updateDetails(this.phonenumber).subscribe((success:any)=>{
+      this.snackBar.open(success.message, 'Close', { duration: 3000 });
+      this.getProfileDetails();
+    },
+    ((error:any)=>{
+      // console.log(error)
+      this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
+    })
+    )
+  }
+  cancel(){
+    this.isEdit=false
   }
 
 }

@@ -21,8 +21,8 @@
         mat-raised-button>Feedback</a>
       <a [routerLink]="['/allpersonalusers']" routerLinkActive="active" *ngIf="isLoggedIn[1]"
         class="headerNavigationButtons" mat-raised-button>View users</a>
-        <a [routerLink]="['/allusers']" routerLinkActive="active" *ngIf="isLoggedIn[2]"
-        class="headerNavigationButtons" mat-raised-button>View users</a>
+      <a [routerLink]="['/allusers']" routerLinkActive="active" *ngIf="isLoggedIn[2]" class="headerNavigationButtons"
+        mat-raised-button>View users</a>
       <a [routerLink]="['/profile']" routerLinkActive="active" *ngIf="isLoggedIn[0] || isLoggedIn[1]"
         class="headerNavigationButtons" mat-raised-button>Profile</a>
       <a [routerLink]="['/signIn']" routerLinkActive="active" *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]"
@@ -42,7 +42,8 @@
     <mat-sidenav #sidenav fxLayout="column" class="sideNav">
       <div class="sideNavLinks">
         <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
-          class="headerNavigationButtons" mat-button> Home</a>
+          class="headerNavigationButtons" *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" mat-button>
+          Home</a>
         <a [routerLink]="['/about']" routerLinkActive="active" class="headerNavigationButtons"
           *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]" mat-button>About us</a>
         <a [routerLink]="['/form']" routerLinkActive="active" *ngIf="!isLoggedIn[0] && !isLoggedIn[1] && !isLoggedIn[2]"
@@ -57,6 +58,10 @@
           class="headerNavigationButtons" mat-button>Application Status</a>
         <a [routerLink]="['/feedback']" routerLinkActive="active" *ngIf="isLoggedIn[2]" class="headerNavigationButtons"
           mat-button>Feedback</a>
+        <a [routerLink]="['/allpersonalusers']" routerLinkActive="active" *ngIf="isLoggedIn[1]"
+          class="headerNavigationButtons" mat-button>View users</a>
+        <a [routerLink]="['/allusers']" routerLinkActive="active" *ngIf="isLoggedIn[2]" class="headerNavigationButtons"
+          mat-button>View users</a>
         <a [routerLink]="['/profile']" routerLinkActive="active" *ngIf="isLoggedIn[0] || isLoggedIn[1]"
           class="headerNavigationButtons" mat-button>Profile</a>
         <a [routerLink]="['/signIn']" routerLinkActive="active"

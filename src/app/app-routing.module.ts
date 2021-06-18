@@ -11,6 +11,7 @@ import { MapComponent } from './map/map.component';
 import { OrganisationDashboardComponent } from './organisation-dashboard/organisation-dashboard.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LoginGuardGuard } from './service/login-guard.guard';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { ViewAllUsersComponent } from './view-all-users/view-all-users.component';
@@ -31,7 +32,7 @@ const routes: Routes = [
     path: "form", component: PersonDetailsComponent
   },
   {
-    path: "login", component: LoginComponent
+    path: "login", component: LoginComponent, canActivate:[LoginGuardGuard]
   },
   {
     path: "admin-dashboard", component: AdminDashbordComponent, canActivate: [AdminGuard]
@@ -40,16 +41,16 @@ const routes: Routes = [
     path: "feedback", component: FeedbackComponent
   },
   {
-    path: "signIn", component: SignInComponent
+    path: "signIn", component: SignInComponent, canActivate:[LoginGuardGuard]
   },
   {
-    path: "userdashboard", component: UserDashboardComponent
+    path: "userdashboard", component: UserDashboardComponent,canActivate: [AdminGuard]
   },
   {
     path: "applicationstatus", component: ApplicationStatusComponent
   },
   {
-    path: "organisationdashboard", component: OrganisationDashboardComponent
+    path: "organisationdashboard", component: OrganisationDashboardComponent,canActivate: [AdminGuard]
   },
   {
     path: "applicants", component: ViewApplicantsComponent
