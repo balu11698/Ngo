@@ -41,7 +41,7 @@
             <mat-select formControlName="accountType">
               <!-- <mat-option value="NGO">NGO</mat-option> -->
               <mat-option value="Organisation">Organisation</mat-option>
-              <mat-option value="Personal">Personal</mat-option>
+              <mat-option value="Personal">Individual</mat-option>
             </mat-select>
             <mat-error *ngIf="signUpForm.get('accountType')?.errors?.required">
               Account type is <strong>required</strong>

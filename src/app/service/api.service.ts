@@ -6,13 +6,13 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-   url='http://194.233.64.67:3000/';
+  //  url='http://194.233.64.67:3000/';
   public apiData = new Subject;
   public apiDataListener = this.apiData.asObservable();
   public data!:any;
   viewApplicantsByJob:any;
   geocodingapi='https://nominatim.openstreetmap.org/search?format=json&q='
-  // url='http://localhost:3000/';
+  url='http://localhost:3000/';
   constructor(private http:HttpClient) { }
   createNewCase(data:any){
     return this.http.post(this.url+'createNewCase',data);
@@ -177,6 +177,9 @@ export class ApiService {
       'Authorization':'Bearer '+authToken
     })
     return this.http.get(this.url+'getAllData',{headers:headers})
+  }
+  dummyUpload(data : any){
+    return this.http.post(this.url+'dummyUpload',data)
   }
   setdata(data:any){
     this.data = data

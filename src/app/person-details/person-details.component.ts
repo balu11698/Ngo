@@ -78,12 +78,10 @@ export class PersonDetailsComponent implements OnInit {
   
     // console.log(this.personDetailsForm.value)
      if(file){
-       this.fileName = file.name;
-      
+       this.fileName = file.name;   
       //  const control = <FormArray>this.personDetailsForm.controls['resume'];
       //  control.push(this.personDetailsForm.control(this.personDetailsForm.get('stepTextArea').value))
       // control.push(this.fileName)
-       
        // console.log(this.fileName)
        const formData = new FormData();
        formData.append("resume", file);
@@ -93,9 +91,15 @@ export class PersonDetailsComponent implements OnInit {
           // other props
         })
       )
-      console.log(this.personDetailsForm.value,'data');
-       
+      Object.keys(this.personDetailsForm.value).forEach(key => {
+        formData.append(key, this.personDetailsForm.value[key]);
+      });
+      console.log(formData,'data');
+      this.api.dummyUpload(formData).subscribe((success)=>{
+        console.log(success)
+      })
       //  console.log(formData.get('resume'),"form")
+      //  console.log(formData.get('firstname'),"form")
       //  this.personDetailsForm.p
       //  this.api.uploadFile(formData).subscribe((success)=>{
       //  })
