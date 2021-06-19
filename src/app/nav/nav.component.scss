@@ -3,7 +3,7 @@
   flex-wrap: wrap;
 }
 .active {
-  background-color: #ffce75;
+  background-color: #74ffb0;
 }
 .sideNav {
   width: fit-content;
@@ -18,7 +18,15 @@
 
 .sideNavContent {
   height: calc(100vh - 64px);
-  background: #efeeff;
+  background: #e8e9ff;
+}
+mat-sidenav ::ng-deep .mat-drawer-inner-container {
+  background-image: linear-gradient(45deg, #0952c5, #5be8ff);
+}
+.mat-toolbar.mat-primary {
+  /* background: #2742d8; */
+  color: #fff;
+  background-image: linear-gradient(to right,#0499b5, #0a3cca);
 }
 @media screen and (max-width: 959px) {
   // .sideNav {

@@ -48,13 +48,21 @@
 .usersData,
 .organisationData {
   display: flex;
+  justify-content: center;
   // border: 1px solid;
   // padding: 5px;
   // border-radius: 10px;
 }
-.card{
+.card {
   margin-bottom: 10px;
   width: 400px;
+  background-image: linear-gradient(45deg, #bdbdff, #ffcdcd);
+}
+.card.organisation {
+  margin-left: 25px;
+}
+.chartCard {
+  background-image: linear-gradient(45deg, #d8fffd, #e6f5ff);
 }
 @media screen and (max-width: 1000px) {
   .container {
@@ -73,7 +81,13 @@
       margin-bottom: 25px;
     }
   }
-  .card{
+  .registeredData {
+    flex-direction: column;
+  }
+  .card.organisation {
+    margin-left: unset;
+  }
+  .card {
     width: unset;
   }
 }

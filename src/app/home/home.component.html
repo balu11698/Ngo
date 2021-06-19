@@ -1,18 +1,20 @@
 <div class="container">
   <div class="homeWrapper">
     <ng-container *ngIf="registeredData?.length">
-      <mat-card class="card">
-        <div class="registeredData">
+      <div class="registeredData">
+        <mat-card class="card">
           <div class="usersData">
             <div class="userField">Registered Individual Users:</div>
             <div> {{registeredData[0]}}</div>
           </div>
+        </mat-card>
+        <mat-card class="card organisation" >
           <div class="organisationData">
             <div class="organisationField">Registered Organisations:</div>
             <div> {{registeredData[1]}}</div>
           </div>
-        </div>
-      </mat-card>
+        </mat-card>
+      </div>
     </ng-container>
     <div class="homeWrapper">
       <div class="barCharts">

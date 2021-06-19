@@ -54,6 +54,7 @@ export class AdminDashbordComponent implements OnInit {
     this.isLoading = true;
     this.api.getAllDetails().subscribe((data: any) => {
       this.detail = data;
+      console.log(this.detail)
       this.stateArray = [...new Set(this.detail.map(item => item.state))];
       this.isLoading = false;
 
@@ -73,11 +74,6 @@ export class AdminDashbordComponent implements OnInit {
       }
       this.shared.setVictimLocation(this.victimLocation, this.locationTitles)
       this.router.navigate(['/map'])
-      //  const dialogRef = this.dialog.open(MapComponent, {
-      // });
-      // dialogRef.afterClosed().subscribe(result => {
-
-      // })
     })
   }
 
@@ -93,12 +89,27 @@ export class AdminDashbordComponent implements OnInit {
         this.api.updateCaseDetails(personDetail).subscribe((success: any) => {
           this.snackBar.open(success.message, 'Close', { duration: 3000 });
         },
-        ((error:any)=>{
-          this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
-        })
+          ((error: any) => {
+            this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
+          })
         )
       }
     });
+  }
+  download(id:any) {
+    // let userId = JSON.parse(atob(("" + localStorage.getItem('access_token')).split(".")[1])).user.id
+    this.api.downloadResume(id).subscribe((data: any) => {
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const fileURL = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = fileURL;
+      a.target = '_blank';
+      a.download = 'resume.pdf';
+      document.body.appendChild(a);
+      a.click();
+      // console.log(data)
+    })
+
   }
   sendEmail(personDetail: any) {
     const dialogRef = this.dialog.open(AdminDashboardEmailDialog, {
@@ -109,9 +120,9 @@ export class AdminDashbordComponent implements OnInit {
         this.api.sendEmail(result).subscribe((success: any) => {
           this.snackBar.open(success.message, 'Close', { duration: 3000 });
         },
-        ((error:any)=>{
-          this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
-        })
+          ((error: any) => {
+            this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
+          })
         )
       }
       // this.snackBar.open("Email successfully sent", 'Close', { duration: 3000 });

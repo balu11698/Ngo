@@ -17,6 +17,9 @@ export class ApiService {
   createNewCase(data:any){
     return this.http.post(this.url+'createNewCase',data);
   }
+  submitCase(data:any){
+    return this.http.post(this.url+'submitCase',data);
+  }
   regiseterUser(data : any){
     return this.http.post(this.url+'register',data);
   }

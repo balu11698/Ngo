@@ -18,18 +18,18 @@
     <ng-container *ngIf="userType=='All' || userType == 'Personal' || userType=='' ">
       <mat-card class="card" *ngFor="let personalUser of allPersonalUsers">
         <div class="details">
-          <div>
-            <span class="fieldName">Full name: </span> {{personalUser?.fullname}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Full name: </div> {{personalUser?.fullname}}
           </div>
-          <div>
-            <span class="fieldName">Email: </span> {{personalUser?.email}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Email: </div> {{personalUser?.email}}
           </div>
-          <div>
-            <span class="fieldName">Phone number: </span> {{personalUser?.phonenumber}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Phone number: </div> {{personalUser?.phonenumber}}
           </div>
-          <div *ngIf="personalUser.resumeName">
-            <span class="fieldName">Resume: </span> <span class="downloadResume"
-              (click)="downloadResume(personalUser.id)">{{personalUser?.resumeName}}</span>
+          <div class="fieldWrapper" *ngIf="personalUser.resumeName">
+            <div class="fieldName">Resume: </div> <div class="downloadResume"
+              (click)="downloadResume(personalUser.id)">{{personalUser?.resumeName}}</div>
           </div>
         </div>
       </mat-card>
@@ -37,14 +37,14 @@
     <ng-container *ngIf="userType=='All' || userType == 'Organisation' || userType==''">
       <mat-card class="card" *ngFor="let organistaionUser of allOrganisationUsers">
         <div class="details">
-          <div>
-            <span class="fieldName">Full name: </span> {{organistaionUser.fullname}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Full name: </div> {{organistaionUser.fullname}}
           </div>
-          <div>
-            <span class="fieldName">Email: </span> {{organistaionUser.email}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Email: </div> {{organistaionUser.email}}
           </div>
-          <div>
-            <span class="fieldName">Phone number: </span> {{organistaionUser.phonenumber}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Phone number: </div> {{organistaionUser.phonenumber}}
           </div>
         </div>
       </mat-card>
@@ -52,29 +52,29 @@
     <ng-container *ngIf="userType=='All' || userType == 'jobDetails' || userType==''">
       <mat-card *ngFor="let job of allJobs" class="card">
         <div class="details">
-          <div>
-            <span class="fieldName">Job name: </span> {{job.jobName}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Job name: </div> {{job.jobName}}
           </div>
-          <div>
-            <span class="fieldName">Job description: </span> {{job.jobDescription}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Job description: </div> {{job.jobDescription}}
+          </div >
+          <div class="fieldWrapper">
+            <div class="fieldName">Job location: </div> {{job.jobLocation}}
           </div>
-          <div>
-            <span class="fieldName">Job location: </span> {{job.jobLocation}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Job type: </div> {{job.jobType}}
           </div>
-          <div>
-            <span class="fieldName">Job type: </span> {{job.jobType}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Working type: </div> {{job.workingType}}
           </div>
-          <div>
-            <span class="fieldName">Working type: </span> {{job.workingType}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Created at: </div> {{job.createdAt}}
           </div>
-          <div>
-            <span class="fieldName">Created at: </span> {{job.createdAt}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Active: </div> {{job.active}}
           </div>
-          <div>
-            <span class="fieldName">Active: </span> {{job.active}}
-          </div>
-          <div>
-            <span class="fieldName">Other details: </span> {{job.otherDetails}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Other details: </div> {{job.otherDetails}}
           </div>
         </div>
       </mat-card>

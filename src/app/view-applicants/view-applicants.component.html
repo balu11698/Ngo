@@ -11,24 +11,24 @@
     <ng-container *ngIf="applicantsForJob?.length">
       <mat-card class="card" *ngFor="let applicant of applicantsForJob">
         <div class="details">
-          <div>
-            <span class="fieldName">Full name: </span> {{applicant.fullname}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Full name: </div> {{applicant.fullname}}
           </div>
-          <div>
-            <span class="fieldName">Email: </span> {{applicant.email}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Email: </div> {{applicant.email}}
           </div>
-          <div>
-            <span class="fieldName">Phone number: </span> {{applicant.phonenumber}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Phone number: </div> {{applicant.phonenumber}}
           </div>
-          <div>
-            <span class="fieldName">Applied on: </span> {{applicant.appliedOn}}
+          <div class="fieldWrapper">
+            <div class="fieldName">Applied on: </div> {{applicant.appliedOn}}
           </div>
-          <div>
-            <span class="fieldName">Application status: </span> <span>{{applicant.applicationStatus}}</span>
+          <div class="fieldWrapper">
+            <div class="fieldName">Application status: </div> <div>{{applicant.applicationStatus}}</div>
           </div>
-          <div>
-            <span class="fieldName">Resume: </span> <span class="downloadResume"
-              (click)="downloadResume(applicant.id)">{{applicant?.resume}}</span>
+          <div class="fieldWrapper">
+            <div class="fieldName">Resume: </div> <div class="downloadResume"
+              (click)="downloadResume(applicant.id)">{{applicant?.resume}}</div>
           </div>
         </div>
         <div class="buttonsWrapper">

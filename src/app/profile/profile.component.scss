@@ -1,38 +1,42 @@
 .container {
-    margin: 50px 20%;
-    .profileDetailsWrapper {
-        display: flex;
-        .profileDetails{
-            width: 70%;
-        }
+  margin: 50px 20%;
+  .profileDetailsWrapper {
+    display: flex;
+    .profileDetails {
+      width: 70%;
     }
+  }
+  .fieldWrapper {
+    display: flex;
     .field {
-        font-weight: 500;
+      font-weight: 500;
+      min-width: 120px;
     }
-    .downloadWrapper {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        .downloadFile {
-            text-decoration: underline;
-            color: blue;
-            cursor: pointer;
-            margin-right: 10px;
-        }
+  }
+  .downloadWrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .downloadFile {
+      text-decoration: underline;
+      color: blue;
+      cursor: pointer;
+      margin-right: 10px;
     }
+  }
 }
-.buttonsWrapper{
-    margin-top: 10px;
-    .updateButton{
-        margin-right: 10px;
-    }
+.buttonsWrapper {
+  margin-top: 10px;
+  .updateButton {
+    margin-right: 10px;
+    background-color: #3faa69;
+  }
 }
 @media screen and (max-width: 800px) {
-    .container {
-        margin: 25px 25px;
-        .profileDetailsWrapper{
-            flex-direction: column;
-        }
+  .container {
+    margin: 25px 25px;
+    .profileDetailsWrapper {
+      flex-direction: column;
     }
-
+  }
 }

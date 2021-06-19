@@ -48,6 +48,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
 import { ViewAllUsersComponent } from './view-all-users/view-all-users.component';
 import { UserFilterPipe } from './service/user-filter.pipe';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { LayoutModule } from '@angular/cdk/layout'
 // import { Signer } from 'crypto';
 
 @NgModule({
@@ -107,7 +109,9 @@ import { UserFilterPipe } from './service/user-filter.pipe';
     NgxChartsModule,
     MatTooltipModule,
     MatSlideToggleModule,
-    MatDividerModule
+    MatDividerModule,
+    MatGridListModule,
+    LayoutModule
   ],
   providers: [NavComponent, MapComponent],
   bootstrap: [AppComponent]

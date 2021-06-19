@@ -1,62 +1,73 @@
 <div class="container">
-  <div class="filtersWrapper">
-    <mat-form-field appearance="outline" class="filter">
-      <mat-label>Job location</mat-label>
-      <mat-select [(ngModel)]="jobLocation">
-        <mat-option value="All">All</mat-option>
-        <mat-option *ngFor="let location of jobLocationArray" value={{location}}>{{location}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="filter">
-      <mat-label>Working type</mat-label>
-      <mat-select [(ngModel)]="workingType">
-        <mat-option value="All">All</mat-option>
-        <mat-option *ngFor="let working of workingTypeArray" value={{working}}>{{working}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="filter">
-      <mat-label>Job type</mat-label>
-      <mat-select [(ngModel)]="jobType">
-        <mat-option value="All">All</mat-option>
-        <mat-option *ngFor="let job of jobTypeArray" value={{job}}>{{job}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div *ngIf="loader" class="maskingBackground">
-    <div class="centerLoader">
-      <mat-spinner></mat-spinner>
+  <div class="contentWrapper">
+    <div class="filtersWrapper">
+      <mat-form-field appearance="outline" class="filter">
+        <mat-label>Job location</mat-label>
+        <mat-select [(ngModel)]="jobLocation">
+          <mat-option value="All">All</mat-option>
+          <mat-option *ngFor="let location of jobLocationArray" value={{location}}>{{location}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="filter">
+        <mat-label>Working type</mat-label>
+        <mat-select [(ngModel)]="workingType">
+          <mat-option value="All">All</mat-option>
+          <mat-option *ngFor="let working of workingTypeArray" value={{working}}>{{working}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="filter">
+        <mat-label>Job type</mat-label>
+        <mat-select [(ngModel)]="jobType">
+          <mat-option value="All">All</mat-option>
+          <mat-option *ngFor="let job of jobTypeArray" value={{job}}>{{job}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
+    <div *ngIf="loader" class="maskingBackground">
+      <div class="centerLoader">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+    <ng-container *ngIf="!loader">
+      <div class="cardWrapper">
+        <mat-card class="card"
+          *ngFor="let job of allJobs|jobLocationFilter:jobLocation|workingTypeFilter:workingType|jobTypeFilter:jobType">
+          <div class="details">
+            <div class="fieldWrapper">
+              <div class="fieldName">Job name: </div>
+              <div>{{job.jobName}}</div>
+            </div>
+            <div class="fieldWrapper">
+              <div class="fieldName">Job description: </div>
+              <div>{{job.jobDescription}}</div>
+            </div>
+            <div class="fieldWrapper">
+              <div class="fieldName">Job location: </div>
+              <div>{{job.jobLocation}}</div>
+            </div>
+            <div class="fieldWrapper">
+              <div class="fieldName">Job type: </div>
+              <div>{{job.jobType}}</div>
+            </div>
+            <div class="fieldWrapper">
+              <div class="fieldName">Working type on: </div>
+              <div>{{job.workingType}}</div>
+            </div>
+            <div class="fieldWrapper">
+              <div class="fieldName">Created at: </div>
+              <div>{{job.createdAt}}</div>
+            </div>
+            <div class="fieldWrapper">
+              <div class="fieldName">Other details: </div>
+              <div>{{job.otherDetails}}</div>
+            </div>
+          </div>
+          <div class="buttonsWrapper">
+            <button type="button" class="acceptButton" mat-raised-button color="primary"
+              (click)="applyJob(job.jobId)">Apply</button>
+          </div>
+        </mat-card>
+      </div>
+    </ng-container>
   </div>
-  <ng-container *ngIf="!loader">
-    <mat-card class="card"
-      *ngFor="let job of allJobs|jobLocationFilter:jobLocation|workingTypeFilter:workingType|jobTypeFilter:jobType">
-      <div class="details">
-        <div>
-          <span class="fieldName">Job name: </span> {{job.jobName}}
-        </div>
-        <div>
-          <span class="fieldName">Job description: </span> {{job.jobDescription}}
-        </div>
-        <div>
-          <span class="fieldName">Job location: </span> {{job.jobLocation}}
-        </div>
-        <div>
-          <span class="fieldName">Job type: </span> {{job.jobType}}
-        </div>
-        <div>
-          <span class="fieldName">Working type on: </span> {{job.workingType}}
-        </div>
-        <div>
-          <span class="fieldName">Created at: </span> <span>{{job.createdAt}}</span>
-        </div>
-        <div>
-          <span class="fieldName">Other details: </span> <span>{{job.otherDetails}}</span>
-        </div>
-      </div>
-      <div class="buttonsWrapper">
-        <button type="button" class="acceptButton" mat-raised-button color="primary"
-          (click)="applyJob(job.jobId)">Apply</button>
-      </div>
-    </mat-card>
-  </ng-container>
 </div>

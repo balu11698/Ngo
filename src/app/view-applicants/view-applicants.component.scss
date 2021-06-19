@@ -1,47 +1,51 @@
 .container {
-    margin: 50px 20%;
-    .card {
+  margin: 50px 20%;
+  .card {
+    display: flex;
+    margin-bottom: 10px;
+    .details {
+      width: 70%;
+      margin-right: 10px;
+      .downloadResume {
+        text-decoration: underline;
+        cursor: pointer;
+        color: blue;
+      }
+      .fieldWrapper {
         display: flex;
-        margin-bottom: 10px;
-        .details {
-            width: 70%;
-            margin-right: 10px;
-            .downloadResume{
-                text-decoration: underline;
-                cursor: pointer;
-                color: blue;
-            }
-            .fieldName{
-                font-weight: 500;
-            }
+        .fieldName {
+          font-weight: 500;
+          min-width: 130px;
         }
-        .buttonsWrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-        }
+      }
     }
+    .buttonsWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+  }
 }
-.statusImage{
-    width: 25px;
-    height: 25px;
+.statusImage {
+  width: 25px;
+  height: 25px;
 }
 @media screen and (max-width: 800px) {
-    .container {
-        margin: 25px 25px;
-        .card {
-            flex-direction: column;
-            .details {
-                margin-bottom: 10px;
-                width: 100%;
-            }
-            .buttonsWrapper {
-                flex-direction: row;
-                justify-content: unset;
-                .acceptButton {
-                    margin-right: 15px;
-                }
-            }
+  .container {
+    margin: 25px 25px;
+    .card {
+      flex-direction: column;
+      .details {
+        margin-bottom: 10px;
+        width: 100%;
+      }
+      .buttonsWrapper {
+        flex-direction: row;
+        justify-content: unset;
+        .acceptButton {
+          margin-right: 15px;
         }
+      }
     }
+  }
 }

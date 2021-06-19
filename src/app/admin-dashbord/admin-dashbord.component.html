@@ -49,7 +49,7 @@
       <div
         *ngIf="((detail|openCaseFilter:openCase|genderFilter:gender|stateFilter:state|occupationFilter:occupation|affectedReasonFilter:affectedReason)?.length==0) && !isLoading">
         No Records</div>
-      <div
+      <div class="width"
         *ngFor="let details of detail|openCaseFilter:openCase|genderFilter:gender|stateFilter:state|occupationFilter:occupation|affectedReasonFilter:affectedReason">
         <mat-card class="card">
           <div class="detailsWrapper">
@@ -57,66 +57,81 @@
               <img class="genderImage" [src]="details.gender==='Male' ? maleImage : femaleImage" />
             </div>
             <div class="details">
-              <div>
-                <span class="detailsLabel"> Name :</span> {{details.firstname}} {{details.middlename}}
+              <div class="detailsContent">
+                <div class="detailsLabel"> Name :</div> {{details.firstname}} {{details.middlename}}
                 {{details.lastname}}
               </div>
-              <div>
-                <span class="detailsLabel"> Phone Number : </span>{{details.phonenumber}}
+              <div class="detailsContent">
+                <div class="detailsLabel"> Phone Number : </div>{{details.phonenumber}}
               </div>
-              <div>
-                <span class="detailsLabel"> Address : </span>{{details.address}}
+              <div class="detailsContent">
+                <div class="detailsLabel"> Address : </div>{{details.address}}
               </div>
-              <div>
-                <span class="detailsLabel"> City : </span>{{details.city}} <span class="detailsLabel"> District :
-                </span>{{details.district}}
-                <span class="detailsLabel"> State : </span>{{details.state}}<span class="detailsLabel"> Pincode :
-                </span>{{details.pincode}}
+              <div class="detailsContent">
+                <div class="detailsLabel"> City : </div>{{details.city}}
               </div>
-              <div>
-                <span *ngIf="details.idType!='NA'" class="detailsLabel">{{details.idType}} : {{details.idNumber}}</span>
+              <div class="detailsContent">
+                <div class="detailsLabel"> District :</div>{{details.district}}
               </div>
-              <div>
-                <span class="detailsLabel">Occupation : </span>{{details.occupation}}
+              <div class="detailsContent">
+                <div class="detailsLabel"> State : </div>{{details.state}}
               </div>
-              <div>
-                <span *ngIf="details.affectedDate"><span class="detailsLabel">Affected Date:
-                  </span>{{getDate(details.affectedDate)}}</span>
-                <span class="detailsLabel">Affected Reason: </span>{{details.affectedReason}}
+              <div class="detailsContent">
+                <div class="detailsLabel"> Pincode :</div>{{details.pincode}}
               </div>
-              <div>
-                <span *ngIf="details.additionalDetail"><span class="detailsLabel">Additional detail:
-                  </span>{{details.additionalDetail}}</span>
+              <div class="detailsContent" *ngIf="details.idType">
+                <div *ngIf="details.idType!='NA'" class="detailsLabel">{{details.idType}} : </div>{{details.idNumber}}
               </div>
-              <div>
-                <span class="detailsLabel">Submitter name: </span>{{details.submitterName}}
-                <span class="detailsLabel">Submitter contact: </span>{{details.submitterContact}}
+              <div class="detailsContent" *ngIf="details.occupation">
+                <div class="detailsLabel">Occupation : </div>{{details.occupation}}
               </div>
-              <div>
-                <span class="detailsLabel">Submitter detail: </span>{{details.submitterDetail}}
+              <div class="detailsContent" *ngIf="details.affectedDate">
+                  <div class="detailsLabel">Affected Date:
+                  </div>{{getDate(details.affectedDate)}}
               </div>
-              <div>
-                <span class="detailsLabel">Resolved: </span>{{details.isSolved}}
-                <span *ngIf="details.action"><span class="detailsLabel">Action: </span>{{details.action}}</span>
+              <div class="detailsContent" *ngIf="details.affectedReason">
+                <div class="detailsLabel">Affected Reason: </div>{{details.affectedReason}}
               </div>
-              <div class="buttonsWrapper">
-                <button mat-raised-button color="primary" matTooltip="Send SMS" [matTooltipPosition]="position.value">
-                  <mat-icon>textsms</mat-icon>
-                </button>
-                <button mat-raised-button color="primary" matTooltip="Send Email" [matTooltipPosition]="position.value"
-                  (click)="sendEmail(details)">
-                  <mat-icon>email</mat-icon>
-                </button>
-                <button mat-raised-button color="primary" matTooltip="Resolve" [matTooltipPosition]="position.value"
-                  (click)="resolve(details)">
-                  <mat-icon>call_to_action</mat-icon>
-                </button>
-                <button mat-raised-button color="primary" matTooltip="Location" [matTooltipPosition]="position.value"
-                  (click)="getMap(details.city)">
-                  <mat-icon>location_city</mat-icon>
-                </button>
+              <div class="detailsContent" *ngIf="details.additionalDetail">
+                  <div class="detailsLabel">Additional detail:
+                  </div>{{details.additionalDetail}}
+              </div>
+              <div class="detailsContent">
+                <div class="detailsLabel">Submitter name: </div>{{details.submitterName}}
+              </div>
+              <div class="detailsContent">
+                <div class="detailsLabel">Submitter contact: </div>{{details.submitterContact}}
+              </div>
+              <div class="detailsContent">
+                <div class="detailsLabel">Submitter detail: </div>{{details.submitterDetail}}
+              </div>
+              <div class="detailsContent" *ngIf="details.isSolved">
+                <div class="detailsLabel">Resolved: </div>{{details.isSolved}}
+              </div>
+              <div class="detailsContent" *ngIf="details.action">
+                  <div class="detailsLabel">Action: </div>{{details.action}}
+              </div>
+              <div *ngIf="details.resume" class="detailsContent">
+                <div class="detailsLabel">Resume: </div><div (click)="download(details.id)">{{details.resume}}</div>
               </div>
             </div>
+          </div>
+          <div class="buttonsWrapper">
+            <button mat-raised-button color="primary" matTooltip="Send SMS" [matTooltipPosition]="position.value">
+              <mat-icon>textsms</mat-icon>
+            </button>
+            <button mat-raised-button color="primary" matTooltip="Send Email" [matTooltipPosition]="position.value"
+              (click)="sendEmail(details)">
+              <mat-icon>email</mat-icon>
+            </button>
+            <button mat-raised-button color="primary" matTooltip="Resolve" [matTooltipPosition]="position.value"
+              (click)="resolve(details)">
+              <mat-icon>call_to_action</mat-icon>
+            </button>
+            <button mat-raised-button color="primary" matTooltip="Location" [matTooltipPosition]="position.value"
+              (click)="getMap(details.city)">
+              <mat-icon>location_city</mat-icon>
+            </button>
           </div>
         </mat-card>
       </div>

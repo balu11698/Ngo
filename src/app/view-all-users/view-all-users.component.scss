@@ -1,20 +1,24 @@
-.container{
-    margin: 50px 20%;
-    .card{
-        margin-bottom: 10px;
-        .fieldName{
-            font-weight: 500;
-        }
-        .downloadResume{
-            text-decoration: underline;
-            cursor: pointer;
-            color: blue;
-        }
+.container {
+  margin: 50px 20%;
+  .card {
+    margin-bottom: 10px;
+    .fieldWrapper {
+      display: flex;
+      .fieldName {
+        font-weight: 500;
+        min-width: 120px;
+      }
     }
+    .downloadResume {
+      text-decoration: underline;
+      cursor: pointer;
+      color: blue;
+    }
+  }
 }
 
-@media screen and (max-width : 800px) {
-    .container{
-        margin: 25px 25px;
-    }
+@media screen and (max-width: 800px) {
+  .container {
+    margin: 25px 25px;
+  }
 }

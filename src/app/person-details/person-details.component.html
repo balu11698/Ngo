@@ -1,29 +1,35 @@
 <div class="container">
   <h1>COVID impacted person’s detail</h1>
   <form #form="ngForm" [formGroup]="personDetailsForm" (ngSubmit)="detailsSubmit()">
-    <div class="grid">
-      <div class="formFiledWrapper">
-        <mat-form-field appearance="outline" class="formField-3">
+    <mat-grid-list [cols]="isMobile ? 3 : 9" rowHeight="100px" [gutterSize]="isMobile ? '0px' : '100px'">
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>First Name*</mat-label>
           <input type="text" matInput formControlName="firstname" placeholder="">
           <mat-error *ngIf="personDetailsForm.get('firstname')?.errors?.required">
             First name is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-        <mat-form-field appearance="outline" class="formField-3">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>Middle Name</mat-label>
           <input type="text" matInput formControlName="middlename" placeholder="">
         </mat-form-field>
-        <mat-form-field appearance="outline" class="formField-3">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>last Name*</mat-label>
           <input type="text" matInput formControlName="lastname" placeholder="">
           <mat-error *ngIf="personDetailsForm.get('lastname')?.errors?.required">
             First name is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-      </div>
-      <div class="formFiledWrapper">
-        <mat-form-field appearance="outline" class="formField-3">
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list [cols]="isMobile ? 3 : 9" rowHeight="100px" [gutterSize]="isMobile ? '0px' : '100px'">
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>Gender*</mat-label>
           <mat-select formControlName="gender">
             <mat-option value="Male">Male</mat-option>
@@ -34,14 +40,18 @@
             Gender is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-        <mat-form-field appearance="outline" class="formField-3">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>Age*</mat-label>
           <input type="text" matInput formControlName="age" placeholder="">
           <mat-error *ngIf="personDetailsForm.get('age')?.errors?.required">
             Age is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-        <mat-form-field appearance="outline" class="formField-3">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>Occupation before covid/present *</mat-label>
           <mat-select formControlName="occupation">
             <mat-option value="School teacher/ Private tutor">School teacher/ Private tutor</mat-option>
@@ -64,26 +74,30 @@
             Occupation is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-      </div>
-      <div class="formFiledWrapper">
-      </div>
-      <div class="formFiledWrapper">
-        <mat-form-field appearance="outline" class="formField-1">
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list [cols]="9" rowHeight="100px">
+      <mat-grid-tile [colspan]="9" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>Specific skill details</mat-label>
           <textarea matInput formControlName="skills"></textarea>
         </mat-form-field>
-      </div>
-      <div class="formFiledWrapper">
-        <mat-form-field appearance="outline" class="formField-1">
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list [cols]="9" rowHeight="100px">
+      <mat-grid-tile [colspan]="9" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>Address*</mat-label>
           <input type="text" matInput formControlName="address" placeholder="">
           <mat-error *ngIf="personDetailsForm.get('firstname')?.errors?.required">
             Address is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-      </div>
-      <div class="formFiledWrapper">
-        <mat-form-field appearance="outline" class="formField-3">
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list [cols]="isMobile ? 3 : 9" rowHeight="100px" [gutterSize]="isMobile ? '0px' : '100px'">
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>State*</mat-label>
           <mat-select formControlName="state" class="select">
             <mat-option *ngFor="let state of stateArray" value="{{state}}">{{state}}</mat-option>
@@ -92,52 +106,68 @@
             State is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-        <mat-form-field appearance="outline" class="formField-3">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>City*</mat-label>
           <input type="text" matInput formControlName="city" placeholder="">
           <mat-error *ngIf="personDetailsForm.get('city')?.errors?.required">
             City is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-        <mat-form-field appearance="outline" class="formField-3">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>District*</mat-label>
           <input type="text" matInput formControlName="district" placeholder="">
           <mat-error *ngIf="personDetailsForm.get('district')?.errors?.required">
             District is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-      </div>
-      <div class="formFiledWrapper">
-        <mat-form-field appearance="outline" class="formField-3">
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list [cols]="isMobile ? 3 : 9" rowHeight="100px" [gutterSize]="isMobile ? '0px' : '100px'">
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>Pin Code*</mat-label>
           <input type="text" matInput formControlName="pincode" placeholder="">
           <mat-error *ngIf="personDetailsForm.get('pincode')?.errors?.required">
             Pincode is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-        <mat-form-field appearance="outline" class="formField-3">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>Email</mat-label>
           <input type="email" matInput formControlName="email" placeholder="">
         </mat-form-field>
-        <mat-form-field appearance="outline" class="formField-3">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>Phone</mat-label>
           <input type="text" matInput formControlName="phonenumber" placeholder="">
         </mat-form-field>
-      </div>
-      <div class="formFiledWrapper">
-        <mat-form-field appearance="outline" class="formField-1">
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list [cols]="9" rowHeight="100px">
+      <mat-grid-tile [colspan]="9" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>Associated NGO detail if any</mat-label>
           <input type="text" matInput formControlName="associated_ngo" placeholder="">
         </mat-form-field>
-      </div>
-      <div class="formFiledWrapper">
-        <mat-form-field appearance="outline" class="formField-2">
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list [cols]="isMobile ? 3 : 9" rowHeight="100px" [gutterSize]="isMobile ? '0px' : '100px'">
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>Affected Since</mat-label>
           <input matInput formControlName="affectedDate" [matDatepicker]="picker">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <mat-form-field appearance="outline" class="formField-2">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="outline" class="formField">
           <mat-label>How have been affected?*</mat-label>
           <mat-select formControlName="affectedReason" class="select">
             <mat-option value="Financial problem">Financial problem</mat-option>
@@ -153,31 +183,39 @@
             Affected Reason is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-      </div>
-      <div class="formFiledWrapper">
-        <mat-form-field class="formField" appearance="outline" class="formField-1">
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list [cols]="9" rowHeight="100px">
+      <mat-grid-tile [colspan]="9" [rowspan]="1">
+        <mat-form-field class="formField" appearance="outline" class="formField">
           <mat-label>Additional Detail</mat-label>
           <textarea matInput formControlName="additionalDetail"></textarea>
         </mat-form-field>
-      </div>
-      <div class="formFiledWrapper">
-        <mat-form-field class="formField" appearance="outline" class="formField-2">
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list [cols]="isMobile ? 3 : 9" rowHeight="100px" [gutterSize]="isMobile ? '0px' : '100px'">
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field class="formField" appearance="outline" class="formField">
           <mat-label>Submitter Name*</mat-label>
           <input type="text" matInput formControlName="submitterName" placeholder="">
           <mat-error *ngIf="personDetailsForm.get('submitterName')?.errors?.required">
             Submitter name is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="formField" appearance="outline" class="formField-2">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field class="formField" appearance="outline" class="formField">
           <mat-label>Submitter Contact*</mat-label>
           <input type="text" matInput formControlName="submitterContact" placeholder="">
           <mat-error *ngIf="personDetailsForm.get('submitterContact')?.errors?.required">
             Submitter contact is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-      </div>
-      <div class="formFiledWrapper">
-        <mat-form-field class="formField" appearance="outline" class="formField-1">
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list [cols]="9" rowHeight="100px">
+      <mat-grid-tile [colspan]="9" [rowspan]="1">
+        <mat-form-field class="formField" appearance="outline" class="formField">
           <mat-label>Submitter Detail (Please provide as much detail as you can. Name and Contact number is
             mandatory)*</mat-label>
           <textarea matInput formControlName="submitterDetail"></textarea>
@@ -185,15 +223,16 @@
             Submitter detail is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-      </div>
-      <div class="buttonsWrapper">
-        <!-- <button mat-raised-button color="primary" type="button" (click)="openFile()">
+      </mat-grid-tile>
+    </mat-grid-list>
+    <div class="buttonsWrapper">
+      <button mat-raised-button color="primary" type="button" (click)="openFile()">
           <mat-icon> attachment<input type="file" name="resume" class="uploadFile" style="display:none"
               (change)="handle($event)">
           </mat-icon>
-        </button> -->
-        <button mat-raised-button color="primary" type="submit" [disabled]="personDetailsForm.invalid">Submit</button>
-      </div>
+        </button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="personDetailsForm.invalid">Submit</button>
     </div>
+
   </form>
 </div>

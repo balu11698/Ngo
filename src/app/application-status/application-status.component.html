@@ -4,9 +4,11 @@
     <h3 *ngIf="!isChecked" class="Header">Withdrawn jobs</h3>
     <mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle>
   </div>
-  <ng-container *ngIf="loader">
-    <mat-spinner></mat-spinner>
-  </ng-container>
+  <div *ngIf="loader" class="maskingBackground">
+    <div class="centerLoader">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
   <ng-container *ngIf="!loader">
     <ng-container *ngIf="!appliedJobs?.length && isChecked">
       No Records
@@ -16,34 +18,34 @@
         <mat-card class="card"
           [ngClass]="(job.applicationStatus=='Pending' ? 'pending' : (job.applicationStatus=='Rejected' ? 'rejected' : 'accepted'))">
           <div class="details">
-            <div>
-              <span class="fieldName">Job name: </span> {{job.jobName}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Job name: </div> {{job.jobName}}
             </div>
-            <div>
-              <span class="fieldName">Job description: </span> {{job.jobDescription}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Job description: </div> {{job.jobDescription}}
             </div>
-            <div>
-              <span class="fieldName">Job location: </span> {{job.jobLocation}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Job location: </div> {{job.jobLocation}}
             </div>
-            <div>
-              <span class="fieldName">Job type: </span> {{job.jobType}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Job type: </div> {{job.jobType}}
             </div>
-            <div>
-              <span class="fieldName">Working type: </span> {{job.workingType}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Working type: </div> {{job.workingType}}
             </div>
-            <div>
-              <span class="fieldName">Other details: </span> <span>{{job.otherDetails}}</span>
+            <div class="fieldWrapper">
+              <div class="fieldName">Other details: </div> <div>{{job.otherDetails}}</div>
             </div>
-            <div>
-              <span class="fieldName">Applied on: </span> <span>{{job.appliedOn}}</span>
+            <div class="fieldWrapper">
+              <div class="fieldName">Applied on: </div> <div>{{job.appliedOn}}</div>
             </div>
-            <div>
-              <span class="fieldName">Application status: </span>
-              <span>{{job.applicationStatus}}</span>
+            <div class="fieldWrapper">
+              <div class="fieldName">Application status: </div>
+              <div>{{job.applicationStatus}}</div>
             </div>
           </div>
           <div class="buttonsWrapper">
-            <button type="button" class="acceptButton" mat-raised-button color="primary"
+            <button type="button" class="withdrawButton" mat-raised-button color="primary"
               (click)="withdrawJob(job.applyId)">Withdraw</button>
           </div>
         </mat-card>
@@ -56,30 +58,30 @@
       <ng-container *ngFor="let job of withdrawnJobs">
         <mat-card class="card withdrawn">
           <div class="details">
-            <div>
-              <span class="fieldName">Job name: </span> {{job.jobName}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Job name: </div> {{job.jobName}}
             </div>
-            <div>
-              <span class="fieldName">Job description: </span> {{job.jobDescription}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Job description: </div> {{job.jobDescription}}
             </div>
-            <div>
-              <span class="fieldName">Job location: </span> {{job.jobLocation}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Job location: </div> {{job.jobLocation}}
             </div>
-            <div>
-              <span class="fieldName">Job type: </span> {{job.jobType}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Job type: </div> {{job.jobType}}
             </div>
-            <div>
-              <span class="fieldName">Working type on: </span> {{job.workingType}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Working type on: </div> {{job.workingType}}
             </div>
-            <div>
-              <span class="fieldName">Other details: </span> <span>{{job.otherDetails}}</span>
+            <div class="fieldWrapper">
+              <div class="fieldName">Other details: </div> <div>{{job.otherDetails}}</div>
             </div>
-            <div>
-              <span class="fieldName">Applied on: </span> <span>{{job.appliedOn}}</span>
+            <div class="fieldWrapper">
+              <div class="fieldName">Applied on: </div> <div>{{job.appliedOn}}</div>
             </div>
-            <div>
-              <span class="fieldName">Application status: </span>
-              <span>{{job.applicationStatus}}</span>
+            <div class="fieldWrapper">
+              <div class="fieldName">Application status: </div>
+              <div>{{job.applicationStatus}}</div>
             </div>
           </div>
           <!-- <div class="buttonsWrapper">

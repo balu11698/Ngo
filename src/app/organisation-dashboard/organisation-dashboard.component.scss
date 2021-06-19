@@ -8,26 +8,29 @@
     .toggle {
       display: flex;
       align-items: center;
-      h3{
+      h3 {
         margin-bottom: unset;
         margin-right: 10px;
       }
     }
   }
   .card {
-    display: flex;
     margin-bottom: 10px;
     .details {
       width: 80%;
       margin-right: 10px;
-      .fieldName {
-        font-weight: 500;
+      .fieldWrapper {
+        display: flex;
+        .fieldName {
+          font-weight: 500;
+          min-width: 120px;
+        }
       }
     }
     .buttonsWrapper {
+      margin-top: 10px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: space-around;
     }
   }
 }

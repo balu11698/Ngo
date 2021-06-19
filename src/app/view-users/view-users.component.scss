@@ -2,8 +2,12 @@
   margin: 50px 20%;
   .card {
     margin-bottom: 10px;
-    .fieldName {
-      font-weight: 500;
+    .fieldWrapper {
+      display: flex;
+      .fieldName {
+        font-weight: 500;
+        min-width: 120px;
+      }
     }
     .downloadResume {
       text-decoration: underline;

@@ -1,54 +1,54 @@
 .container {
-    margin: 50px 20%;
-    .toggle{
-        display: flex;
-        margin-bottom: 10px;
-        h3{
-            margin-bottom: unset;
-            margin-right: 10px;
-          }
+  margin: 50px 15%;
+  .toggle {
+    display: flex;
+    margin-bottom: 10px;
+    h3 {
+      margin-bottom: unset;
+      margin-right: 10px;
     }
-    // .rejected {
-    //     background: #ffdbdb;
-    // }
-    // .pending {
-    //     background: #ffffd4;
-    // }
-    // .accepted{
-    //     background: #e9ffdc;
-    // }
-    // .withdrawn{
-    //     background: #dedede;
-    // }
-    .card {
+  }
+  // .rejected {
+  //     background: #ffdbdb;
+  // }
+  // .pending {
+  //     background: #ffffd4;
+  // }
+  // .accepted{
+  //     background: #e9ffdc;
+  // }
+  // .withdrawn{
+  //     background: #dedede;
+  // }
+  .card {
+    margin-bottom: 10px;
+    .details {
+      .fieldWrapper {
         display: flex;
-        margin-bottom: 10px;
-        .details {
-            width: 80%;
-            .fieldName{
-                font-weight: 500;
-            }
+        padding-bottom: 5px;
+        .fieldName {
+          font-weight: 500;
+          min-width: 125px;
         }
-        .buttonsWrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+      }
     }
+    .buttonsWrapper {
+      display: flex;
+      .withdrawButton{
+        background-color: #5065da;
+      }
+    }
+  }
 }
 @media screen and (max-width: 800px) {
-    .container {
-        margin: 25px 25px;
-        .card {
-            flex-direction: column;
-            .details {
-                margin-bottom: 10px;
-                width: 100%;
-            }
-            .buttonsWrapper {
-                flex-direction: row;
-                justify-content: unset;
-            }
-        }
+  .container {
+    margin: 25px 25px;
+    .card {
+      flex-direction: column;
+      .details {
+        margin-bottom: 10px;
+        width: 100%;
+      }
     }
+  }
 }

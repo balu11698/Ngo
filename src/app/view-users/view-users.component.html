@@ -7,18 +7,18 @@
   <ng-container *ngIf="!loader">
     <mat-card class="card" *ngFor="let personalUser of allPersonalUsers">
       <div class="details">
-        <div>
-          <span class="fieldName">Full name: </span> {{personalUser.fullname}}
+        <div class="fieldWrapper">
+          <div class="fieldName">Full name: </div> {{personalUser.fullname}}
         </div>
-        <div>
-          <span class="fieldName">Email: </span> {{personalUser.email}}
+        <div class="fieldWrapper">
+          <div class="fieldName">Email: </div> {{personalUser.email}}
         </div>
-        <div>
-          <span class="fieldName">Phone number: </span> {{personalUser.phonenumber}}
+        <div class="fieldWrapper">
+          <div class="fieldName">Phone number: </div> {{personalUser.phonenumber}}
         </div>
-        <div>
-          <span class="fieldName">Resume: </span> <span class="downloadResume"
-            (click)="downloadResume(personalUser.id)">{{personalUser?.resumeName}}</span>
+        <div *ngIf="personalUser?.resumeName" class="fieldWrapper">
+          <div class="fieldName">Resume: </div> <div class="downloadResume"
+            (click)="downloadResume(personalUser.id)">{{personalUser?.resumeName}}</div>
         </div>
       </div>
     </mat-card>

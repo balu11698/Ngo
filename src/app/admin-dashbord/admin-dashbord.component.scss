@@ -1,52 +1,61 @@
-.container{
-    margin: 50px 10%;
+.container {
+  margin: 50px 5%;
 }
-.dashboardWrapper{
+.dashboardWrapper {
+  display: flex;
+  .filterWrapper {
     display: flex;
-    .filterWrapper{
-        display: flex;
-        flex-direction: column;
-        margin-right: 25px;
-    }
-    .contentWrapper{
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
-}
-.card{
-    margin-bottom: 10px;
-    // background: #e6f3ff;
-}
-.genderImage{
-    width: 100px;
-    height: 100px;
-}
-.detailsWrapper{
+    flex-direction: column;
+    margin-right: 25px;
+  }
+  .contentWrapper {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+}
+.card {
+  margin-bottom: 10px;
+  // background: #e6f3ff;
+}
+.genderImage {
+  width: 100px;
+  height: 100px;
+}
+.detailsWrapper {
+  display: flex;
+  align-items: center;
 }
 .details {
-    margin-left: 15px;
-    flex-grow: 1;
+  margin-left: 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
 }
 .buttonsWrapper {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-left: 115px;
 }
 .detailsLabel {
-    font-weight: 600;
+  font-weight: 600;
+  min-width: 120px;
 }
 
-.spinner{
-    margin: 0 auto;
+.spinner {
+  margin: 0 auto;
 }
-.formField{
-    width: 100%;
+.formField {
+  width: 100%;
+}
+.detailsContent {
+  display: flex;
+  width: 49%;
 }
 @media screen and (max-width: 1000px) {
-  .dashboardWrapper{
+  .dashboardWrapper {
     flex-direction: column;
     .filterWrapper {
       display: flex;
@@ -55,25 +64,34 @@
       flex-direction: unset;
       justify-content: space-between;
       margin-right: unset;
-      .filter{
+      .filter {
         width: 150px;
+      }
     }
   }
-  }  
-  .detailsWrapper{
-        display: flex;
-        flex-direction: column;
-        align-items: unset;
-    }
-    .container{
-        margin: 25px 25px;
-    }
-    .image{
-        display: flex;
-        justify-content: center;
-    }
-    
-    .filter{
-        margin-right: 10px;
-    }
+  .detailsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: unset;
   }
+  .container {
+    margin: 25px 25px;
+  }
+  .image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .filter {
+    margin-right: 10px;
+  }
+  .buttonsWrapper{
+    margin-left: 15px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .detailsContent {
+    width: 100%;
+  }
+}

@@ -21,28 +21,28 @@
       <ng-container>
         <mat-card class="card" *ngFor="let activeJob of activeJobs">
           <div class="details">
-            <div>
-              <span class="fieldName">Job name: </span> {{activeJob.jobName}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Job name: </div> {{activeJob.jobName}}
             </div>
-            <div>
-              <span class="fieldName">Job location: </span> {{activeJob.jobLocation}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Job location: </div> {{activeJob.jobLocation}}
             </div>
-            <div>
-              <span class="fieldName">Job type: </span> {{activeJob.jobType}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Job type: </div> {{activeJob.jobType}}
             </div>
-            <div>
-              <span class="fieldName">Working type: </span> {{activeJob.workingType}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Working type: </div> {{activeJob.workingType}}
             </div>
-            <div>
-              <span class="fieldName">Other details: </span> <span>{{activeJob.otherDetails}}</span>
+            <div class="fieldWrapper">
+              <div class="fieldName">Other details: </div> <div>{{activeJob.otherDetails}}</div>
             </div>
           </div>
           <div class="buttonsWrapper">
             <button type="button" mat-raised-button color="primary" class="viewApplicants"
               (click)="viewApplicants(activeJob.jobId)">View
-              Applicants</button><br>
+              Applicants</button>
             <button type="button" mat-raised-button color="primary" (click)="deleteJob(activeJob.jobId)">Mark as
-              Inactive</button><br>
+              Inactive</button>
           </div>
         </mat-card>
       </ng-container>
@@ -54,20 +54,20 @@
       <ng-container *ngFor="let inactiveJob of inactiveJobs">
         <mat-card class="card">
           <div class="details">
-            <div>
-              <span class="fieldName">Job name: </span> {{inactiveJob.jobName}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Job name: </div> {{inactiveJob.jobName}}
             </div>
-            <div>
-              <span class="fieldName">Job location: </span> {{inactiveJob.jobLocation}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Job location: </div> {{inactiveJob.jobLocation}}
             </div>
-            <div>
-              <span class="fieldName">Job type: </span> {{inactiveJob.jobType}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Job type: </div> {{inactiveJob.jobType}}
             </div>
-            <div>
-              <span class="fieldName">Working type: </span> {{inactiveJob.workingType}}
+            <div class="fieldWrapper">
+              <div class="fieldName">Working type: </div> {{inactiveJob.workingType}}
             </div>
-            <div>
-              <span class="fieldName">Other details: </span> <span>{{inactiveJob.otherDetails}}</span>
+            <div class="fieldWrapper">
+              <div class="fieldName">Other details: </div> <div>{{inactiveJob.otherDetails}}</div>
             </div>
           </div>
           <div class="buttonsWrapper">
