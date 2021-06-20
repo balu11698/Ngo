@@ -1,7 +1,7 @@
-.container{
+.container {
     margin: 50px 20%;
 }
-.formFiledWrapper{
+.formFiledWrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -12,21 +12,29 @@
 .formField-2 {
     width: 340px;
 }
-.formField-1, .formField {
+.formField-1,
+.formField {
     width: 100%;
 }
 .buttonsWrapper {
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    // justify-content: space-around;
+}
+.fileName,
+.fileButton,
+.uploadResume {
+    margin-right: 20px;
 }
 
 @media screen and (max-width: 1200px) {
-    .formField-3,.formField-2{
+    .formField-3,
+    .formField-2 {
         width: 100%;
     }
-  }
-  @media screen and (max-width: 960px) {
-    .container{
+}
+@media screen and (max-width: 960px) {
+    .container {
         margin: 25px 25px;
     }
-  }
+}

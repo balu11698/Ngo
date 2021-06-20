@@ -226,11 +226,11 @@
       </mat-grid-tile>
     </mat-grid-list>
     <div class="buttonsWrapper">
-      <button mat-raised-button color="primary" type="button" (click)="openFile()">
-          <mat-icon> attachment<input type="file" name="resume" class="uploadFile" style="display:none"
-              (change)="handle($event)">
-          </mat-icon>
-        </button>
+      <button mat-raised-button color="primary" type="button" class="fileButton" (click)="openFile()">
+        Upload resume <input type="file" name="resume" class="uploadFile" style="display:none"
+          (change)="handle($event)">
+      </button>
+      <div class="fileName" *ngIf="fileName">{{fileName}}</div>
       <button mat-raised-button color="primary" type="submit" [disabled]="personDetailsForm.invalid">Submit</button>
     </div>
 

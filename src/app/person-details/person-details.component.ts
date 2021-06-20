@@ -17,6 +17,7 @@ export class PersonDetailsComponent implements OnInit {
   public isMobile: boolean = false;
   public personDetailsForm!: FormGroup
   public fileName: any
+  public file:any
   public stateArray = ["Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli", "Daman and Diu",
     "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep", "Madhya Pradesh", "Maharashtra",
     "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Pondicherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttaranchal", "Uttar Pradesh", "West Bengal"];
@@ -68,7 +69,8 @@ export class PersonDetailsComponent implements OnInit {
     await this.convertFormData()
     this.api.submitCase(this.formData).subscribe((success: any) => {
       this.snackBar.open(success.message, 'Close', { duration: 3000 });
-      this.fileName = null;
+      this.file = null;
+      this.fileName=null;
       this.formData.forEach((value, key) => {
         this.formData.delete(key)
       });
@@ -87,7 +89,7 @@ export class PersonDetailsComponent implements OnInit {
         this.formData.set(key, this.personDetailsForm.value[key]);
       }
     });
-    this.formData.set('resume', this.fileName);
+    this.formData.set('resume', this.file);
 
   }
   openFile() {
@@ -99,6 +101,7 @@ export class PersonDetailsComponent implements OnInit {
   }
   async handle(e: any) {
     const file: File = e.target.files[0]
-    this.fileName = file;
+    this.file = file;
+    this.fileName = file.name
   }
 }
