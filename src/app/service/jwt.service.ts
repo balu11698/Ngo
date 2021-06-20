@@ -7,8 +7,8 @@ import { Subject } from 'rxjs';
 })
 export class JwtService {
   constructor(private http: HttpClient) { }
-  //  url = 'http://194.233.64.67:3000';
-  url = 'http://localhost:3000';
+   url = 'http://194.233.64.67:3000';
+  // url = 'http://localhost:3000';
   // loggedin:boolean=false
   public isloggedIn = new Subject();
   public isloggedInListener = this.isloggedIn.asObservable();
