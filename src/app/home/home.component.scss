@@ -24,9 +24,9 @@
 .registeredData {
   display: flex;
   margin-bottom: 20px;
-  .usersData {
-    margin-right: 20px;
-  }
+  // .usersData {
+  //   margin-right: 20px;
+  // }
   .userField,
   .organisationField {
     font-weight: 500;
@@ -95,5 +95,28 @@
 @media screen and (max-width: 450px) {
   .timePeriodRadio {
     justify-content: space-between;
+  }
+}
+
+@property --n {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.number {
+  animation: animate var(--duration) forwards var(--timing, linear);
+  counter-reset: num var(--n);
+}
+.number::before {
+  content: counter(num);
+}
+
+@keyframes animate {
+  from {
+    --n: var(--from);
+  }
+  to {
+    --n: var(--to);
   }
 }

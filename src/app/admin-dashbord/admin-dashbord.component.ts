@@ -54,7 +54,7 @@ export class AdminDashbordComponent implements OnInit {
     this.isLoading = true;
     this.api.getAllDetails().subscribe((data: any) => {
       this.detail = data;
-      console.log(this.detail)
+      // console.log(this.detail)
       this.stateArray = [...new Set(this.detail.map(item => item.state))];
       this.isLoading = false;
 

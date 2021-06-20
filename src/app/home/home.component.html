@@ -5,13 +5,13 @@
         <mat-card class="card">
           <div class="usersData">
             <div class="userField">Registered Individual Users:</div>
-            <div> {{registeredData[0]}}</div>
+            <div class="number"  style="--from: 0; --to: {{registeredData[0]}}; --duration: 1s; --timing: ease-in-out"> </div>
           </div>
         </mat-card>
         <mat-card class="card organisation" >
           <div class="organisationData">
             <div class="organisationField">Registered Organisations:</div>
-            <div> {{registeredData[1]}}</div>
+            <div class="number"  style="--from: 0; --to: {{registeredData[1]}}; --duration: 1s; --timing: ease-in-out"></div>
           </div>
         </mat-card>
       </div>
