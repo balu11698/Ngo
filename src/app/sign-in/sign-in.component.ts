@@ -61,6 +61,7 @@ export class SignInComponent implements OnInit {
           this.snackBar.open(success.message, 'Close', { duration: 3000 });
         },
         ((error:any)=>{
+          console.log(error);
           this.snackBar.open(error.error.message, 'Close', { duration: 3000 });
         })
         )

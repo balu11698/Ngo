@@ -54,7 +54,6 @@ export class AdminDashbordComponent implements OnInit {
     this.isLoading = true;
     this.api.getAllDetails().subscribe((data: any) => {
       this.detail = data;
-      // console.log(this.detail)
       this.stateArray = [...new Set(this.detail.map(item => item.state))];
       this.isLoading = false;
 
@@ -150,13 +149,14 @@ export class AdminDashboardEmailDialog {
   sendEmailForm!: FormGroup
   constructor(
     public dialogRef: MatDialogRef<AdminDashboardEmailDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: EmailDialogData, private formBuilder: FormBuilder) { }
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private formBuilder: FormBuilder) { }
   ngOnInit(): void {
     this.sendEmailForm = this.formBuilder.group({
       toAddress: ['', [Validators.required]],
       subject: ['', [Validators.required]],
       text: ['', Validators.required]
     })
+    this.sendEmailForm.get('toAddress')?.patchValue(this.data.details.email)
   }
   onNoClick(): void {
     this.dialogRef.close();

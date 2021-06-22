@@ -26,6 +26,10 @@
 .uploadResume {
     margin-right: 20px;
 }
+.fileSize,.fileType{
+    color: red;
+    margin-right: 20px;
+}
 
 @media screen and (max-width: 1200px) {
     .formField-3,

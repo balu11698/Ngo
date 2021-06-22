@@ -64,6 +64,9 @@
               <div class="detailsContent">
                 <div class="detailsLabel"> Phone Number : </div>{{details.phonenumber}}
               </div>
+              <div class="detailsContent" *ngIf="details.email">
+                <div class="detailsLabel"> Email : </div>{{details.email}}
+              </div>
               <div class="detailsContent">
                 <div class="detailsLabel"> Address : </div>{{details.address}}
               </div>

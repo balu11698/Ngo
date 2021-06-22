@@ -16,11 +16,13 @@ export class PersonDetailsComponent implements OnInit {
   public formData = new FormData();
   public isMobile: boolean = false;
   public personDetailsForm!: FormGroup
-  public fileName: any
-  public file:any
+  public fileName: any;
+  public fileSize: any;
+  public fileType: any;
+  public file: any;
   public stateArray = ["Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli", "Daman and Diu",
     "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep", "Madhya Pradesh", "Maharashtra",
-    "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Pondicherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttaranchal", "Uttar Pradesh", "West Bengal"];
+    "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Pondicherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttaranchal", "Uttar Pradesh", "West Bengal"];
 
   constructor(private breakpointObserver: BreakpointObserver, private formBuilder: FormBuilder, private api: ApiService, private snackBar: MatSnackBar, private router: Router) {
     breakpointObserver.observe([
@@ -70,7 +72,7 @@ export class PersonDetailsComponent implements OnInit {
     this.api.submitCase(this.formData).subscribe((success: any) => {
       this.snackBar.open(success.message, 'Close', { duration: 3000 });
       this.file = null;
-      this.fileName=null;
+      this.fileName = null;
       this.formData.forEach((value, key) => {
         this.formData.delete(key)
       });
@@ -100,8 +102,11 @@ export class PersonDetailsComponent implements OnInit {
     return this.personDetailsForm.get('resume') as FormArray;
   }
   async handle(e: any) {
+    this.fileName = "";
+    this.fileSize = "";
+    this.fileType = "";
     const file: File = e.target.files[0]
     this.file = file;
-    this.fileName = file.name
+    (this.file?.type == 'application/pdf') ? ((this.file?.size / 1000) < 1000 ? this.fileName = file.name : this.fileSize = "File is greater than 1MB") : this.fileType = "Please upload only PDF";
   }
 }

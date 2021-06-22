@@ -231,6 +231,8 @@
           (change)="handle($event)">
       </button>
       <div class="fileName" *ngIf="fileName">{{fileName}}</div>
+      <div class="fileSize" *ngIf="fileSize">{{fileSize}}</div>
+      <div class="fileType" *ngIf="fileType">{{fileType}}</div>
       <button mat-raised-button color="primary" type="submit" [disabled]="personDetailsForm.invalid">Submit</button>
     </div>
 
