@@ -44,7 +44,7 @@
               <div>{{job.applicationStatus}}</div>
             </div>
           </div>
-          <div class="buttonsWrapper">
+          <div class="buttonsWrapper" *ngIf="job.applicationStatus!='Accepted' && job.applicationStatus!='Rejected'">
             <button type="button" class="withdrawButton" mat-raised-button color="primary"
               (click)="withdrawJob(job.applyId)">Withdraw</button>
           </div>

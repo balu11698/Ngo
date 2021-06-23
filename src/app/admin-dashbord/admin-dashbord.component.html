@@ -82,7 +82,7 @@
               <div class="detailsContent">
                 <div class="detailsLabel"> Pincode :</div>{{details.pincode}}
               </div>
-              <div class="detailsContent" *ngIf="details.idType">
+              <div class="detailsContent" *ngIf="details.idType || details.idType!='NA'">
                 <div *ngIf="details.idType!='NA'" class="detailsLabel">{{details.idType}} : </div>{{details.idNumber}}
               </div>
               <div class="detailsContent" *ngIf="details.occupation">
